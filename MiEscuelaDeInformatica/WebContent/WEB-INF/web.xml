@@ -52,4 +52,12 @@
     <servlet-name>Registrar</servlet-name>
     <url-pattern>/Registrar</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>AgregarUsuario</servlet-name>
+  	<servlet-class>AgregarUsuario.java</servlet-class>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>AgregarUsuario</servlet-name>
+    <url-pattern>/AgregarUsuario</url-pattern>
+  </servlet-mapping>
 </web-app>

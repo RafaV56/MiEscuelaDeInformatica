@@ -59,8 +59,7 @@
 					bandera=false;
 			}
 		
-			if(bandera){
-				$('#formularioRegistro').attr('action','registrar.jsp');
+			if(bandera){		
 				 $('#rContrasena').remove();
 				alert('Completado correctamente');
 			}
