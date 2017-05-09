@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Context>
+	<Resource name="Pericodelospalotes" 
+			  auth="Container" 
+			  type="javax.sql.DataSource"
+			  maxActive="10" 
+			  maxIdle="3" 
+			  maxWait="10000" 
+			  removeAbandoned="true"
+			  username="root" 
+			  password="rafa" 
+			  driverClassName="com.mysql.jdbc.Driver"
+			  url="jdbc:mysql://localhost:3306/herbolario"
+	/>
+</Context>
