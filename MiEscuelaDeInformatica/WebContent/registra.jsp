@@ -34,7 +34,7 @@
        	
        	   <h3 class="alert alert-success text-uppercase text-center col-sm-10  col-sm-offset-1">Formulario de registro</h3>
       
-      <form class="form-horizontal" method="post" id="formularioRegistro">
+      <form class="form-horizontal" method="post" id="formularioRegistro" action="AgregarUsuario">
       
       	<div class="col-sm-6">
          <div class="form-group">

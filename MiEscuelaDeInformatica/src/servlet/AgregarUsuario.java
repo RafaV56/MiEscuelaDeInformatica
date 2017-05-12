@@ -8,18 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Registrar
+ * Servlet implementation class AgregarUsuario
  */
-@WebServlet("/Registrar")
-public class Registrar extends HttpServlet {
+@WebServlet("/AgregarUsuario")
+public class AgregarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Registrar() {
+    public AgregarUsuario() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
@@ -33,7 +33,13 @@ public class Registrar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("barra", "registrar");
+		String nombre=(String)request.getParameter("nombre");
+		String email=(String)request.getParameter("email");
+		String edad=(String)request.getParameter("edad");
+		String nick=(String)request.getParameter("nick");
+		String contrasena=(String)request.getParameter("contrasena");
+		System.out.println("Nombre: "+nombre+" Email: "+email+" Edad: "+edad+" Nick: "+nick+" Contraseña: "+contrasena);
+		
 		getServletContext().getRequestDispatcher("/registra.jsp").forward(request, response);
 	}
 
