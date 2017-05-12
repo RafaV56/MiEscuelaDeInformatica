@@ -40,7 +40,7 @@ public class AgregarUsuario extends HttpServlet {
 		String contrasena=(String)request.getParameter("contrasena");
 		System.out.println("Nombre: "+nombre+" Email: "+email+" Edad: "+edad+" Nick: "+nick+" Contraseña: "+contrasena);
 		
-		getServletContext().getRequestDispatcher("/registrar.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/registra.jsp").forward(request, response);
 	}
 
 }

@@ -58,7 +58,6 @@
 				$('#principio').append('<h3>-Repite la contraseña es obligatoria, deber ser igual a la contraseña</h3>');
 					bandera=false;
 			}
-		
 			if(bandera){		
 				 $('#rContrasena').remove();
 				alert('Completado correctamente');
