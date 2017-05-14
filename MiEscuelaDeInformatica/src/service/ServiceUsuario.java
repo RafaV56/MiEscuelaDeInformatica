@@ -1,0 +1,42 @@
+package service;
+
+
+import daos.TransaccionesManager;
+import daos.UsuarioDAO;
+import domain.Usuario;
+import exceptions.DAOException;
+import exceptions.ServiceException;
+
+public class ServiceUsuario {
+	
+	
+	public Usuario recuperarUsuario(Usuario usuario) throws ServiceException{
+		TransaccionesManager trans = null;
+
+		try {
+			trans = new TransaccionesManager();
+			UsuarioDAO usuarioDAO = trans.getUsuarioDAO();
+			usuario = usuarioDAO.recuperarUsuario(usuario);
+
+
+			trans.closeCommit();
+		} catch (DAOException e) {
+			try{
+				trans.closeRollback();
+			}catch (DAOException e1){
+				throw new ServiceException(e.getMessage(),e1);//Error interno
+			}
+
+			if(e.getCause()==null){
+				throw new ServiceException(e.getMessage());//Error Lógico
+			}else{
+
+				throw new ServiceException(e.getMessage(),e);//Error interno
+			}
+
+		}
+		return usuario;
+	}
+	
+
+}

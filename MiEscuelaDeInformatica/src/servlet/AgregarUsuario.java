@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Usuario;
+import exceptions.ServiceException;
+
+import service.ServiceUsuario;
+
 /**
  * Servlet implementation class AgregarUsuario
  */
@@ -39,6 +44,16 @@ public class AgregarUsuario extends HttpServlet {
 		String nick=(String)request.getParameter("nick");
 		String contrasena=(String)request.getParameter("contrasena");
 		System.out.println("Nombre: "+nombre+" Email: "+email+" Edad: "+edad+" Nick: "+nick+" Contraseña: "+contrasena);
+		
+		ServiceUsuario serviceUsuario=new ServiceUsuario();
+		Usuario usu=null;
+		try {
+			 usu=serviceUsuario.recuperarUsuario(new Usuario("rafaelvelasquez@gmail.com","rafael",32,"55","nadie"));
+		} catch (ServiceException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("Nombre: "+usu.getNombre()+" Email: "+usu.getEmail()+" Edad: "+usu.getEdad()+" Nick: "+usu.getNick()+" Contraseña: "+usu.getContrasena());
 		
 		getServletContext().getRequestDispatcher("/registra.jsp").forward(request, response);
 	}
