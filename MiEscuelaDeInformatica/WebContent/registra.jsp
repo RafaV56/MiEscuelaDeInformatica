@@ -24,6 +24,13 @@
        
        <!-- Div donde se escribiran los errores del usuario --> 
        <div class="row">
+        <%
+       		String error=(String)request.getAttribute("error");
+       		String respuesta=(String)request.getAttribute("respuesta");
+       	%>
+       	
+       	<%=error%><%=respuesta%>
+       
        <!-- Div id principio sera usado en javaScrip para visualizar los errores que el usuario tiene en el form -->
        	<div id="principio" style="background:#000; color:red; font-size:1.5em; padding:0.1em; border-radius:5px;">
         </div>

@@ -7,6 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Usuario;
+import exceptions.DomainException;
+import exceptions.ServiceException;
+
+import service.ServiceUsuario;
+
 /**
  * Servlet implementation class AgregarUsuario
  */
@@ -33,14 +39,47 @@ public class AgregarUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre=(String)request.getParameter("nombre");
+		
+		//Variable para recuperar el resultado y enviar a la jsp correcta
+		String resultado=null;
+		
+		//Recuperamos los parametros del formulario en registrar.jsp
 		String email=(String)request.getParameter("email");
-		String edad=(String)request.getParameter("edad");
+		String nombre=(String)request.getParameter("nombre");
+		int edad=Integer.parseInt((String)request.getParameter("edad"));
 		String nick=(String)request.getParameter("nick");
 		String contrasena=(String)request.getParameter("contrasena");
-		System.out.println("Nombre: "+nombre+" Email: "+email+" Edad: "+edad+" Nick: "+nick+" Contraseña: "+contrasena);
 		
-		getServletContext().getRequestDispatcher("/registra.jsp").forward(request, response);
+		//Validamos que esten bien
+		Usuario usu=null;
+		ServiceUsuario servicioUsuario=null;
+		try{			
+			usu=Usuario.crearUsuario(email, nombre, edad, nick, contrasena);
+		
+			//LLamamos al servicio de usuario para insertarlo
+			servicioUsuario=new ServiceUsuario();
+			
+			//insertamos el usuario
+			servicioUsuario.insertarUsuario(usu);
+			//si todo fue bien regresamos a registrar y escribimos que es todo correcto
+			resultado="/registra.jsp";
+			request.setAttribute("respuesta","El usuario se inserto correctamente");
+			
+		} catch (ServiceException e) {
+			if(e.getCause()==null){
+				request.setAttribute("error",e.getMessage());
+				resultado="/registra.jsp";
+			}else{
+				e.printStackTrace();// para administrador
+				request.setAttribute("error",e.getMessage());
+				resultado="/registra.jsp";
+			}
+		}catch (DomainException e) {
+			request.setAttribute("error", e.getMessage());
+			resultado="/registra.jsp";
+		}
+		getServletContext().getRequestDispatcher(resultado).forward(request, response);//Error Lógico para usuario
+		
 	}
-
+	//***hacer el jsp para que si hay error o esta bien el usuario se muestre
 }
