@@ -38,5 +38,37 @@ public class ServiceUsuario {
 		return usuario;
 	}
 	
+	/**
+	 * Inserta un usario validado a la base de datos
+	 * @param usuario
+	 * @throws ServiceException
+	 */
+	public void insertarUsuario(Usuario usuario) throws ServiceException{
+		TransaccionesManager trans = null;
+		try {
+
+			trans = new TransaccionesManager();
+			UsuarioDAO usuarioDAO = trans.getUsuarioDAO();
+			usuarioDAO.insertarUsuario(usuario);
+
+
+			trans.closeCommit();
+		} catch (DAOException e) {
+			try{
+				trans.closeRollback();
+			}catch (DAOException e1){
+				throw new ServiceException(e.getMessage(),e1);//Error interno
+			}
+
+			if(e.getCause()==null){
+				throw new ServiceException(e.getMessage());//Error Lógico
+			}else{
+
+				throw new ServiceException(e.getMessage(),e);//Error interno
+			}
+
+		}
+	}
+	
 
 }

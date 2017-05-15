@@ -158,13 +158,6 @@ public class Validator {
 		}
 		return validation;
 	}
-
-	public static void main(String []a){
-		
-		Usuario usuario=Usuario.crearUsuario("123", "01", 12, "0123456781");
-		
-		System.out.println(usuario);
-	}
 	
 	/**
 	 * Verifica el rango de  un numero entero

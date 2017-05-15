@@ -25,21 +25,22 @@ public class Usuario {
 	 * @param contrasena
 	 * @return usuario validado
 	 */
-	public static Usuario crearUsuario(String email, String nombre, int edad, String contrasena){
+	public static Usuario crearUsuario(String email, String nombre, int edad,String nick, String contrasena){
 		Usuario usuario=new Usuario();
 		usuario.setEmail(email);
 		usuario.setNombre(nombre);
 		usuario.setEdad(edad);
+		usuario.setNick(nick);
 		usuario.setContrasena(contrasena);
 		
 		return usuario;
 	}
+	
+	
 	private String contrasena;
 	private int edad;
-	private String email;
-	
+	private String email;	
 	private String nick;
-
 	private String nombre;
 
 	/**
