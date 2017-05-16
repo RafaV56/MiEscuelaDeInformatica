@@ -33,7 +33,7 @@
 		          </a>
 		          <ul class="dropdown-menu">
 		            <li style="padding: 1em 2em;">
-		            <form>
+		            <form method="post" action="Identificar">
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Email</label>
 					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">

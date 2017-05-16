@@ -41,10 +41,18 @@
        if(respuesta!=null){
        %>
        <h1 class="alert alert-success text-center"><%=respuesta%></h1>
+       <p><button class="btn btn-info" >
+       		 <a href="Welcome">Volver al inicio</a>
+       	  </button>
+       </p>
        <%
        }else if(error!=null){       
        %>
        <h1 class="alert alert-danger text-center"><%=error%></h1>
+       <p><button class="btn btn-info" >
+       		 <a href="Welcome">Volver al inicio</a>
+       	  </button>
+       </p>
        <%
        }else{
        %>
