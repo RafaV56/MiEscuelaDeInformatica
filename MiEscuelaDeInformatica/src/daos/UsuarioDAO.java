@@ -13,7 +13,6 @@ import exceptions.DAOException;
 public class UsuarioDAO {
 	private static final String DB_ERR = "Error de la base de datos";
 
-	public static final int ORACLE_DUPLICATE_PK = 1;
 //	private static final int ORACLE_DELETE_FK = 2292;
 //	private static final int ORACLE_FALLO_FK = 2291;
 	
@@ -79,7 +78,7 @@ public class UsuarioDAO {
 			// ejecutamos el insert.			
 			st.executeUpdate();
 		} catch (SQLException e) {
-			if (e.getErrorCode() == ORACLE_DUPLICATE_PK) {
+			if (e.getErrorCode() == DbQuery.DUPLICATE_PK_MYSQL) {
 				throw new DAOException("El usuario ya existe");
 			}else {
 				throw new DAOException(DB_ERR, e);

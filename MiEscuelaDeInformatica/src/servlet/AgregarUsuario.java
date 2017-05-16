@@ -43,17 +43,25 @@ public class AgregarUsuario extends HttpServlet {
 		//Variable para recuperar el resultado y enviar a la jsp correcta
 		String resultado=null;
 		
-		//Recuperamos los parametros del formulario en registrar.jsp
-		String email=(String)request.getParameter("email");
-		String nombre=(String)request.getParameter("nombre");
-		int edad=Integer.parseInt((String)request.getParameter("edad"));
-		String nick=(String)request.getParameter("nick");
-		String contrasena=(String)request.getParameter("contrasena");
 		
 		//Validamos que esten bien
 		Usuario usu=null;
 		ServiceUsuario servicioUsuario=null;
 		try{			
+			
+			//Recuperamos los parametros del formulario en registrar.jsp
+			String email=(String)request.getParameter("email");
+			String nombre=(String)request.getParameter("nombre");
+			int edad=0;
+			try {
+				edad = Integer.parseInt((String)request.getParameter("edad"));
+			} catch (NumberFormatException e1) {
+				throw new ServiceException("La edad no es correcta");
+			}
+			String nick=(String)request.getParameter("nick");
+			String contrasena=(String)request.getParameter("contrasena");
+			
+			
 			usu=Usuario.crearUsuario(email, nombre, edad, nick, contrasena);
 		
 			//LLamamos al servicio de usuario para insertarlo
