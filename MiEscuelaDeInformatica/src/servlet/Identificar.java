@@ -41,6 +41,8 @@ public class Identificar extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultado="/perfil.jsp";
 		
+		request.getSession().setAttribute("barra", "registrar");
+		
 		Usuario usuario=null;
 		String email=null;
 		String contrasena=null;
@@ -49,14 +51,24 @@ public class Identificar extends HttpServlet {
 		try {
 			email=request.getParameter("emailUsuario");
 			contrasena=request.getParameter("contrasena");
-			System.out.println("email:"+email+" contrasena: "+contrasena);	
+			//System.out.println("email:"+email+" contrasena: "+contrasena);	
 			usuario=Usuario.crearUsuario(email);
 			
 			serviceUsuario=new ServiceUsuario();
 			
+			//Creo un usuario de la base de datos
 			usuario=serviceUsuario.recuperarUsuario(usuario);
 			
-			System.out.println(usuario);
+			if (usuario==null) {
+				request.setAttribute("error","El email de usuario no es válido");
+
+			}else{
+				if (!usuario.getContrasena().equals(contrasena)) {
+					request.setAttribute("error", "Contraseña invalida");
+				}
+			}
+			
+			//System.out.println(usuario);
 			
 			
 			

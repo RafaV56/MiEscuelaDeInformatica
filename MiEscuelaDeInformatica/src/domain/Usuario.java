@@ -136,7 +136,7 @@ public class Usuario {
 		if (Validator.email(email.trim(), 1, 50)) {
 			this.email = email;
 		} else {
-			throw new DomainException("La longitud o el email no es correcto");
+			throw new DomainException("El email no es correcto");
 		}
 	}
 
