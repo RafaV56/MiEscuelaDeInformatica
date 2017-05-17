@@ -35,140 +35,97 @@ public class TransaccionesManager {
 			throw new ServiceException(DB_CON_ERR, e);
 		}
 	}
-//	
-//	public void closeCommit()throws DAOException  {
-//		try {
-//			if(con!=null){
-//				con.commit();
-//				con.close();
-//			}
-//
-//
-//		} catch (SQLException e) {
-//			throw new DAOException (DB_ERR, e);
-//		}
-//	}
-//	public void commit()throws DAOException  {
-//		try {
-//			if(con!=null){
-//				con.commit();
-//
-//			}
-//
-//
-//		} catch (SQLException e) {
-//			throw new DAOException (DB_ERR, e);
-//		}
-//	}
-//	public void closeRollback() throws DAOException {
-//		try {
-//			if(con!=null){
-//				con.rollback();
-//				con.close();
-//			}
-//
-//		} catch (SQLException e) {
-//			throw new DAOException(DB_ERR, e);
-//		}
-//	}
-//	public void rollback() throws DAOException {
-//		try {
-//			if(con!=null){
-//				con.rollback();
-//
-//			}
-//
-//		} catch (SQLException e) {
-//			throw new DAOException(DB_ERR, e);
-//		}
-//	}
-//	public void close() throws DAOException {
-//		try {
-//			if(con!=null){
-//				con.close();
-//
-//			}
-//
-//		} catch (SQLException e) {
-//			throw new DAOException(DB_ERR, e);
-//		}
-//		// TODO Auto-generated method stub
-//
-//	}
-//	public Connection getConexion() {
-//
-//		return con;
-//	}
-//
-//	public ClienteDAO getClienteDAO() {
-//		return new ClienteDAO(con);
-//	}
-//	public IvaDAO getIvaDAO() {
-//		return new IvaDAO(con);
-//
-//	}
-//	public FormaPagoDAO getFormaPagoDAO() {
-//		return new FormaPagoDAO(con);
-//
-//	}
-//	public TarifaDAO getTarifaDAO() {
-//		return new TarifaDAO(con);
-//
-//	}
-//	public daos.ProveedorDAO getProveedorDAO() {
-//		// TODO Auto-generated method stub
-//		return new ProveedorDAO(con);
-//	}
-//	public daos.ArticuloDAO getArticuloDAO() {
-//		// TODO Auto-generated method stub
-//		return new ArticuloDAO(con);
-//	}
-//	public daos.FamiliaDAO getFamiliaDAO() {
-//		// TODO Auto-generated method stub
-//		return new FamiliaDAO(con);
-//	}
-//	public daos.ExistenciaDAO getExistenciaDAO() {
-//		// TODO Auto-generated method stub
-//		return  new ExistenciaDAO(con);
-//	}
-//	public daos.AlmacenDAO getAlmacenDAO() {
-//		// TODO Auto-generated method stub
-//		return new AlmacenDAO(con);
-//	}
-//	//pedidos
-//	public PedidoDAO getPedidoDAO() {
-//		// TODO Auto-generated method stub
-//		return new PedidoDAO(con);
-//	}
-//	// LinPed
-//	public LinPedDAO getLinPedDAO() {
-//		// TODO Auto-generated method stub
-//		return new LinPedDAO(con);
-//	}
-//
-//
-//	public AlbaranDAO getAlbaranDAO() {
-//		// TODO Auto-generated method stub
-//		return new AlbaranDAO(con);
-//	}
-//	public LinAlbDAO getLinAlbDAO() {
-//		// TODO Auto-generated method stub
-//		return new LinAlbDAO(con);
-//	}
-//	public ContadorFactDAO getContadorFactDAO() {
-//		// TODO Auto-generated method stub
-//		return new ContadorFactDAO(con);
-//	}
-//	public FacturaDAO getFacturaDAO() {
-//		// TODO Auto-generated method stub
-//		return new FacturaDAO(con);
-//	}
-//	public ReciboDAO getReciboDAO() {
-//		// TODO Auto-generated method stub
-//		return new ReciboDAO(con);
-//	}
-//
-//
+	
+	/**
+	 * Cierra una conexión y hace commit
+	 * @throws DAOException
+	 */
+	public void closeCommit()throws DAOException  {
+		try {
+			if(con!=null){
+				con.commit();
+				con.close();
+			}
+		} catch (SQLException e) {
+			throw new DAOException (DB_ERR, e);
+		}
+	}
+	
+	/**
+	 * Realiza un commit en la pero sin cerrar la conexión
+	 * @throws DAOException
+	 */
+	public void commit()throws DAOException  {
+		try {
+			if(con!=null){
+				con.commit();
+
+			}
+		} catch (SQLException e) {
+			throw new DAOException (DB_ERR, e);
+		}
+	}
+	
+	/**
+	 * Cierra la conexión y hace un rollback
+	 * @throws DAOException
+	 */
+	public void closeRollback() throws DAOException {
+		try {
+			if(con!=null){
+				con.rollback();
+				con.close();
+			}
+
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
+		}
+	}
+	
+	/**
+	 * Hace un rollback pero sin cerrar la conexión
+	 * @throws DAOException
+	 */
+	public void rollback() throws DAOException {
+		try {
+			if(con!=null){
+				con.rollback();
+			}
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
+		}
+	}
+	
+	/**
+	 * Cierra la conexión
+	 * @throws DAOException
+	 */
+	public void close() throws DAOException {
+		try {
+			if(con!=null){
+				con.close();
+			}
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
+		}
+	}
+	/**
+	 * Retorna la conexión
+	 * @return
+	 */
+	public Connection getConexion() {
+
+		return con;
+	}
+
+	/**
+	 * Retronar un usuarioDAO
+	 * @return
+	 */
+	public UsuarioDAO getUsuarioDAO() {
+		// TODO Auto-generated method stub
+		return new UsuarioDAO(con);
+	}
 
 
 

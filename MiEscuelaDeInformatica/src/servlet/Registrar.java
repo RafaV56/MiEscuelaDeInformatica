@@ -34,7 +34,7 @@ public class Registrar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().setAttribute("barra", "registrar");
-		getServletContext().getRequestDispatcher("/registrar.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/registra.jsp").forward(request, response);
 	}
 
 }
