@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!--Rafael Velásquez Millán, Version:0.1, 6/2/2017-->
+<!--Rafael Velásquez Millán, Version:0.2, 6/2/2017-->
 <!DOCTYPE html>
 <html lang="en">
     <head>

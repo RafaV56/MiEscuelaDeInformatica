@@ -6,10 +6,19 @@ import daos.UsuarioDAO;
 import domain.Usuario;
 import exceptions.DAOException;
 import exceptions.ServiceException;
-
+/**
+ * Servicio para usuarios de la escuela de informatica
+ * @author Pc
+ *
+ */
 public class ServiceUsuario {
 	
-	
+	/**
+	 * Recupera un usuario de la base de datos solo se necesita su email
+	 * @param usuario usuario con el email
+	 * @return usuario completo
+	 * @throws ServiceException
+	 */
 	public Usuario recuperarUsuario(Usuario usuario) throws ServiceException{
 		TransaccionesManager trans = null;
 

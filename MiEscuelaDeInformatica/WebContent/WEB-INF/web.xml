@@ -6,7 +6,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>Welcome</servlet-name>
-    <servlet-class>servlets.Welcome</servlet-class>
+    <servlet-class>servlet.Welcome</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Welcome</servlet-name>
@@ -14,7 +14,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Java</servlet-name>
-    <servlet-class>servlets.Java</servlet-class>
+    <servlet-class>servlet.Java</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Java</servlet-name>
@@ -22,7 +22,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Sql</servlet-name>
-    <servlet-class>servlets.Sql</servlet-class>
+    <servlet-class>servlet.Sql</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Sql</servlet-name>
@@ -30,7 +30,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Css</servlet-name>
-    <servlet-class>servlets.Css</servlet-class>
+    <servlet-class>servlet.Css</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Css</servlet-name>
@@ -38,7 +38,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Test</servlet-name>
-    <servlet-class>servlets.Test</servlet-class>
+    <servlet-class>servlet.Test</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Test</servlet-name>
@@ -46,18 +46,26 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Registrar</servlet-name>
-    <servlet-class>servlets.Registrar</servlet-class>
+    <servlet-class>servlet.Registrar</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Registrar</servlet-name>
     <url-pattern>/Registrar</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>AgregarUsuario</servlet-name>
-  	<servlet-class>AgregarUsuario.java</servlet-class>
+    <servlet-name>AgregarUsuario</servlet-name>
+    <servlet-class>servlet.AgregarUsuario</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AgregarUsuario</servlet-name>
     <url-pattern>/AgregarUsuario</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>Identificar</servlet-name>
+    <servlet-class>servlet.Identificar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Identificar</servlet-name>
+    <url-pattern>/Identificar</url-pattern>
   </servlet-mapping>
 </web-app>

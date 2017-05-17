@@ -40,7 +40,10 @@
          al final muestra el formulario para insertar un usuario*/
        if(respuesta!=null){
        %>
-       <h1 class="alert alert-success text-center"><%=respuesta%></h1>
+       <h1 class="alert alert-success text-center">
+        <i class="fa fa-hand-peace-o fa-2" aria-hidden="true"></i>
+        <%=respuesta%>
+       </h1>
        <p><button class="btn btn-info" >
        		 <a href="Welcome">Volver al inicio</a>
        	  </button>
@@ -48,10 +51,14 @@
        <%
        }else if(error!=null){       
        %>
-       <h1 class="alert alert-danger text-center"><%=error%></h1>
-       <p><button class="btn btn-info" >
-       		 <a href="Welcome">Volver al inicio</a>
-       	  </button>
+       <h1 class="alert alert-danger text-center">
+       	<i class="fa fa-envelope fa-2" aria-hidden="true"></i>
+       	<%=error%>
+       </h1>
+       <p>
+       	<a href="Welcome">
+	  		<input class="btn btn-info" type="button" value="Volver al inicio" />
+	    </a>
        </p>
        <%
        }else{
