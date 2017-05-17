@@ -33,21 +33,22 @@
 		          </a>
 		          <ul class="dropdown-menu">
 		            <li style="padding: 1em 2em;">
+		            <!-- formulario para identificar al usuario -->
 		            <form method="post" action="Identificar">
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Email</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+					    <input type="email" class="form-control" id="emailUsuario" placeholder="Email" name="emailUsuario" maxlength="50">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Contraseña</label>
-					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+					    <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" name="contrasena" maxlength="10">
 					  </div>
 					  <div class="checkbox">
 					    <label>
-					      <input type="checkbox"> Recuerdame
+					      <input type="checkbox" name="recuerdame"> Recuerdame
 					    </label>
 					  </div>
-					  <button type="submit" class="btn btn-default">Enviar</button>
+					  <button type="submit" class="btn btn-default" id="enviarDatos">Enviar</button>
 					</form>
 		            </li>
 		          </ul>

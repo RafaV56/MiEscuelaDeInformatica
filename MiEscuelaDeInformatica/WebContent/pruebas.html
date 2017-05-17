@@ -1,268 +1,35 @@
-<!--Rafael Velásquez Millán, Version:0.1, 6/2/2017-->
+<!--Rafael Velásquez Millán, Version:0.2, 6/2/2017-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <!-- Common -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    
-    <!--Estilo de la página-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/formulario.css">
-    <!--Link Para los iconos-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <title>Mi escuela de inform&aacute;tica</title>
-    
-    <!-- jQuery (necesario para Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!--Jquery version 1.11.1-->
-    <script src="js/jQuery.js"></script>
-	<script>
-	$(document).ready(function(e) {
-	  $('body').hide().fadeIn(1500);
-	  
-	   //Nombre del usuario
-	   $('#nombre').on("change",nombre);
-	   //Email del usuario
-	   $('#email').on("change",email);
-	   //Edad del usuario
-	   $('#edad').on("change",edad);
-	   //Nick del usuario
-	   $('#nick').on("change",nick);
-	   //Contraseña del usuario
-	   $('#contrasena').on("change",contrasena);
-	   //Si se pierde el foco tamibien se llama confirmar contraseña para ver si está correcta
-	   $('#contrasena').on("blur",rContrasena);
-	   //Repetir la conntraseña
-	   $('#rContrasena').on("change",rContrasena);
-	   
-	   
-	   
-	   //Función para borrar de la pantalla el div de errores con solo dar click en cualquier parte de él
-	   $('#principio').click(function(e) {
-	   	$('#principio').fadeOut(1000);
-		});
-	
-	   $('#enviar').click(function(e) {//funcion para validar
-			var bandera=true;
-			//Borro todo lo que contenga el div principio para rellenarlo de los errores
-			$('#principio').empty();
-			//llamo a validar nombre si devuelve falso agrego el error al div principio y así con todos
-			if(!nombre()){
-				$('#principio').append('<h3>-El campo nombre es obligatorio, máximo 50 caracteres.</h3>');
-					bandera=false;
-			}
-			//valido el email.
-			if(!email()){
-				$('#principio').append(
-				'<h3>-El email es obligatorio, y tiene que ser correcto, no puede tener más de 50 caracteres</h3>'
-				);
-					bandera=false;
-			}
-			//Valido la edad
-			if(!edad()){
-				$('#principio').append('<h3>-El campo edad es obligatorio, deber ser entre 7 y 120 años</h3>');
-					bandera=false;
-			}
-			//Valido el nick
-			if(!nick()){
-				$('#principio').append('<h3>-El nick es obligatorio, deber ser entre 1 y 50 caracteres</h3>');
-					bandera=false;
-			}
-			//Válido la contraseña
-			if(!contrasena()){
-				$('#principio').append('<h3>-La contraseña es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
-					bandera=false;
-			}
-			//Válido la contraseña repetida
-			if(!rContrasena()){
-				$('#principio').append('<h3>-Repite la contraseña es obligatoria, deber ser igual a la contraseña</h3>');
-					bandera=false;
-			}
-		
-			if(bandera){
-				
-				 $('#rContrasena').remove();
-				alert('Completado correctamente')
-			}
-			$('body,html').animate({scrollTop : 100}, 1200);//para ir al principio de la página
-			$('#principio').show(2000).focus();
-					
-			return bandera;
-		});
-	});
-	
-	//Función para comparar que la contraseña este correcta
-	function rContrasena(){
-		var bandera=false;
-		//hay que comparar cada vez que no este disabled
-		 if(($('#rContrasena').val().length>0 && $('#rContrasena').val().length<=10)&&($('#rContrasena').val()==$('#contrasena').val())){
-				$('#rContrasena').removeAttr('data-toggle');
-				$('#rContrasena').removeAttr('title');
-				$('#rContrasena').parent().removeClass('has-error has-feedback');
-				$('#sRcontrasena').removeClass('glyphicon glyphicon-remove form-control-feedback');
-				$('#rContrasena').parent().addClass('has-success has-feedback');
-				$('#sRcontrasena').addClass('glyphicon glyphicon-ok form-control-feedback');
-			
-				bandera=true;
-			}else{
-				$('#rContrasena').parent().removeClass('has-success has-feedback');
-				$('#rContrasena').attr('data-toggle',"tooltip");
-				$('#rContrasena').attr('title',"Repite la contraseña correctamente");
-				$('#sRcontrasena').removeClass('glyphicon glyphicon-ok form-control-feedback');
-				$('#rContrasena').parent().addClass('has-error has-feedback');
-				$('#sRcontrasena').addClass('glyphicon glyphicon-remove form-control-feedback');
-			}	
-			return bandera;
-	}
-	
-	
-	//funcion para validar la contraseña del usuario
-	function contrasena(){
-		var bandera=false;
-		 if($('#contrasena').val().length>0 && $('#contrasena').val().length<=10){
-				$('#contrasena').removeAttr('data-toggle');
-				$('#contrasena').removeAttr('title');
-				$('#contrasena').parent().removeClass('has-error has-feedback');
-				$('#sContrasena').removeClass('glyphicon glyphicon-remove form-control-feedback');
-				$('#contrasena').parent().addClass('has-success has-feedback');
-				$('#sContrasena').addClass('glyphicon glyphicon-ok form-control-feedback');
-				
-				$('#rContrasena').removeAttr("disabled");
-				bandera=true;
-			}else{
-				$('#contrasena').parent().removeClass('has-success has-feedback');
-				$('#contrasena').attr('data-toggle',"tooltip");
-				$('#contrasena').attr('title',"Tú contraseña es obligatoria, debe ser entre 1 y 10 caracteres");
-				$('#sContrasena').removeClass('glyphicon glyphicon-ok form-control-feedback');
-				$('#contrasena').parent().addClass('has-error has-feedback');
-				$('#sContrasena').addClass('glyphicon glyphicon-remove form-control-feedback');
-				
-				$('#rContrasena').attr("disabled","disabled");
-				$('#rContrasena').val("");
-			}	
-			return bandera;
-		}
-	
-	
-	//funcion para validar el nick del usuario
-	function nick(){
-		var bandera=false;
-		 if($('#nick').val().length>0 && $('#nick').val().length<=50){
-				$('#nick').removeAttr('data-toggle');
-				$('#nick').removeAttr('title');
-				$('#nick').parent().removeClass('has-error has-feedback');
-				$('#sNick').removeClass('glyphicon glyphicon-remove form-control-feedback');
-				$('#nick').parent().addClass('has-success has-feedback');
-				$('#sNick').addClass('glyphicon glyphicon-ok form-control-feedback');
-				bandera=true;
-			}else{
-				$('#nick').parent().removeClass('has-success has-feedback');
-				$('#nick').attr('data-toggle',"tooltip");
-				$('#nick').attr('title',"Tu nick es obligatorio, debe ser entre 1 y 50 caracteres");
-				$('#sNick').removeClass('glyphicon glyphicon-ok form-control-feedback');
-				$('#nick').parent().addClass('has-error has-feedback');
-				$('#sNick').addClass('glyphicon glyphicon-remove form-control-feedback');
-			}	
-			return bandera;
-		}
-	
-	
-	//funcion para validar la edad del usuario 
-	function edad(){
-	var bandera=false;
-	var nombreVer=$('#edad').val();
-	var vale=true;
-	//pregunto si el la edad tiene algo difer
-	if(isNaN(nombreVer)){
-		vale=false;
-	}
-	//si es un número entro
-	if(!isNaN(nombreVer)){
-		//si esta en el rango que quiero no entro.
-		if(!(parseInt(nombreVer)>=7 && parseInt(nombreVer)<=120)){
-		vale=false;
-		}
-	}
-	if($('#edad').val().length>=1 && $('#edad').val().length<=3 && vale){
-			$('#edad').removeAttr('data-toggle');
-			$('#edad').removeAttr('title');
-			$('#edad').parent().removeClass('has-error has-feedback');
-			$('#sEdad').removeClass('glyphicon glyphicon-remove form-control-feedback');
-			$('#edad').parent().addClass('has-success has-feedback');
-			$('#sEdad').addClass('glyphicon glyphicon-ok form-control-feedback');
-			bandera=true;
-		}else{
-			$('#edad').parent().removeClass('has-success has-feedback');
-			$('#edad').attr('data-toggle',"tooltip");
-			$('#edad').attr('title',"Tu edad debe ser válida y estar en el rango de 7 a 120 años");
-			$('#sEdad').removeClass('glyphicon glyphicon-ok form-control-feedback');
-			$('#edad').parent().addClass('has-error has-feedback');
-			$('#sEdad').addClass('glyphicon glyphicon-remove form-control-feedback');
-		} 
-	return bandera;	
-	}
-		
-	//funcion para validar un mail.	
-	function email(){
-	var nombre= $('#email').val();
-	var bandera=false;
-	var patron=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-	if (nombre=="") {
-		$('#email').parent().removeClass('has-success has-feedback');
-		$('#email').attr('data-toggle',"tooltip");
-		$('#email').attr('title',"El mail es obligatorio");
-		$('#sEmail').removeClass('glyphicon glyphicon-ok form-control-feedback');
-		$('#email').parent().addClass('has-error has-feedback');
-		$('#sEmail').addClass('glyphicon glyphicon-remove form-control-feedback');
-	}else if (patron.test(nombre) &&  $('#email').val().length<=50){
-		$('#email').removeAttr('data-toggle');
-		$('#email').removeAttr('title');
-		$('#email').parent().removeClass('has-error has-feedback');
-		$('#sEmail').removeClass('glyphicon glyphicon-remove form-control-feedback');
-		$('#email').parent().addClass('has-success has-feedback');
-		$('#sEmail').addClass('glyphicon glyphicon-ok form-control-feedback');
-		bandera=true;
-	} else {
-		$('#email').parent().removeClass('has-success has-feedback');
-		$('#email').attr('data-toggle',"tooltip");
-		$('#email').attr('title',"El mail es obligatorio");
-		$('#sEmail').removeClass('glyphicon glyphicon-ok form-control-feedback');
-		$('#email').parent().addClass('has-error has-feedback');
-		$('#sEmail').addClass('glyphicon glyphicon-remove form-control-feedback');
-	}
-	
-	
-	return bandera;
-	}	
-		
-	//Para validar el nombre del usuario.
-	function nombre(){
-		var bandera=false;
-		 if($('#nombre').val().length>0 && $('#nombre').val().length<50){
-				$('#nombre').removeAttr('data-toggle');
-				$('#nombre').removeAttr('title');
-				$('#nombre').parent().removeClass('has-error has-feedback');
-				$('#sNombre').removeClass('glyphicon glyphicon-remove form-control-feedback');
-				$('#nombre').parent().addClass('has-success has-feedback');
-				$('#sNombre').addClass('glyphicon glyphicon-ok form-control-feedback');
-				bandera=true;
-			}else{
-				$('#nombre').parent().removeClass('has-success has-feedback');
-				$('#nombre').attr('data-toggle',"tooltip");
-				$('#nombre').attr('title',"Tú nombre es obligatorio");
-				$('#sNombre').removeClass('glyphicon glyphicon-ok form-control-feedback');
-				$('#nombre').parent().addClass('has-error has-feedback');
-				$('#sNombre').addClass('glyphicon glyphicon-remove form-control-feedback');
-			}	
-			return bandera;
-		}
-    </script> 
+<meta charset="utf-8">
+
+<!--Estilo de la página-->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/formulario.css">
+<!--Link Para los iconos-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Mi escuela de inform&aacute;tica</title>
+
+<!-- jQuery (necesario para Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--Jquery version 1.11.1-->
+<script src="js/jQuery.js"></script>
+<!-- Js para validar el login del usuario -->
+<script src="js/identificar.js"></script>
+
+     
+    <!-- ------------------------------------ -->   
        
 	</head>
 	<body>   
-       <nav class="navbar navbar-inverse">
+       <!-- Barra de navegación -->
+
+ <nav class="navbar navbar-inverse">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
@@ -290,125 +57,62 @@
 		          </a>
 		          <ul class="dropdown-menu">
 		            <li style="padding: 1em 2em;">
-		            <form>
+		            <!-- formulario para identificar al usuario -->
+		            <form method="post" action="Identificar">
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Email</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+					    <input type="email" class="form-control" id="email" placeholder="Email" name="email" maxlength="50">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Contraseña</label>
-					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+					    <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" name="contrasena" maxlength="10">
 					  </div>
 					  <div class="checkbox">
 					    <label>
-					      <input type="checkbox"> Recuerdame
+					      <input type="checkbox" name="recuerdame"> Recuerdame
 					    </label>
 					  </div>
-					  <button type="submit" class="btn btn-default">Enviar</button>
+					  <button type="submit" class="btn btn-default" id="enviarDatos">Enviar</button>
 					</form>
 		            </li>
 		          </ul>
 		        </li>
 		      </ul>
+		
           </div><!-- Fin del nav nav-bar -->
         </div><!-- Fin myNavBar -->
     </nav>
+       <!-- ---------------------- -->  
+    
 		<div class="container borde">
    		
-        <div class="row borde cabecera">
-            <div class="col-sm-3">
-                <img src="img/logo.PNG" class="img-responsive img-rounded">
-           </div><!--fin del sm3-->
-                
-           <div class="col-sm-9">
-              <h1 class="blue text-center" style="font-size:4em;">Mi escuela de informática</h1>  
-              <p style="font-size:1.2em;" class="text-center">
-              	Practica tus tecnologías preferidas, mientras aprendes más de ellas
-              </p>     
-          </div><!--fin del sm-9-->
-        </div><!--fin del row-->
-       <div class="row">
-       	<div id="principio" style="background:#000; color:red; font-size:1.5em; padding:0.1em; border-radius:5px;">
-        </div>
-       </div>
-   	
+   		<!-- Cabecera -->
+   		<div class="row borde cabecera">
+    <div class="col-sm-3">
+     	<img src="img/logo.PNG" class="img-responsive img-rounded">
+   </div><!--fin del sm3-->
         
-        <!--SecciÃ³n principal-->
-        <div class="row borde" style="background:rgba(243,243,243);">
+   <div class="col-sm-9">
+      <h1 class="blue text-center" style="font-size:4em;">Mi escuela de informática</h1>  
+      <p style="font-size:1.2em;" class="text-center">Practica tus tecnologías preferidas, mientras aprendes más de ellas</p>     
+  </div><!--fin del sm-9-->
+</div><!--fin del row-->
+       
+   		<!-- ------------------------------------ -->
         
-        <h3 class="alert alert-success text-uppercase text-center col-sm-10  col-sm-offset-1">Formulario de registro</h3>
-      
-      <form class="form-horizontal" method="get" id="formularioRegistro">
-      
-      	<div class="col-sm-6">
-         <div class="form-group">
-          <label class="control-label col-sm-2" for="nombre">Nombre </label>
-          <div class="col-sm-9">
-          	 <input type="text" class="form-control" id="nombre" placeholder="Tú nombre" name="nombre" maxlength="50" required>
-             <span id="sNombre"></span>
-          </div><!-- fin col 9-->
-      	</div><!-- fin form-group -->
+        <!--Sección principal-->
+        <div class="row borde">
+        <h1>Crear la página de perfil de usuario</h1>
+        <p>email:</p>
+        <p>contraseña: </p>
         
- 		 <div class="form-group">
-          <label class="control-label col-sm-2" for="email">Email </label>
-          <div class="col-sm-9">
-          	 <input type="text" class="form-control" id="email" placeholder="Tú email" name="email" maxlength="50">
-             <span id="sEmail"></span>
-          </div><!-- fin col 9-->
-      	</div><!-- fin form-group -->
+
         
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="edad">Edad </label>
-          <div class="col-sm-9">
-          	 <input type="text" class="form-control" id="edad" placeholder="Edad" name="edad" maxlength="3">
-             <span id="sEdad"></span>
-          </div><!-- fin col 9-->
-      	</div><!-- fin form-group -->
-        
-        </div><!-- fin col-6 -->
-        
-        <div class="col-sm-6">
-        	<div class="form-group">
-          <label class="control-label col-sm-2" for="nick">Nick </label>
-          <div class="col-sm-9">
-          	 <input type="text" class="form-control" id="nick" placeholder="Nombre por el que te llamaremos" name="nick" maxlength="50">
-             <span id="sNick"></span>
-          </div><!-- Fin del col 9 -->
-      	</div><!-- fin form-group -->
-        
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="contrasena">Contraseña </label>
-          <div class="col-sm-9">
-  <input type="password" class="form-control" id="contrasena" placeholder="Contraseña para indentificarte" name="contrasena" maxlength="10">
-             <span id="sContrasena"></span>
-          </div><!-- fin col 9-->
-      	</div><!-- fin form-group -->
-        
-            <div class="form-group">
-          <label class="control-label col-sm-2" for="rContrasena">Repite la Contraseña </label>
-          <div class="col-sm-9">
-  <input type="password" class="form-control" id="rContrasena" placeholder="Repite la contraseña" name="rContrasena" maxlength="10" disabled>
-             <span id="sRcontrasena"></span>
-          </div><!-- fin col 9-->
-      	</div><!-- fin form-group -->
-        
-        </div><!-- fin col-6 -->
-        
-        
-        <div class="col-sm-12">
-         <div class="form-group">
-            <div class="col-sm-offset-5 col-sm-2">
-            <button type="submit" id="enviar" class="btn btn-success btn-block">Guardar</button>
-            </div><!--Fin del col 2-->
-         </div><!--Fin form group-->
-        </div><!--Fin col 12-->
-      </form>
-    
-    
         
         </div><!--Fin del row-->      
      	
-		<!--Footer-->
+     	<!-- Pie de página -->
+     	<!--Footer-->
 <div class="row borde piePagina">
 	<div class="col-sm-3 text-center">
 		<h3>Contacto</h3>
@@ -454,8 +158,9 @@
 		<p>Copyright © 2017</p>
 	</div>
 
-    </div>
-    <!--fin row-->
+</div>
+<!--fin row-->
+     	<!-- ------------------------------------ -->
 			
 		</div><!--fin container-fluid-->
 	</body>

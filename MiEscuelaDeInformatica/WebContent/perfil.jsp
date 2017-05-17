@@ -22,18 +22,18 @@
         
         <!--Sección principal-->
         <div class="row borde">
-        <h1>Hola la session es:</h1>
-        <%=
-        session.getId()
+        <h1>Crear la página de perfil de usuario</h1>
+        <p>email: <%=request.getParameter("emailUsuario") %></p>
+        <p>contraseña: <%=request.getParameter("contrasena") %></p>
+        <p>Error: 
+        <%
+        	String error=(String)request.getAttribute("error");
         %>
+        <%=error%>
+        </p>
         
-        <div class="well">
-        	<p class="text-justify">
-        		Esta aplicación se hizo con el fin de ayudar a todos los alumnos que estudian desarrollo de aplicaciones web
-        		dando información corta y con ejemplos, de las tecnologías que se usan en el proceso de contruir una todo el 
-        		software necesario.
-        	</p>
-        </div>
+
+        
         
         </div><!--Fin del row-->      
      	
