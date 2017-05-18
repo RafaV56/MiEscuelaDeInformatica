@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="domain.*;"%>
 <!--Rafael Velásquez Millán, Version:0.2, 6/2/2017-->
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +24,19 @@
         <!--Sección principal-->
         <div class="row borde">
         <h1>Hola la session es:</h1>
-        <%=
-        session.getId()
+        <%
+        Usuario usuario=(Usuario)session.getAttribute("usuario");
+        if(usuario!=null){
         %>
-        
+        <p>
+        	<h5 class="alert alert-info">
+        		Nombre usuario:<%=usuario.getNombre()%>
+        	</h5>
+        	<h5 class="alert alert-info">
+        		Nick usuario:<%=usuario.getNick()%>
+        	</h5>
+        </p>
+        <%} %>
         <div class="well">
         	<p class="text-justify">
         		Esta aplicación se hizo con el fin de ayudar a todos los alumnos que estudian desarrollo de aplicaciones web

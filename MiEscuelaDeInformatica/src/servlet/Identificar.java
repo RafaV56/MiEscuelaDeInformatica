@@ -71,6 +71,8 @@ public class Identificar extends HttpServlet {
 					HttpSession session=request.getSession();// igual que true
 					//asignar atributos a las sesión
 					session.setAttribute("usuario", usuario);
+					session.setAttribute("nickUsuario", usuario.getNick());
+					
 				}
 			}
 		} catch (ServiceException e) {

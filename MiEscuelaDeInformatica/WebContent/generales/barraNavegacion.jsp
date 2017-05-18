@@ -1,5 +1,6 @@
 <%
 	String barra=(String)session.getAttribute("barra");//para identificar cual es el link local
+	String nick=(String)session.getAttribute("nickUsuario");//para identificar el nick del usuario	
 %>
  <nav class="navbar navbar-inverse">
         <div class="navbar-header">
@@ -18,8 +19,16 @@
               <li><a href="<%=barra.equals("SQL")?"#":"SQL"%>">SQL</a></li>
             </ul>
             <%
-            	//Pregunta para saber si viene de test o de registrar, si es así no se pintan los botones
-            	if(!barra.equals("registrar") && !barra.equals("test")){
+            	//si hay un usuario indentificado mostramos su barra de perfil
+            	if(nick!=null){
+            %>
+            <ul class="nav navbar-nav navbar-right" style="margin-left:0.2em" >
+		      <li><a href="#"><span class="glyphicon glyphicon-education"></span> <%=nick%></a></li>
+		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Perfil</a></li>
+		    </ul>
+            <%
+            	//Pregunta para saber si viene de test o de registrar o de indentificar, si es así no se pintan los botones
+            	}else if(!barra.equals("registrar") && !barra.equals("test")){
             %>
              <ul class="nav navbar-nav navbar-right">
 		        <li>
