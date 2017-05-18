@@ -22,9 +22,17 @@
             	//si hay un usuario indentificado mostramos su barra de perfil
             	if(nick!=null){
             %>
-            <ul class="nav navbar-nav navbar-right" style="margin-left:0.2em" >
-		      <li><a href="#"><span class="glyphicon glyphicon-education"></span> <%=nick%></a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Perfil</a></li>
+            <ul class="nav navbar-nav navbar-right" style="margin-right:0.3em;" >
+		      <li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-education"></span> <%=nick%>
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu alert-warning">
+				    <li><a href="CerrarSesion" class="text-center"><i class="fa fa-power-off" aria-hidden="true" style="color:#ff4a4a;"></i> Cerrar sesión</a></li>
+				  </ul>
+		      </li>
+		      <li>
+		      	<a href="EditarPerfil"><span class="glyphicon glyphicon-log-in"></span> Perfil</a>
+		      </li>
 		    </ul>
             <%
             	//Pregunta para saber si viene de test o de registrar o de indentificar, si es así no se pintan los botones
