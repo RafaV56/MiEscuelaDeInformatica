@@ -60,12 +60,28 @@
     <servlet-name>AgregarUsuario</servlet-name>
     <url-pattern>/AgregarUsuario</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>Identificar</servlet-name>
     <servlet-class>servlet.Identificar</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Identificar</servlet-name>
     <url-pattern>/Identificar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditarPerfil</servlet-name>
+    <servlet-class>servlet.EditarPerfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditarPerfil</servlet-name>
+    <url-pattern>/EditarPerfil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CerrarSesion</servlet-name>
+    <servlet-class>servlet.CerrarSesion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CerrarSesion</servlet-name>
+    <url-pattern>/CerrarSesion</url-pattern>
   </servlet-mapping>
 </web-app>

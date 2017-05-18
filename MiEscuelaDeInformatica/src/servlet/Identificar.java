@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import service.ServiceUsuario;
 
@@ -65,24 +66,21 @@ public class Identificar extends HttpServlet {
 			}else{
 				if (!usuario.getContrasena().equals(contrasena)) {
 					request.setAttribute("error", "Contraseña invalida");
+				}else{
+					//Es una continuación de una sesión existente o si es una nueva sesión.
+					HttpSession session=request.getSession();// igual que true
+					//asignar atributos a las sesión
+					session.setAttribute("usuario", usuario);
+					session.setAttribute("nickUsuario", usuario.getNick());
+					
 				}
 			}
-			
-			//System.out.println(usuario);
-			
-			
-			
-			
 		} catch (ServiceException e) {
 			request.setAttribute("error", e.getMessage());
 		}catch (DomainException e) {
 			request.setAttribute("error", e.getMessage());
 		}
-				
-				
-		//System.out.println("entro en indentificar");
-		
-		getServletContext().getRequestDispatcher(resultado).forward(request, response);//Error Lógico para usuario
+		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);//Error Lógico para usuario
 	}
 
 }

@@ -48,7 +48,7 @@
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Contraseña</label>
-					    <input type="password" class="form-control" id="contrasena" value="<%=request.getParameter("contrasena") %></p>" name="contrasena" maxlength="10">
+					    <input type="password" class="form-control" id="contrasena" placeholder="contraseña" name="contrasena" maxlength="10">
 					  </div>
 					  <div class="checkbox">
 					    <label>
