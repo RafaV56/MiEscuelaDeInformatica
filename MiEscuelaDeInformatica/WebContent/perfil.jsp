@@ -60,7 +60,7 @@
 				
 			</p>
 			</div><!-- fin panel body -->
-			</div><!-- fin panel-primary -->
+			</div><!-- fin panel-default -->
 		<%
 				}else{	
         %>

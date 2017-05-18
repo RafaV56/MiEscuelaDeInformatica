@@ -34,13 +34,16 @@ public class CerrarSesion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultado="/Welcome";
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRequestedSessionId());
-		System.out.println(request.getRequestURL());
-		
+//		System.out.println(request.getRequestURI());
+//		System.out.println(request.getRequestedSessionId());
+//		System.out.println(request.getRequestURL());
+//		System.out.println(request.getPathInfo());
+//		System.out.println(request.getProtocol());
+//		System.out.println(request.getLocalAddr());
+		//ver como volver a donde estaba*****
 		request.getSession().invalidate();
 		
-		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);
+		getServletContext().getRequestDispatcher(resultado).forward(request, response);
 	}
 
 }
