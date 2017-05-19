@@ -86,7 +86,7 @@ public class Validator {
 	public static boolean email(String email, int emailMin, int emailMax) {
 		boolean validation = false;
 		if (Validator.length(email, emailMin, emailMax)) {
-			String regex = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
+			String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 			if (email.matches(regex)) {
 				validation = true;
 			}

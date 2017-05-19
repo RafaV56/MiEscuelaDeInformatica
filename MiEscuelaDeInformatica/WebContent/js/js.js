@@ -60,7 +60,6 @@
 			}
 			if(bandera){		
 				 $('#rContrasena').remove();
-				alert('Completado correctamente');
 			}
 			$('body,html').animate({scrollTop : 100}, 1200);//para ir al principio de la página
 			$('#principio').show(2000).focus();

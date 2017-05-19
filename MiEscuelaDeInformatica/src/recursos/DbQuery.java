@@ -14,6 +14,11 @@ public class DbQuery {
 	 * Error en la clave primaria de una base de datos de MY_SQL
 	 */
 	public static final int DUPLICATE_PK_MYSQL = 1062;
+	
+	/**
+	 * Variable para modificar un usuario por medio de su email. necesita todos los campos
+	 */
+	private static final String modificarUsuario = "update usuario set nombre=?, edad=?, nick=?, contrasena=? where email=?";
 
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
@@ -30,6 +35,14 @@ public class DbQuery {
 	 */
 	public static String getInsertarUsuario() {
 		return insertarUsuario;
+	}
+
+	/**
+	 * retorna update para modificar un usuario
+	 * @return update que modifica un usuario en todos sus campos por su email
+	 */
+	public static String getModificarUsuario() {
+		return modificarUsuario;
 	}
 	
 	

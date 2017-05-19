@@ -133,10 +133,10 @@ public class Usuario {
 	 */
 	public void setEmail(String email) {
 		
-		if (Validator.length(email.trim(), 1, 50)) {
+		if (Validator.email(email.trim(), 1, 50)) {
 			this.email = email;
 		} else {
-			throw new DomainException("La longitud del email no es correcta");
+			throw new DomainException("El email no es correcto");
 		}
 	}
 
