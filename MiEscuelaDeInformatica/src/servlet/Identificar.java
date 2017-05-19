@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,12 +48,27 @@ public class Identificar extends HttpServlet {
 		Usuario usuario=null;
 		String email=null;
 		String contrasena=null;
-		//String recuerdame=null;
+		String recuerdame=null;
 		ServiceUsuario serviceUsuario=null;
 		try {
 			email=request.getParameter("emailUsuario");
 			contrasena=request.getParameter("contrasena");
-			//System.out.println("email:"+email+" contrasena: "+contrasena);	
+			recuerdame=request.getParameter("recuerdame");
+			
+			//si recuerdame es on agrego las cookies al navegador
+			if (recuerdame!=null) {
+				if(recuerdame.equals("on")){
+				Cookie emailCookie = new Cookie ("email",email);
+				Cookie contrasenaCookie = new Cookie ("contrasena",contrasena);
+				
+				response.addCookie (emailCookie);
+				response.addCookie (contrasenaCookie);
+				}else {
+					
+				}
+				
+			}
+//			System.out.println("recuerdame valor: "+recuerdame);	
 			usuario=Usuario.crearUsuario(email);
 			
 			serviceUsuario=new ServiceUsuario();
