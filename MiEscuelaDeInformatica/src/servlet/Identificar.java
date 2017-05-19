@@ -72,6 +72,7 @@ public class Identificar extends HttpServlet {
 					//asignar atributos a las sesión
 					session.setAttribute("usuario", usuario);
 					session.setAttribute("nickUsuario", usuario.getNick());
+					session.setMaxInactiveInterval(30*60);
 					
 				}
 			}

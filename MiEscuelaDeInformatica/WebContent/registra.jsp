@@ -44,9 +44,10 @@
         <i class="fa fa-hand-peace-o fa-2"></i>
         <%=respuesta%>
        </h1>
-       <p><button class="btn btn-info" >
-       		 <a href="Welcome">Volver al inicio</a>
-       	  </button>
+       <p>
+        <a href="Welcome">
+	  		<input class="btn btn-info" type="button" value="Volver al inicio" />
+	    </a>
        </p>
        <%
        //si hay error 

@@ -84,4 +84,12 @@
     <servlet-name>CerrarSesion</servlet-name>
     <url-pattern>/CerrarSesion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AceptarCambios</servlet-name>
+    <servlet-class>servlet.AceptarCambios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AceptarCambios</servlet-name>
+    <url-pattern>/AceptarCambios</url-pattern>
+  </servlet-mapping>
 </web-app>

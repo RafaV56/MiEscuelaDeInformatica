@@ -30,6 +30,31 @@
        
         <!--Sección principal-->
         <div class="row" style="margin:0.2em 0em;">
+         <%
+    		String error=(String)request.getAttribute("error");
+    		String respuesta=(String)request.getAttribute("respuesta");
+    		
+       /*busco la repuesta del servlet agregar usuario que si tiene una respuesta 
+         hay un usuario creado correctamente pero si tiene error lo explica
+         al final muestra el formulario para insertar un usuario*/
+       if(respuesta!=null){
+       %>
+       <h1 class="alert alert-success text-center">
+        <i class="fa fa-hand-peace-o fa-2"></i>
+        <%=respuesta%>
+       </h1>
+       <%
+       //si hay error 
+       }
+       if(error!=null){       
+       %>
+       <h1 class="alert alert-danger text-center">
+       	<i class="fa fa-info-circle fa-2"></i>
+       	<%=error%>
+       </h1>
+       <%
+       }
+       %>
 
 		<%
         Usuario usuario=(Usuario)session.getAttribute("usuario");
@@ -44,7 +69,7 @@
 					</span>
 			</div><!-- fin panel-default -->
 				<div class="panel-body">
-			<form class="form-horizontal" method="post" action="AceptarCambios">
+			<form class="form-horizontal" method="get" action="AceptarCambios">
 
 			<!-- Email Input-->
 			<div class="form-group">
@@ -73,7 +98,7 @@
 			  <label class="col-md-4 control-label" for="nick">Nick</label>
 			  <div class="col-md-4">
 			    <div class="input-group">
-			      <input id="nick" name="nick" class="form-control" placeholder="Nick" type="text" value="<%=usuario.getNick()%>" maxlength="50">
+			      <input id="nick" name="nick" class="form-control" placeholder="Nick" type="text" value="<%=usuario.getNick()%>" maxlength="50" required>
 			      <span class="input-group-addon"><i class="fa fa-user-secret"></i></span>
 			    </div>
 			  </div>
@@ -83,7 +108,7 @@
 			  <label class="col-md-4 control-label" for="edad">Edad</label>  
 			  <div class="col-md-4">
 			   <div class="input-group">
-			  	<input id="edad" name="edad" type="text" placeholder="Edad" class="form-control input-md" value="<%=usuario.getEdad()%>" maxlength="3">
+			  	<input id="edad" name="edad" type="text" placeholder="Edad" class="form-control input-md" value="<%=usuario.getEdad()%>" maxlength="3" required>
 			     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			   </div> 
 			  </div>

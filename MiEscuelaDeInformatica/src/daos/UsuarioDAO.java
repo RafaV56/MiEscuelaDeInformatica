@@ -66,8 +66,6 @@ public class UsuarioDAO {
 	 */
 	public void insertarUsuario(Usuario usuario)throws DAOException{
 		PreparedStatement st = null;
-		
-		
 		try {
 			st = con.prepareStatement(DbQuery.getInsertarUsuario());
 			st.setString(1, usuario.getEmail());
@@ -83,6 +81,30 @@ public class UsuarioDAO {
 			}else {
 				throw new DAOException(DB_ERR, e);
 			}
+		} finally {
+			Recursos.closePreparedStatement(st);
+			
+		}	
+	}
+	
+	/**
+	 * Modifica un usuario de la base de datos
+	 * @param usuario Usuario válido con todos sus campos
+	 */
+	public void modificarUsuario(Usuario usuario){	
+		PreparedStatement st = null;
+		try {
+			st = con.prepareStatement(DbQuery.getModificarUsuario());
+			//"update usuario set nombre=?, edad=?, nick=?, contrasena=? where email=?";
+			st.setString(1, usuario.getNombre());
+			st.setInt(2, usuario.getEdad());
+			st.setString(3, usuario.getNick());
+			st.setString(4, usuario.getContrasena());
+			st.setString(5, usuario.getEmail());
+			// ejecutamos el insert.			
+			st.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
 		} finally {
 			Recursos.closePreparedStatement(st);
 			

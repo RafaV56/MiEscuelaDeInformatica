@@ -79,5 +79,37 @@ public class ServiceUsuario {
 		}
 	}
 	
+	/**
+	 * Modifica un usario de la base de datos
+	 * @param usuario completo a modificar
+	 * @throws ServiceException
+	 */
+	public void modificarUsuario(Usuario usuario) throws ServiceException{
+		TransaccionesManager trans = null;
+		try {
+
+			trans = new TransaccionesManager();
+			UsuarioDAO usuarioDAO = trans.getUsuarioDAO();
+			usuarioDAO.modificarUsuario(usuario);
+
+
+			trans.closeCommit();
+		} catch (DAOException e) {
+			try{
+				trans.closeRollback();
+			}catch (DAOException e1){
+				throw new ServiceException(e.getMessage(),e1);//Error interno
+			}
+
+			if(e.getCause()==null){
+				throw new ServiceException(e.getMessage());//Error Lógico
+			}else{
+
+				throw new ServiceException(e.getMessage(),e);//Error interno
+			}
+
+		}
+	}
+	
 
 }
