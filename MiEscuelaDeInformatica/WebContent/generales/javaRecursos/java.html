@@ -6,9 +6,9 @@
 <h3 class="text-center alert alert-info">Java</h3>
   <nav>
       <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section1">Identificadores</a></li>
-      <li><a href="#section2">Operadores</a></li>
-      <li><a href="#section3">Tipo primitivos</a></li>
+      <li><a href="#basicos" data-toggle="collapse" data-parent="#accordion">Identificadores</a></li>
+      <li><a href="#collapse2" data-toggle="collapse" data-parent="#accordion">Operadores</a></li>
+      <li><a href="#collapse3" data-toggle="collapse" data-parent="#accordion">Tipo primitivos</a></li>
       <!--<li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
       <ul class="dropdown-menu">
@@ -38,10 +38,10 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#basico">BASICO</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#basicos">BASICO</a>
             </h4>
           </div>
-          <div id="basico" class="panel-collapse collapse in">
+          <div id="basicos" class="panel-collapse collapse in">
             <div class="panel-body">
                 <h3>Identificadores</h3>
                  <p class="text-justify">En Java, es necesario poner nombre a muchas cosas, como para las variables, los métodos
@@ -54,24 +54,30 @@
                     <pre>
 public class Indentificadores {
 
-public static void main(String[] args) {
-//Ejemplo validos
-String x;
-String x1;
-String a0b1c3;
-
-//Invalidos
-String <span style="color:red;">1</span>x;
-String mi Edad;
-String a*3;
-}
+	public static void main(String[] args) {
+	<span style="color:green;">//Ejemplo validos</span>
+	String x;
+	String x1;
+	String a0b1c3;
+	
+	<span style="color:green;">//Invalidos</span>
+	
+	<span style="color:green;">//El indentificador no puede empezar con un número</span>
+	String <span style="color:red;">1</span>x; 
+	
+	<span style="color:green;">//No puede tener un espacio</span>
+	String m<span style="color:red;">i E</span>dad; 
+	
+	<span style="color:green;">//El asterisco no se puede usar en un identificador</span>
+	String a<span style="color:red;">*</span>3; 
+	}
 
 }</pre>
                  </p>
-                 <hr>
+                 <hr>   
                  <p>
-                 
-                 <p>
+                 	Pequeño test para repasar los conocimientos
+                 </p>              
               	   <form action="Test?num=1" method="post">
                    	<input name="test" type="submit" value="Test" class="btn btn-info" />
                	   </form>
