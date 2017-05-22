@@ -54,29 +54,42 @@ public class Identificar extends HttpServlet {
 			email=request.getParameter("emailUsuario");
 			contrasena=request.getParameter("contrasena");
 			recuerdame=request.getParameter("recuerdame");
+			
+			Cookie todas[]=request.getCookies();
 						
 			//si recuerdame es on agrego las cookies al navegador
 			if (recuerdame!=null) {
-				if(recuerdame.equals("on")){
-				Cookie emailCookie = new Cookie ("email",email);
-				Cookie contrasenaCookie = new Cookie ("contrasena",contrasena);
-				
-				//las cookies expiraran en un año
-				emailCookie.setMaxAge(60*60*24*364);
-				contrasenaCookie.setMaxAge(60*60*24*364);
-				
-				//para que se pueda cargar en cualquier parte de la aplicación
-				emailCookie.setPath("/");
-				contrasenaCookie.setPath("/");
-				
-				response.addCookie (emailCookie);
-				response.addCookie (contrasenaCookie);
-				}else {
+				if(recuerdame.equals("on")){	
+				//Veo si tenemos cookies en guardadas en el navegador del usuario que se crean en welcome, si no estan email y contraseña las creo			
+					if (request.getSession().getAttribute("email")==null && request.getSession().getAttribute("contrasena")==null) {
+
+						Cookie emailCookie = new Cookie ("email",email);
+						Cookie contrasenaCookie = new Cookie ("contrasena",contrasena);
+
+						//las cookies expiraran en un año
+						emailCookie.setMaxAge(60*60*24*364);
+						contrasenaCookie.setMaxAge(60*60*24*364);
+
+						//para que se pueda cargar en cualquier parte de la aplicación
+						emailCookie.setPath("/");
+						contrasenaCookie.setPath("/");
 					
+						response.addCookie (emailCookie);
+						response.addCookie (contrasenaCookie);
+					}	
 				}
 				
-			}
-//			System.out.println("recuerdame valor: "+recuerdame);	
+			}else {
+				//si no quiere recordar su usuario borramos todos los que tenemos guardados en su navegador
+				for (Cookie cookie : todas) {
+					if (cookie.getName().equals("email")) {
+						cookie.setMaxAge(-1);
+					}
+					if (cookie.getName().equals("contrasena")) {
+						cookie.setMaxAge(-1);
+					}
+				}
+			}	
 			usuario=Usuario.crearUsuario(email);
 			
 			serviceUsuario=new ServiceUsuario();

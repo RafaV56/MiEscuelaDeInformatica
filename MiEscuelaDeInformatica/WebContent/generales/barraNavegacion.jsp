@@ -1,6 +1,8 @@
 <%
 	String barra=(String)session.getAttribute("barra");//para identificar cual es el link local
 	String nick=(String)session.getAttribute("nickUsuario");//para identificar el nick del usuario	
+	String email=(String)session.getAttribute("email");//para identificar el nick del usuario	
+	String contrasena=(String)session.getAttribute("contrasena");//para identificar el nick del usuario	
 %>
  <nav class="navbar navbar-inverse">
         <div class="navbar-header">
@@ -27,7 +29,7 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-education"></span> <%=nick%>
 				  <span class="caret"></span></a>
 				  <ul class="dropdown-menu alert-warning">
-				    <li><a href="CerrarSesion" class="text-center"><i class="fa fa-power-off" aria-hidden="true" style="color:#ff4a4a;"></i> Cerrar sesión</a></li>
+				    <li><a href="CerrarSesion" class="text-center"><i class="fa fa-power-off" style="color:#ff4a4a;"></i> Cerrar sesión</a></li>
 				  </ul>
 		      </li>
 		      <li>
@@ -45,7 +47,7 @@
 		        	</form>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >
 		           <span class="glyphicon glyphicon-user"></span> Login &nbsp;
 		          </a>
 		          <ul class="dropdown-menu">
@@ -54,11 +56,11 @@
 		            <form method="post" action="Identificar">
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Email</label>
-					    <input type="email" class="form-control" id="emailUsuario" placeholder="Email" name="emailUsuario" maxlength="50">
+					    <input type="email" class="form-control" id="emailUsuario" placeholder="Email" name="emailUsuario" maxlength="50" value="<%=email!=null?email:""%>">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputPassword1">Contraseña</label>
-					    <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" name="contrasena" maxlength="10">
+					    <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" name="contrasena" maxlength="10" value="<%=contrasena!=null?contrasena:""%>">
 					  </div>
 					  <div class="checkbox">
 					    <label>
