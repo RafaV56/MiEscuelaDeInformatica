@@ -2,6 +2,8 @@ package domain;
 
 import java.util.List;
 
+import exceptions.DomainException;
+
 import util.Validator;
 
 public class Test {
@@ -24,6 +26,8 @@ public class Test {
 			this.nombre=nombre;
 		}else if (Validator.length(nombre, 1, 50) ) {
 			this.nombre = nombre;
+		}else{
+			throw new DomainException("El nombre del test no es correcto");
 		}
 	}
 	public List getPreguntas() {
