@@ -54,12 +54,20 @@ public class Identificar extends HttpServlet {
 			email=request.getParameter("emailUsuario");
 			contrasena=request.getParameter("contrasena");
 			recuerdame=request.getParameter("recuerdame");
-			
+						
 			//si recuerdame es on agrego las cookies al navegador
 			if (recuerdame!=null) {
 				if(recuerdame.equals("on")){
 				Cookie emailCookie = new Cookie ("email",email);
 				Cookie contrasenaCookie = new Cookie ("contrasena",contrasena);
+				
+				//las cookies expiraran en un año
+				emailCookie.setMaxAge(60*60*24*364);
+				contrasenaCookie.setMaxAge(60*60*24*364);
+				
+				//para que se pueda cargar en cualquier parte de la aplicación
+				emailCookie.setPath("/");
+				contrasenaCookie.setPath("/");
 				
 				response.addCookie (emailCookie);
 				response.addCookie (contrasenaCookie);
@@ -97,7 +105,7 @@ public class Identificar extends HttpServlet {
 		}catch (DomainException e) {
 			request.setAttribute("error", e.getMessage());
 		}
-		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);//Error Lógico para usuario
+		getServletContext().getRequestDispatcher(resultado).forward(request, response);
 	}
 
 }
