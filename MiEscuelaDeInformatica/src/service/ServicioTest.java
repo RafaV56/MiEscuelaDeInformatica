@@ -31,8 +31,8 @@ public class ServicioTest {
 			test = testDAO.recuperarTest(test);
 			
 			//si el test es nullo lanzo una DAOException
-			if (test.getNombre()==null) {
-				new DAOException("El test no existe");
+			if (test==null) {
+				throw new DAOException("El test no existe");
 			}
 			
 			//recupero las preguntas con el nombre del test
