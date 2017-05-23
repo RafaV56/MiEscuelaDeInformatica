@@ -80,7 +80,7 @@
 			        	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<%=contador%>">
 			        	Pregunta <%=contador%>
 			        	</button>
-			        	              <!-- Modal -->
+			        <!-- Modal -->
                     <div class="modal fade" id="myModal<%=contador%>" role="dialog">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -89,17 +89,34 @@
                             <h4 class="modal-title" style="color:rgba(255,0,0,1);"><%=nombreTest%></h4>
                           </div>
                           <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-6 alert alert-info">
+                            <div class="row" style="margin:0.2em 0em;">
+                                <div class="alert alert-info">
                                  <pre class="pre-scrollable">
 <%=pregunta.getPregunta()%>
 								</pre>      
                                 </div>
-                                <div class="col-sm-6 alert alert-success">
-                                    <input type="text" disabled value="String 1x;   ¿Es correcto?" class="form-control text-center">
-                                    <input name="" type="button" value="Si" class="btn btn-info form-control">
-                                    <input name="" type="button" value="No" class="btn btn-info form-control">
-                                </div>
+                                <div class="alert alert-success">
+                                <%
+                                if(pregunta.getA()!=null){
+                                %>
+                                    <input type="text" disabled value="<%=pregunta.getA()%>" class="form-control text-center">
+                                <%
+                                }if(pregunta.getB()!=null){
+                                %>
+                                    <input type="text" disabled value="<%=pregunta.getB()%>" class="form-control text-center">
+                                  <%
+                                }if(pregunta.getC()!=null){
+                                %>
+                                    <input type="text" disabled value="<%=pregunta.getC()%>" class="form-control text-center">
+                                  <%
+                                }if(pregunta.getD()!=null){
+                                %>
+                                    <input type="text" disabled value="<%=pregunta.getD()%>" class="form-control text-center">
+                                <%
+                                }if(pregunta.getE()!=null){
+                                %>
+                                    <input type="text" disabled value="<%=pregunta.getE()%>" class="form-control text-center">
+                                <%} %>
                             </div>
                           </div>
                           <div class="modal-footer">
