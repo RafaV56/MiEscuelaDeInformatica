@@ -50,11 +50,12 @@ public class Tests extends HttpServlet {
 		Test test=null;
 		try{
 			servicioTest=new ServicioTest();
+			//recupero el test con el nombre
 			test=new Test(nombreTest);
-			
+						
 			test=servicioTest.recuperarTest(test);
 			
-			System.out.println(test);
+			request.getSession().setAttribute("testCompleto", test);
 		
 		}catch (ServiceException e) {
 			request.setAttribute("error", e.getMessage());

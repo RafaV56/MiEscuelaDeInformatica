@@ -11,7 +11,7 @@ public class Test {
 	 * El nombre del test debe tener 1-50 caracteres
 	 */
 	private String nombre;
-		private List preguntas;
+	private List<Pregunta> preguntas;
 	
 	/**
 	 * Constructo sin parametros para usar en otros constructores
