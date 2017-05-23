@@ -13,6 +13,27 @@ public class Pregunta {
 	private String e;
 	private String correcta;
 	
+	/**
+	 * Contructor para recuperar una pregunta de la base de datos
+	 * @param pregunta 
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @param d
+	 * @param e
+	 * @param correcta
+	 */
+	public Pregunta(String pregunta, String a, String b, String c, String d,
+			String e, String correcta) {
+		this.pregunta = pregunta;
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
+		this.e = e;
+		this.correcta = correcta;
+	}	
+	
 	
 	public String getPregunta() {
 		return pregunta;
@@ -72,6 +93,13 @@ public class Pregunta {
 		}else{
 			throw new DomainException("La respuesta no tiene un valor correcto");
 		}
-		//seguir creando los domain ************************************
-	}	
+	}
+	
+	@Override
+	public String toString() {
+		return "Pregunta [pregunta=" + pregunta + ", a=" + a + ", b=" + b
+				+ ", c=" + c + ", d=" + d + ", e=" + e + ", correcta="
+				+ correcta + "]";
+	}
+	
 }

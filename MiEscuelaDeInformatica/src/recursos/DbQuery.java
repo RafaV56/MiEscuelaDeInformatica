@@ -24,9 +24,14 @@ public class DbQuery {
 	 */
 	private static final String modificarUsuario = "update usuario set nombre=?, edad=?, nick=?, contrasena=? where email=?";
 	/**
-	 * Variable que recupera un test segun un nombre de test, recuepra la pregunta y sus respuestas de [a-e] y respuesta correcta
+	 * Variable que recupera un test segun un nombre de test.
 	 */
-	private static final String recuperarTest = "SELECT pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?";
+	private static final String recuperarTest = "SELECT nombre FROM test where nombre=?";
+	
+	/**
+	 * Variable que recupera las preguntas según un nombre de test, recupera la pregunta y sus respuestas de [a-e] y respuesta correcta
+	 */
+	private static final String recupearPreguntas = "SELECT pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?";
 
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
@@ -59,6 +64,14 @@ public class DbQuery {
 	 */
 	public static String getTest() {
 		return recuperarTest;
+	}
+	
+	/**
+	 * Recupera todas las preguntas por el nombre de test
+	 * @return
+	 */
+	public static String getPreguntas(){
+		return recupearPreguntas;
 	}
 	
 	
