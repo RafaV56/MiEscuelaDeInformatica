@@ -22,7 +22,7 @@
    		<%@ include file="generales/cabecera.html" %>
    		<!-- ------------------------------------ -->
    		
-   		
+   		<form method="get" action="">
    	  	<%
        	//si en el servler test, hay error se pinta ve los siguiente
    	  	String error=(String)request.getAttribute("error");
@@ -201,17 +201,19 @@
 			      <%
 			      contador++;
 			    	}//fin del foreach
-			      %>	     
+			      %>
+			      <tr>
+			      <td colspan="2"> <input type="submit" class="btn btn-success btn-lg" value="Corregir"/></td>
+			      </tr>	     
 			    </tbody>
 			  </table>
 				</div><!-- fin table responsive -->
-				
 			</div><!-- fin panel body -->
-			</div><!-- fin panel-default -->
-                 
+			</div><!-- fin panel-default -->    
          </div><!-- fin col-md-10 -->
         </div><!-- fin del row -->
         <%} %>
+        </form>  
      	<!-- Pie de página -->
      	<%@include file="generales/piePagina.html" %>
      	<!-- ------------------------------------ -->
