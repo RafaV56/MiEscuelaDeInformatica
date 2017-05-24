@@ -8,6 +8,17 @@
     overflow: hidden !important;
     -webkit-overflow-scrolling: touch;
 }
+.javi{
+	background-color: #058852 !important;
+}
+.negrita{
+	font-weight: bold;
+}
+
+.panelBorde{
+	border-color: #256c42 !important;
+}
+
 body, html{
     height: 100%;
  	background-color:#f5f7f8;

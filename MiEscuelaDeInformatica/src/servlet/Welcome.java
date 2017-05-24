@@ -38,16 +38,17 @@ public class Welcome extends HttpServlet {
 		//veo si tengo cookies del usuario para agregarlas a la sesión
 		Cookie todas[]=request.getCookies();
 		
-		for (Cookie cookie : todas) {
-			if (cookie.getName().equals("email")) {
-				request.getSession().setAttribute("email", cookie.getValue());
-			}
-			if (cookie.getName().equals("contrasena")) {
-				request.getSession().setAttribute("contasena", cookie.getValue());
-			}
-			
-			
-		}
+		if(todas!=null){		
+			for (Cookie cookie : todas) {
+				if (cookie.getName().equals("email")) {
+					request.getSession().setAttribute("email", cookie.getValue());
+				}
+				if (cookie.getName().equals("contrasena")) {
+					request.getSession().setAttribute("contasena", cookie.getValue());
+				}
+			}//fin for
+		}//fin if
+		
 		//para la barra de navegación
 		request.getSession().setAttribute("barra", "Welcome");
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

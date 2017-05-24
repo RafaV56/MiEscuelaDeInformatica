@@ -91,36 +91,90 @@
                           <div class="modal-body">
                             <div class="row" style="margin:0.2em 0em;">
                                 <div class="alert alert-info">
+                                <h4><span class="bg-info">Código de ejemplo</span></h4>
                                  <pre class="pre-scrollable">
 <%=pregunta.getPregunta()%>
 								</pre>      
                                 </div>
                                 <div class="alert alert-success">
+                                <div class="panel-group">
                                 <%
                                 if(pregunta.getA()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getA()%>" class="form-control text-center">
+                                  <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								   	 <span class="negrita">Respuesta A</span>
+								   	 <input type="radio" name="pregunta<%=contador%>" value="a">  
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getA()%>
+									 </pre>
+								    </div>
+								  </div>                    
                                 <%
                                 }if(pregunta.getB()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getB()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								   <span class="negrita">Respuesta B</span>
+								    <input type="radio" name="pregunta<%=contador%>" value="b"> 
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getB()%>
+									 </pre>
+								    </div>
+								  </div> 
                                   <%
                                 }if(pregunta.getC()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getC()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								    <span class="negrita">Respuesta C</span>
+								    <input type="radio" name="pregunta<%=contador%>" value="c"> 
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getC()%>
+									 </pre>
+								    </div>
+								  </div>
                                   <%
                                 }if(pregunta.getD()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getD()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								    <span class="negrita">Respuesta D</span>
+								    <input type="radio" name="pregunta<%=contador%>" value="d"> 
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getD()%>
+									 </pre>
+								    </div>
+								  </div>
                                 <%
                                 }if(pregunta.getE()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getE()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								    <span class="negrita">Respuesta E</span>
+								   	<input type="radio" name="pregunta<%=contador%>" value="e">  
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getE()%>
+									 </pre>
+								    </div>
+								  </div>
                                 <%} %>
-                            </div>
-                          </div>
+                                 <h4 style="margin-top:5px;">Sin contestar: <input type="radio" name="pregunta<%=contador%>" value="s" checked="checked"> </h4>
+                                 </div><!-- fin panel-group -->
+                            </div><!-- fin del alert-success -->
+                          </div><!-- fin del row -->
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cerrar</button>
                           </div>
                         </div>
                       </div>
@@ -129,7 +183,7 @@
 			      </tr>	
 			      <%
 			      contador++;
-			    	}
+			    	}//fin del foreach
 			      %>	     
 			    </tbody>
 			  </table>
