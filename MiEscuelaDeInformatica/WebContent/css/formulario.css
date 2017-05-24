@@ -11,6 +11,15 @@
 .javi{
 	background-color: #058852 !important;
 }
+.panelBordePregunta{
+	border-color:black !important;
+}
+
+.preguntaPanel{
+	background-color: black !important;
+	color:white !important;
+}
+
 .negrita{
 	font-weight: bold;
 }

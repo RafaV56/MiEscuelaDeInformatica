@@ -31,7 +31,7 @@ public class DbQuery {
 	/**
 	 * Variable que recupera las preguntas según un nombre de test, recupera la pregunta y sus respuestas de [a-e] y respuesta correcta
 	 */
-	private static final String recupearPreguntas = "SELECT pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?";
+	private static final String recupearPreguntas = "SELECT codigo_ejemplo,pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?";
 
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]

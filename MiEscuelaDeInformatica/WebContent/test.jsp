@@ -86,18 +86,36 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title" style="color:rgba(255,0,0,1);"><%=nombreTest%></h4>
+                            <h4 class="modal-title" style="color:#565656;"><strong><%=nombreTest%>  [Pregunta: <%=contador%>]</strong></h4>
                           </div>
                           <div class="modal-body">
                             <div class="row" style="margin:0.2em 0em;">
-                                <div class="alert alert-info">
-                                <h4><span class="bg-info">Código de ejemplo</span></h4>
+                            
+                            <div class="panel panel-primary">
+								    <div class="panel-heading">
+                                 	<span class="negrita">Código de ejemplo</span>
+                                 	</div>
+                                 	<div class="panel-body">
+                                 <pre class="pre-scrollable">
+<%=pregunta.getCodigo_ejemplo()%>
+								</pre>      
+                                </div>
+                                </div><!-- fin panel -->
+                                
+                          <div class="panel panel-info panelBordePregunta">
+								    <div class="panel-heading preguntaPanel">
+                                 	<span class="negrita">Pregunta</span>
+                                 	</div>
+                                 	<div class="panel-body">
                                  <pre class="pre-scrollable">
 <%=pregunta.getPregunta()%>
 								</pre>      
                                 </div>
+                                </div><!-- fin panel -->
+                                
                                 <div class="alert alert-success">
                                 <div class="panel-group">
+                                <h4 style="margin-top:5px;">Sin contestar: <input type="radio" name="pregunta<%=contador%>" value="s" checked="checked"> </h4>
                                 <%
                                 if(pregunta.getA()!=null){
                                 %>
@@ -169,7 +187,6 @@
 								    </div>
 								  </div>
                                 <%} %>
-                                 <h4 style="margin-top:5px;">Sin contestar: <input type="radio" name="pregunta<%=contador%>" value="s" checked="checked"> </h4>
                                  </div><!-- fin panel-group -->
                             </div><!-- fin del alert-success -->
                           </div><!-- fin del row -->

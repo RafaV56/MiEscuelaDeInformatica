@@ -5,6 +5,7 @@ import util.Validator;
 
 public class Pregunta {
 
+	private String codigo_ejemplo;
 	private String pregunta;
 	private String a;
 	private String b;
@@ -23,8 +24,9 @@ public class Pregunta {
 	 * @param e
 	 * @param correcta
 	 */
-	public Pregunta(String pregunta, String a, String b, String c, String d,
+	public Pregunta(String codigo_ejemplo,String pregunta, String a, String b, String c, String d,
 			String e, String correcta) {
+		this.codigo_ejemplo=codigo_ejemplo;
 		this.pregunta = pregunta;
 		this.a = a;
 		this.b = b;
@@ -33,8 +35,19 @@ public class Pregunta {
 		this.e = e;
 		this.correcta = correcta;
 	}	
-	
-	
+		
+	public String getCodigo_ejemplo() {
+		return codigo_ejemplo;
+	}
+
+	public void setCodigo_ejemplo(String codigo_ejemplo) {
+		if (Validator.length(codigo_ejemplo, 1, 2000)) {
+			this.codigo_ejemplo = codigo_ejemplo;
+		}else{
+			throw new DomainException("El código de ejemplo no es correcto, máximo 2000 caracteres");
+		}
+	}
+
 	public String getPregunta() {
 		return pregunta;
 	}
@@ -94,12 +107,14 @@ public class Pregunta {
 			throw new DomainException("La respuesta no tiene un valor correcto");
 		}
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Pregunta [pregunta=" + pregunta + ", a=" + a + ", b=" + b
-				+ ", c=" + c + ", d=" + d + ", e=" + e + ", correcta="
-				+ correcta + "]";
+		return "Pregunta [codigo_ejemplo=" + codigo_ejemplo + ", pregunta="
+				+ pregunta + ", a=" + a + ", b=" + b + ", c=" + c + ", d=" + d
+				+ ", e=" + e + ", correcta=" + correcta + "]";
 	}
+	
+
 	
 }

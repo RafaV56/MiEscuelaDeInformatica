@@ -36,7 +36,7 @@ public class ServicioTest {
 			}
 			
 			//recupero las preguntas con el nombre del test
-			preguntas=preguntaDAO.recuperarPregunta(test);
+			preguntas=preguntaDAO.recuperarPreguntas(test);
 			
 			//añado las preguntas al test
 			test.setPreguntas(preguntas);
