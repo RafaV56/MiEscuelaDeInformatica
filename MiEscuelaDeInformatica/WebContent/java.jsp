@@ -18,6 +18,28 @@
    	<%@ include file="generales/cabecera.html" %>
    	<!-- ------------------------------------ -->
     
+    <%
+    	//Si un test a sido corregido y quieren volver al tema, viene de respuestaTest.jsp
+    	String tema=(String)session.getAttribute("tema");
+    	if(tema!=null){
+    %>
+    <div class="row">
+    	<div class="col-sm-12">
+    	<p style="margin:0.2em 0em;">
+	  		    <h2 class="alert alert-success text-center text-capitalize">
+        <i class="fa fa-undo fa-2"></i>
+       	 	 Volver al tema 		 
+	  		 <a href="#<%=tema%>" data-toggle="collapse" data-parent="#accordion" class="btn btn-primary">
+	  		 	<%=tema%>
+	  		 </a>
+	  		 </h2>
+       </p>
+    	</div>
+    </div>
+    
+    <%} %>
+    
+    
     <!-- Seccion Principal -->
    	<%@ include file="generales/javaRecursos/java.html" %>
    	<!-- ------------------------------------ -->

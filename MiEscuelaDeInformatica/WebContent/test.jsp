@@ -22,7 +22,7 @@
    		<%@ include file="generales/cabecera.html" %>
    		<!-- ------------------------------------ -->
    		
-   		<form method="get" action="CorregirTest">
+   		<form method="post" action="CorregirTest">
    	  	<%
        	//si en el servler test, hay error se pinta ve los siguiente
    	  	String error=(String)request.getAttribute("error");

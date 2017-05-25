@@ -40,31 +40,37 @@ public class Tests extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("barra", "test");
+		String respuesta="/test.jsp";
 		
-		//recuperamos el nombre del test
-		String nombreTest=request.getParameter("nombre");
 		
-		//llamo al servicio para recuperar el test de la base de datos
-		ServicioTest servicioTest=null;
-		Test test=null;
-		try{
-			servicioTest=new ServicioTest();
-			//recupero el test con el nombre
-			test=new Test(nombreTest);
-						
-			test=servicioTest.recuperarTest(test);
+		//recupero un el parametro para repetir un test
+		String intentar=request.getParameter("intentar");
+		//si no hay intento el test es null y se tiene que crear.
+		if (intentar==null) {
+			//recuperamos el nombre del test
+			String nombreTest=request.getParameter("nombre");
 			
-			request.getSession().setAttribute("testCompleto", test);
+			//llamo al servicio para recuperar el test de la base de datos
+			ServicioTest servicioTest=null;
+			Test test=null;
+			try{
+				servicioTest=new ServicioTest();
+				//recupero el test con el nombre
+				test=new Test(nombreTest);
+							
+				test=servicioTest.recuperarTest(test);
+				
+				request.getSession().setAttribute("testCompleto", test);
+			
+			}catch (ServiceException e) {
+				request.setAttribute("error", e.getMessage());
+			}catch (DomainException e) {
+				request.setAttribute("error", e.getMessage());
+			}
+		}//fin del si
 		
-		}catch (ServiceException e) {
-			request.setAttribute("error", e.getMessage());
-		}catch (DomainException e) {
-			request.setAttribute("error", e.getMessage());
-		}
 		
-		
-		getServletContext().getRequestDispatcher("/test.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher(respuesta).forward(request, response);
 	}
 
 }

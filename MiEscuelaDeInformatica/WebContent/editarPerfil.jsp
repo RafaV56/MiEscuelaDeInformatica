@@ -211,7 +211,7 @@
 			</div><!-- fin panel body -->
 			</div><!-- fin panel-primary -->
 				<%} %>
-<p>
+		<p>
 	  		 <a href="Welcome">
 	  		 	<input class="btn btn-info" type="button" value="Volver al inicio" />
 	  		 </a>

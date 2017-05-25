@@ -23,6 +23,7 @@
        
         <!--Sección principal-->
         <div class="row" style="margin:0.2em 0em;">
+        <div class="col-sm-12">
          <%
     		String error=(String)request.getAttribute("error");
     		String respuesta=(String)request.getAttribute("respuesta");
@@ -50,6 +51,21 @@
 		       </h1>
        <%
     	   }
+    	   //pintamos los botones para volver a intentar o para volver al tema
+    	%>
+    		<div class="btn-group btn-group-justified">
+			 <a href="Test?intentar=s" class="btn btn-warning">
+		 		<span style="font-size: 1.3em">Intentar nuevamente</span>
+			</a>
+			 <a href="Java" class="btn btn-success">
+				<span style="font-size: 1.3em">Volver al tema</span>
+			 </a>
+			</div>
+	  		
+    	<%
+    	//Busco el nombre del tema
+    	String tema=nombreTest.substring(nombreTest.indexOf("-")+1);
+    	session.setAttribute("tema",tema);
        //si hay error 
        }
        if(error!=null){       
@@ -62,11 +78,13 @@
        }
        %>
 
-		<p>
+		<p style="margin:0.2em 0em;">
 	  		 <a href="Welcome">
 	  		 	<input class="btn btn-info" type="button" value="Volver al inicio" />
 	  		 </a>
        </p>
+       
+       	</div><!-- fin del col-sm-12 -->
         </div><!--Fin del row-->   
      	
      	<!-- Pie de página -->
