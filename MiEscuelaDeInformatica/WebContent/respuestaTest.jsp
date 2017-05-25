@@ -23,50 +23,60 @@
        
         <!--Sección principal-->
         <div class="row" style="margin:0.2em 0em;">
+        <div class="col-sm-12">
          <%
-    		String error=(String)request.getAttribute("error");
-    		String respuesta=(String)request.getAttribute("respuesta");
-    		Test test=(Test)session.getAttribute("testCompleto");
-    		String nombreTest=test.getNombre();
-    		
-       /*busco la repuesta del servlet corregirTest que si tiene una respuesta 
-         hay un test resuelto pero si tiene error lo explica
-         al final muestra el formulario para volver a intentarlo, o volver al tema*/
-       if(respuesta!=null){
+    		TestCorregido test=(TestCorregido)session.getAttribute("testCorregido");  	
+        	 String nombre=test.getNombreTest();
+      		 if(test.getError()!=null){       
+       %>
+       <h1 class="alert alert-danger text-center">
+       	<i class="fa fa-info-circle fa-2"></i>
+       	<%=test.getError()%>
+       </h1>
+       <%
+      		 }else{
     	   
-    	   if(respuesta.equals("s")){
+    	   if(test.isSuperado()){
        %>
 
        <h1 class="alert alert-success text-center">
         <i class="fa fa-hand-peace-o fa-2"></i>
-       		El test <%=nombreTest %> fue superado
+       		El test <%=test.getTema()%> fue superado<br />
+       		Correctas: <%=test.getCorrectas()%> Errores: <%=test.getErrores()%>
+       		
        </h1>
       	<%
-    	   }else if(respuesta.equals("n")){
+    	   }else{
       	%>
        		 <h1 class="alert alert-danger text-center">
 		       	<i class="fa fa-times-circle fa-2"></i>
-		       El test <%=nombreTest %> no a sido superado
+		     	 El test <%=test.getTema()%> no a sido superado <br />
+       			 Correctas: <%=test.getCorrectas()%> Errores: <%=test.getErrores()%>
 		       </h1>
        <%
     	   }
-       //si hay error 
-       }
-       if(error!=null){       
-       %>
-       <h1 class="alert alert-danger text-center">
-       	<i class="fa fa-info-circle fa-2"></i>
-       	<%=error%>
-       </h1>
-       <%
-       }
-       %>
-
-		<p>
+    	   //pintamos los botones para volver a intentar o para volver al tema
+    	%>
+    		<div class="btn-group btn-group-justified">
+			 <a href="Test?intentar=s" class="btn btn-warning">
+		 		<span style="font-size: 1.3em">Intentar nuevamente</span>
+			</a>
+			 <a href="<%=test.getTecnologia()%>" class="btn btn-success">
+				<span style="font-size: 1.3em">Volver al tema</span>
+			 </a>
+			</div>
+	  		
+    	<%
+    	//Agrego el tema
+    	session.setAttribute("tema",test.getTema());
+       }%>
+		<p style="margin:0.2em 0em;">
 	  		 <a href="Welcome">
 	  		 	<input class="btn btn-info" type="button" value="Volver al inicio" />
 	  		 </a>
        </p>
+       
+       	</div><!-- fin del col-sm-12 -->
         </div><!--Fin del row-->   
      	
      	<!-- Pie de página -->

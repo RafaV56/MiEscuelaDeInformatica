@@ -38,7 +38,7 @@
 		    </ul>
             <%
             	//Pregunta para saber si viene de test o de registrar o de indentificar, si es así no se pintan los botones
-            	}else if(!barra.equals("registrar") && !barra.equals("test")){
+            	}else if(!barra.equals("registrar")){
             %>
              <ul class="nav navbar-nav navbar-right">
 		        <li>
