@@ -27,7 +27,7 @@ public class PreguntaDAO {
 		this.con = con;
 	}
 
-	public List<Pregunta> recuperarPregunta(Test test){
+	public List<Pregunta> recuperarPreguntas(Test test){
 		
 		List<Pregunta> preguntas=null;
 		PreparedStatement st = null;
@@ -39,16 +39,17 @@ public class PreguntaDAO {
 				st.setString(1,test.getNombre());
 				rs=st.executeQuery();
 				while (rs.next()){
-
-					String pregunta=rs.getString(1);
-					String a=rs.getString(2);
-					String b=rs.getString(3);
-					String c=rs.getString(4);
-					String d=rs.getString(5);
-					String e=rs.getString(6);
-					String correcta=rs.getString(7);
+					//SELECT codigo_ejemplo,pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?
+					String codigo_ejemplo=rs.getString(1);
+					String pregunta=rs.getString(2);
+					String a=rs.getString(3);
+					String b=rs.getString(4);
+					String c=rs.getString(5);
+					String d=rs.getString(6);
+					String e=rs.getString(7);
+					String correcta=rs.getString(8);
 					
-					i=new Pregunta(pregunta, a, b, c, d, e, correcta); 
+					i=new Pregunta(codigo_ejemplo,pregunta, a, b, c, d, e, correcta); 
 					
 					preguntas.add(i);
 				}		

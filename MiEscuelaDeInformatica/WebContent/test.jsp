@@ -22,7 +22,7 @@
    		<%@ include file="generales/cabecera.html" %>
    		<!-- ------------------------------------ -->
    		
-   		
+   		<form method="get" action="CorregirTest">
    	  	<%
        	//si en el servler test, hay error se pinta ve los siguiente
    	  	String error=(String)request.getAttribute("error");
@@ -86,41 +86,112 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title" style="color:rgba(255,0,0,1);"><%=nombreTest%></h4>
+                            <h4 class="modal-title" style="color:#565656;"><strong><%=nombreTest%>  [Pregunta: <%=contador%>]</strong></h4>
                           </div>
                           <div class="modal-body">
                             <div class="row" style="margin:0.2em 0em;">
-                                <div class="alert alert-info">
+                            
+                            <div class="panel panel-primary">
+								    <div class="panel-heading">
+                                 	<span class="negrita">Código de ejemplo</span>
+                                 	</div>
+                                 	<div class="panel-body">
+                                 <pre class="pre-scrollable">
+<%=pregunta.getCodigo_ejemplo()%>
+								</pre>      
+                                </div>
+                                </div><!-- fin panel -->
+                                
+                          <div class="panel panel-info panelBordePregunta">
+								    <div class="panel-heading preguntaPanel">
+                                 	<span class="negrita">Pregunta</span>
+                                 	</div>
+                                 	<div class="panel-body">
                                  <pre class="pre-scrollable">
 <%=pregunta.getPregunta()%>
 								</pre>      
                                 </div>
+                                </div><!-- fin panel -->
+                                
                                 <div class="alert alert-success">
+                                <div class="panel-group">
+                                <h4 style="margin-top:5px;">Sin contestar: <input type="radio" name="pregunta<%=contador%>" value="s" checked="checked"> </h4>
                                 <%
                                 if(pregunta.getA()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getA()%>" class="form-control text-center">
+                                  <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								   	 <span class="negrita">Respuesta A</span>
+								   	 <input type="radio" name="pregunta<%=contador%>" value="a">  
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getA()%>
+									 </pre>
+								    </div>
+								  </div>                    
                                 <%
                                 }if(pregunta.getB()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getB()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								   <span class="negrita">Respuesta B</span>
+								    <input type="radio" name="pregunta<%=contador%>" value="b"> 
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getB()%>
+									 </pre>
+								    </div>
+								  </div> 
                                   <%
                                 }if(pregunta.getC()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getC()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								    <span class="negrita">Respuesta C</span>
+								    <input type="radio" name="pregunta<%=contador%>" value="c"> 
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getC()%>
+									 </pre>
+								    </div>
+								  </div>
                                   <%
                                 }if(pregunta.getD()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getD()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								    <span class="negrita">Respuesta D</span>
+								    <input type="radio" name="pregunta<%=contador%>" value="d"> 
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getD()%>
+									 </pre>
+								    </div>
+								  </div>
                                 <%
                                 }if(pregunta.getE()!=null){
                                 %>
-                                    <input type="text" disabled value="<%=pregunta.getE()%>" class="form-control text-center">
+                                   <div class="panel panel-primary panelBorde">
+								    <div class="panel-heading javi">
+								    <span class="negrita">Respuesta E</span>
+								   	<input type="radio" name="pregunta<%=contador%>" value="e">  
+								    </div>
+								    <div class="panel-body">
+								    <pre class="pre-scrollable">
+<%=pregunta.getE()%>
+									 </pre>
+								    </div>
+								  </div>
                                 <%} %>
-                            </div>
-                          </div>
+                                 </div><!-- fin panel-group -->
+                            </div><!-- fin del alert-success -->
+                          </div><!-- fin del row -->
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cerrar</button>
                           </div>
                         </div>
                       </div>
@@ -129,18 +200,20 @@
 			      </tr>	
 			      <%
 			      contador++;
-			    	}
-			      %>	     
+			    	}//fin del foreach
+			      %>
+			      <tr>
+			      <td colspan="2"> <input type="submit" class="btn btn-success btn-lg" value="Corregir"/></td>
+			      </tr>	     
 			    </tbody>
 			  </table>
 				</div><!-- fin table responsive -->
-				
 			</div><!-- fin panel body -->
-			</div><!-- fin panel-default -->
-                 
+			</div><!-- fin panel-default -->    
          </div><!-- fin col-md-10 -->
         </div><!-- fin del row -->
         <%} %>
+        </form>  
      	<!-- Pie de página -->
      	<%@include file="generales/piePagina.html" %>
      	<!-- ------------------------------------ -->
