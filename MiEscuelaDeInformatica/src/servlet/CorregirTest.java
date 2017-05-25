@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.Pregunta;
 import domain.Test;
+import domain.TestCorregido;
 
 /**
  * Servlet implementation class CorregirTest
@@ -40,8 +41,14 @@ public class CorregirTest extends HttpServlet {
 	
 		//Recupero el test a corregir, creado en test.java 
 		Test test=(Test) request.getSession().getAttribute("testCompleto");
-		
+		TestCorregido testCorregido=new TestCorregido();
 		if (test!=null) {
+			//Agrego el tema y la tecnología
+			String nombre=test.getNombre();
+	    	String tema=nombre.substring(nombre.indexOf("-")+1);
+	    	String tecnologia=nombre.substring(0, nombre.indexOf("-"));   	
+	    	testCorregido.setTema(tema);
+	    	testCorregido.setTecnologia(tecnologia);
 			//todas las preguntas del test
 			List<Pregunta> lista=test.getPreguntas();
 			//el tamaño de las preguntas para sacar su 80%
@@ -59,16 +66,17 @@ public class CorregirTest extends HttpServlet {
 				}
 			}//fin del for
 			
-			String respuesta="n";
 			//preguntar si a superado el test
-			if (contadorCorrectas>=superado) {
-				respuesta="s";
-			}
-			//parametro para recuperar en respuesta.jsp, supero el test o no.
-			request.setAttribute("respuesta", respuesta);
+			testCorregido.setSuperado(contadorCorrectas>=superado);
+			testCorregido.setCorrectas(contadorCorrectas);
+			testCorregido.setErrores(preguntas-contadorCorrectas);
+			testCorregido.setNombreTest(test.getNombre());
+	
 		}else{
-			request.setAttribute("error","El test no exite");
+			testCorregido.setError("El text no existe");
 		}
+		//Se agrega la corrección del test a la sesión
+		request.getSession().setAttribute("testCorregido", testCorregido);
 
 		getServletContext().getRequestDispatcher("/respuestaTest.jsp").forward(request, response);
 

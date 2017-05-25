@@ -90,7 +90,7 @@
                           </div>
                           <div class="modal-body">
                             <div class="row" style="margin:0.2em 0em;">
-                            
+                            <%if(pregunta.getCodigo_ejemplo()!=null){ %>
                             <div class="panel panel-primary">
 								    <div class="panel-heading">
                                  	<span class="negrita">Código de ejemplo</span>
@@ -101,6 +101,7 @@
 								</pre>      
                                 </div>
                                 </div><!-- fin panel -->
+                                <%} %>
                                 
                           <div class="panel panel-info panelBordePregunta">
 								    <div class="panel-heading preguntaPanel">

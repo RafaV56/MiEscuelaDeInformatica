@@ -41,8 +41,6 @@ public class Tests extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String respuesta="/test.jsp";
-		
-		
 		//recupero un el parametro para repetir un test
 		String intentar=request.getParameter("intentar");
 		//si no hay intento el test es null y se tiene que crear.
