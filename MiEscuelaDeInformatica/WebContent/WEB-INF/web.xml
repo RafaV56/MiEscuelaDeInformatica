@@ -92,4 +92,12 @@
     <servlet-name>AceptarCambios</servlet-name>
     <url-pattern>/AceptarCambios</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>CorregirTest</servlet-name>
+    <servlet-class>servlet.CorregirTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CorregirTest</servlet-name>
+    <url-pattern>/CorregirTest</url-pattern>
+  </servlet-mapping>
 </web-app>
