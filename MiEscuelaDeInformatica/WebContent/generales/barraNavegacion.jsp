@@ -17,8 +17,8 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li><a href="<%=barra.equals("Java")?"#":"Java"%>">Java</a></li>
-              <li><a href="<%=barra.equals("CSS")?"#":"CSS"%>">CSS</a></li>
-              <li><a href="<%=barra.equals("SQL")?"#":"SQL"%>">SQL</a></li>
+              <li><a href="<%=barra.equals("Css")?"#":"Css"%>">CSS</a></li>
+              <li><a href="<%=barra.equals("Sql")?"#":"Sql"%>">SQL</a></li>
             </ul>
             <%
             	//si hay un usuario indentificado mostramos su barra de perfil

@@ -23,6 +23,7 @@
     	//Si un test a sido corregido y quieren volver al tema, viene de respuestaTest.jsp
     	TestCorregido test=(TestCorregido)session.getAttribute("testCorregido");  	
     	if(test!=null){
+    		if(test.getTecnologia().equalsIgnoreCase("java")){
     %>
     <div class="row">
     	<div class="col-sm-12">
@@ -38,7 +39,7 @@
     	</div>
     </div>
     
-    <%} %>
+    <%} } %>
     
     
     <!-- Seccion Principal -->

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.ServiceHacerTest;
+
 import domain.Pregunta;
 import domain.Test;
 import domain.TestCorregido;
@@ -42,6 +44,7 @@ public class CorregirTest extends HttpServlet {
 		//Recupero el test a corregir, creado en test.java 
 		Test test=(Test) request.getSession().getAttribute("testCompleto");
 		TestCorregido testCorregido=new TestCorregido();
+		ServiceHacerTest serviceHacerTest=null;
 		if (test!=null) {
 			//Agrego el tema y la tecnología
 			String nombre=test.getNombre();
@@ -71,6 +74,10 @@ public class CorregirTest extends HttpServlet {
 			testCorregido.setCorrectas(contadorCorrectas);
 			testCorregido.setErrores(preguntas-contadorCorrectas);
 			testCorregido.setNombreTest(test.getNombre());
+			
+			
+			//
+		//	serviceHacerTest = new ServiceHacerTest(usuario,testCorregido);			
 	
 		}else{
 			testCorregido.setError("El text no existe");
