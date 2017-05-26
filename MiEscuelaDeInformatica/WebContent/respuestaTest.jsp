@@ -36,7 +36,7 @@
        <%
       		 }else{
     	   
-    	   if(test.isSuperado()){
+    	   if(test.getSuperado().equals("s")){
        %>
 
        <h1 class="alert alert-success text-center">

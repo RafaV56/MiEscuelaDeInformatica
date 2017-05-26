@@ -64,6 +64,6 @@ public class HacerTestDAO {
 		}	
 	}
 	
-	//Hacer recupearar test
+	//Hacer recupearar test********************
 
 }
