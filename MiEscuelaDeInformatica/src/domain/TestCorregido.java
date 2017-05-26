@@ -5,7 +5,7 @@ public class TestCorregido {
 	private String tema;
 	private String tecnologia;
 	private String nombreTest;
-	private boolean superado;
+	private String superado;
 	/**
 	 * Agregar un error cuando el test fuera null
 	 */
@@ -34,7 +34,7 @@ public class TestCorregido {
 	 * @param errores
 	 */
 	public TestCorregido(String tema, String tecnologia, String nombreTest,
-			boolean superado, String error, int correctas, int errores) {
+			String superado, String error, int correctas, int errores) {
 		super();
 		this.tema = tema;
 		this.tecnologia = tecnologia;
@@ -89,14 +89,14 @@ public class TestCorregido {
 	 * Retorna true si es superado
 	 * @return
 	 */
-	public boolean isSuperado() {
+	public String getSuperado() {
 		return superado;
 	}
 	/**
 	 * Si a superado el test agregar true
 	 * @param superado
 	 */
-	public void setSuperado(boolean superado) {
+	public void setSuperado(String superado) {
 		this.superado = superado;
 	}
 	/**

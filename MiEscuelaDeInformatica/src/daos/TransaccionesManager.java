@@ -137,6 +137,11 @@ public class TransaccionesManager {
 		return new PreguntaDAO(con);
 	}
 
+	public HacerTestDAO getHacerTestDAO() {
+
+		return new HacerTestDAO(con);
+	}
+
 
 
 }

@@ -32,6 +32,10 @@ public class DbQuery {
 	 * Variable que recupera las preguntas según un nombre de test, recupera la pregunta y sus respuestas de [a-e] y respuesta correcta
 	 */
 	private static final String recupearPreguntas = "SELECT codigo_ejemplo,pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?";
+	/**
+	 * Inserta un hacer test a la base de datos, se necesita su email, nombre test, superado;
+	 */
+	private static final String insertarHacerTest = "insert into hacer_test(email,nombre_test,superado) values(?,?,?);";
 
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
@@ -72,6 +76,11 @@ public class DbQuery {
 	 */
 	public static String getPreguntas(){
 		return recupearPreguntas;
+	}
+
+	public static String getInsertarHacerTest() {
+		// TODO Auto-generated method stub
+		return insertarHacerTest;
 	}
 	
 	

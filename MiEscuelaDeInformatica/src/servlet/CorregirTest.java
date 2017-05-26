@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.ServiceHacerTest;
+import service.ServiceUsuario;
 
-import domain.Pregunta;
-import domain.Test;
-import domain.TestCorregido;
+import domain.*;
+import exceptions.DomainException;
+import exceptions.ServiceException;
 
 /**
  * Servlet implementation class CorregirTest
@@ -43,6 +44,7 @@ public class CorregirTest extends HttpServlet {
 	
 		//Recupero el test a corregir, creado en test.java 
 		Test test=(Test) request.getSession().getAttribute("testCompleto");
+		Usuario usuario=(Usuario) request.getSession().getAttribute("usuario");
 		TestCorregido testCorregido=new TestCorregido();
 		ServiceHacerTest serviceHacerTest=null;
 		if (test!=null) {
@@ -70,14 +72,30 @@ public class CorregirTest extends HttpServlet {
 			}//fin del for
 			
 			//preguntar si a superado el test
-			testCorregido.setSuperado(contadorCorrectas>=superado);
+			testCorregido.setSuperado(contadorCorrectas>=superado?"s":"n");
 			testCorregido.setCorrectas(contadorCorrectas);
 			testCorregido.setErrores(preguntas-contadorCorrectas);
 			testCorregido.setNombreTest(test.getNombre());
 			
-			
-			//
-		//	serviceHacerTest = new ServiceHacerTest(usuario,testCorregido);			
+			//Si hay usuario inserto el test, si no el resultado del tes 
+			if(usuario!=null){
+				ServiceHacerTest servicioHacerTest=null;
+				HacerTest hacerTest=null;
+				try{			
+					serviceHacerTest=new ServiceHacerTest();
+					hacerTest=new HacerTest(usuario, testCorregido, testCorregido.getSuperado());
+					serviceHacerTest.insertarHacerTest(hacerTest);
+				} catch (ServiceException e) {
+					if(e.getCause()==null){
+						testCorregido.setError(e.getMessage());
+					}else{
+						e.printStackTrace();// para administrador
+						testCorregido.setError(e.getMessage());
+					}
+				}catch (DomainException e) {
+					testCorregido.setError(e.getMessage());
+				}	
+			}//fin del si usu es null
 	
 		}else{
 			testCorregido.setError("El text no existe");
