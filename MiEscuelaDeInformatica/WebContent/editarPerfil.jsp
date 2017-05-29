@@ -69,7 +69,7 @@
 					</span>
 			</div><!-- fin panel-default -->
 				<div class="panel-body">
-			<form class="form-horizontal" method="get" action="AceptarCambios">
+			<form class="form-horizontal" method="post" action="AceptarCambios">
 
 			<!-- Email Input-->
 			<div class="form-group">
