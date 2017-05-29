@@ -41,6 +41,7 @@ public class DbQuery {
 	 */
 	private static final String recuperarHacerTest = "SELECT email,nombre_test,superado FROM hacer_test where email=? and nombre_test=?";
 	private static final String modificarHacerTest = "update hacer_test set superado=? where email=? and nombre_test=?";
+	private static final String recuperarTestDesarrollados = "SELECT nombre_test,superado FROM hacer_test where email=?";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -104,6 +105,14 @@ public class DbQuery {
 	 */
 	public static String getModificarHacerTest() {
 		return modificarHacerTest;
+	}
+
+	/**
+	 * Recupera todos los test de un usuario, se necesita solo su email, recupera el nombre del test y si es superado
+	 * @return
+	 */
+	public static String getRecuperarTestDesarrollados() {
+		return recuperarTestDesarrollados;
 	}
 	
 }

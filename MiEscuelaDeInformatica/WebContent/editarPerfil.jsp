@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="domain.*;"%>
+<%@ page import="domain.*,java.util.*;"%>
 <!--Rafael Velásquez Millán, Version:0.2, 6/2/2017-->
 <!DOCTYPE html>
 <html lang="en">
@@ -58,9 +58,45 @@
 
 		<%
         Usuario usuario=(Usuario)session.getAttribute("usuario");
-        if(usuario!=null){
+		ArrayList<HacerTest> testDesarrollados=(ArrayList<HacerTest>)session.getAttribute("testDesarrollados");
+        if(usuario!=null){ 	
+        	//Si hay test desarrollados y son almenos 1l
+        	if(testDesarrollados!=null && testDesarrollados.size()>0){
         %>
 
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-success">
+				<div class="table-responsive">
+				<table class="table table-striped table-bordered">
+			    <thead>
+			      <tr>
+			        <th>Nombre del Test</th>
+			        <th>¿Superado?</th>
+			      </tr>
+			    </thead>
+			    <% 
+			    	for(HacerTest test: testDesarrollados){
+			    %>
+			    <tbody>
+			    	<tr>
+			    		<td>
+			    		<%=test.getTestCorregido().getNombreTest()%>
+			    		</td>
+			    		<td>
+			    		<%=test.getSuperado().equals("s")?"Si":"No"%>
+			    		</td>
+			    	</tr>
+				</tbody>
+				<%}//fin del for %>
+				</table>
+				</div>
+			</div>
+		<%
+		
+			    	}//fin del testDesarrollados
+		%>
+		
+		</div><!-- fin del col-10 -->
 		<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 				<div class="panel-heading">
@@ -210,7 +246,7 @@
 			</p>
 			</div><!-- fin panel body -->
 			</div><!-- fin panel-primary -->
-				<%} %>
+				<%}//fin del si usuario es diferente de null %>
 		<p>
 	  		 <a href="Welcome">
 	  		 	<input class="btn btn-info" type="button" value="Volver al inicio" />

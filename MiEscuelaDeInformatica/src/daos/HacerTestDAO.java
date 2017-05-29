@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import recursos.DbQuery;
 import recursos.Recursos;
 import domain.HacerTest;
-import domain.Test;
 import domain.TestCorregido;
 import domain.Usuario;
 import exceptions.DAOException;
@@ -123,5 +124,34 @@ public class HacerTestDAO {
 			Recursos.closePreparedStatement(st);
 			
 		}	
+	}
+
+	/**
+	 * Recupera todos test desarrollados por un usuario
+	 * @param usuario usuario registrado en la aplicación
+	 * @return todos los test realizados por el usuario
+	 */
+	public List<HacerTest> recuperarTestDesarrollados(Usuario usuario) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		List<HacerTest> list = new ArrayList<HacerTest>();
+		try {
+			st = con.prepareStatement(DbQuery.getRecuperarTestDesarrollados());
+			st.setString(1, usuario.getEmail());
+			rs = st.executeQuery();
+			while (rs.next()) {
+				TestCorregido testCorregido=new TestCorregido();
+				testCorregido.setNombreTest(rs.getString(1));
+				HacerTest  hacerTest = new HacerTest(usuario,testCorregido,rs.getString(2));
+				
+				list.add(hacerTest);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
+		} finally {
+			Recursos.closeResultSet(rs);
+			Recursos.closePreparedStatement(st);
+		}
+		return list;
 	}
 }
