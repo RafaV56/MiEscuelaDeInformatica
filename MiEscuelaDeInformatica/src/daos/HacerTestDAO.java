@@ -2,6 +2,7 @@ package daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
@@ -34,8 +35,7 @@ public class HacerTestDAO {
 		
 		Usuario usu=null;
 		TestCorregido test=null;
-		//si el test a sido superado es s
-		
+			
 		try {
 			usu=hacerTest.getUsuario();
 			test=hacerTest.getTestCorregido();
@@ -64,6 +64,64 @@ public class HacerTestDAO {
 		}	
 	}
 	
-	//Hacer recupearar test********************
 
+	/**
+	 * Recupera una corrección de test de la base de datos se necesita el email y el nombre del test
+	 * @param hacerTest
+	 * @return
+	 * @throws DAOException
+	 */
+	public HacerTest recuperarHacerTest(HacerTest hacerTest)throws DAOException {
+		PreparedStatement st = null;
+		ResultSet rs =null ;
+		HacerTest test=null;
+		
+		Usuario usuario=null;
+		TestCorregido testCorregido=null;
+		
+			try {
+				usuario=hacerTest.getUsuario();
+				testCorregido=hacerTest.getTestCorregido();
+				//"SELECT email,nombre_test,superado FROM hacer_test where email=? and nombre_test=?";
+				st = con.prepareStatement(DbQuery.getRecuperarHacerTest());
+				st.setString(1,usuario.getEmail());
+				st.setString(2,testCorregido.getNombreTest());
+				rs=st.executeQuery();
+				if (rs.next()){
+					String superado=rs.getString(3);
+					test=new HacerTest(usuario, testCorregido, superado); 
+				}		
+
+			} catch (SQLException e) {
+				throw new DAOException(DB_ERR, e);
+			} finally {
+			Recursos.closeResultSet(rs);
+			Recursos.closePreparedStatement(st);
+			
+		}
+		return test;
+	}
+	
+	/**
+	 * Modifica un hacer test de la base de datos, de superado s a no superado n
+	 * @param hacerTest
+	 */
+	public void modificarHacerTest(HacerTest hacerTest){	
+		PreparedStatement st = null;
+		try {
+			//update hacer_test set superado=? where email=? and nombre_test=?
+			st = con.prepareStatement(DbQuery.getModificarHacerTest());
+			st.setString(1, hacerTest.getSuperado());
+			st.setString(2, hacerTest.getUsuario().getEmail());
+			st.setString(3, hacerTest.getTestCorregido().getNombreTest());
+	
+			// ejecutamos el insert.			
+			st.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
+		} finally {
+			Recursos.closePreparedStatement(st);
+			
+		}	
+	}
 }

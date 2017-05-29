@@ -48,6 +48,9 @@
       	<%
     	   }else{
       	%>
+      		 <%if(test.getSuperadoAnteriormente()){ %>
+		       <h1 class="alert alert-success text-center">Superado anteriormente</h1>
+		       <%} %>
        		 <h1 class="alert alert-danger text-center">
 		       	<i class="fa fa-times-circle fa-2"></i>
 		     	 El test <%=test.getTema()%> no a sido superado <br />

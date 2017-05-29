@@ -36,7 +36,11 @@ public class DbQuery {
 	 * Inserta un hacer test a la base de datos, se necesita su email, nombre test, superado;
 	 */
 	private static final String insertarHacerTest = "insert into hacer_test(email,nombre_test,superado) values(?,?,?);";
-
+	/**
+	 * Recupera un hacer test se necesita el email y el nombre del test
+	 */
+	private static final String recuperarHacerTest = "SELECT email,nombre_test,superado FROM hacer_test where email=? and nombre_test=?";
+	private static final String modificarHacerTest = "update hacer_test set superado=? where email=? and nombre_test=?";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -78,12 +82,28 @@ public class DbQuery {
 		return recupearPreguntas;
 	}
 
+	/**
+	 * Inserta un hacer test 
+	 * @return
+	 */
 	public static String getInsertarHacerTest() {
-		// TODO Auto-generated method stub
 		return insertarHacerTest;
 	}
-	
-	
 
+	/**
+	 * Recupera un hacer test
+	 * @return
+	 */
+	public static String getRecuperarHacerTest() {
+		return recuperarHacerTest;
+	}
+
+	/**
+	 * Modifica un hacer test en la base de datos, cambiando superado a s o n. se necesita su email, y nombre del test
+	 * @return
+	 */
+	public static String getModificarHacerTest() {
+		return modificarHacerTest;
+	}
 	
 }

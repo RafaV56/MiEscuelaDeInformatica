@@ -77,14 +77,35 @@ public class CorregirTest extends HttpServlet {
 			testCorregido.setErrores(preguntas-contadorCorrectas);
 			testCorregido.setNombreTest(test.getNombre());
 			
-			//Si hay usuario inserto el test, si no el resultado del tes 
+			
+			/*Si hay usuario recupero el test 
+			 *si está null lo inserto, si no, compruebo que si es superado
+			 *si lo es no actualizo su estado. 
+			 */
 			if(usuario!=null){
-				ServiceHacerTest servicioHacerTest=null;
+				
+				//recupero el test para saber si está superado				
 				HacerTest hacerTest=null;
+				HacerTest hacerTestBBDD=null;
 				try{			
 					serviceHacerTest=new ServiceHacerTest();
 					hacerTest=new HacerTest(usuario, testCorregido, testCorregido.getSuperado());
-					serviceHacerTest.insertarHacerTest(hacerTest);
+					hacerTestBBDD=serviceHacerTest.recuperarHacerTest(hacerTest);
+					if (hacerTestBBDD==null) {
+						//si es null inserto el test creado en esté servlet
+						serviceHacerTest.insertarHacerTest(hacerTest);
+					}else if (hacerTestBBDD.getSuperado().equals("n")) {
+						//Si no está superado en la BBDD compruebo si está superado.
+						if (hacerTest.getSuperado().equals("s")) {
+							//si lo está lo actualizo
+							serviceHacerTest.modificarHacerTest(hacerTest);							
+						}
+					}else if(hacerTestBBDD.getSuperado().equals("s")){
+						//Si fue superado anteriormete se informa al usuario
+						testCorregido.setSuperadoAnteriormente(true);
+					}else{
+						throw new ServiceException("No se puede saber si el test fue superado anteriormete");
+					}
 				} catch (ServiceException e) {
 					if(e.getCause()==null){
 						testCorregido.setError(e.getMessage());
