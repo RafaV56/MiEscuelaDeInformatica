@@ -6,6 +6,8 @@ public class TestCorregido {
 	private String tecnologia;
 	private String nombreTest;
 	private String superado;
+	private boolean superadoAnteriormente;
+
 	/**
 	 * Agregar un error cuando el test fuera null
 	 */
@@ -32,9 +34,10 @@ public class TestCorregido {
 	 * @param error
 	 * @param correctas
 	 * @param errores
+	 * @param superadoAnteriormete
 	 */
 	public TestCorregido(String tema, String tecnologia, String nombreTest,
-			String superado, String error, int correctas, int errores) {
+			String superado, String error, int correctas, int errores,boolean superadoAnteriormete) {
 		super();
 		this.tema = tema;
 		this.tecnologia = tecnologia;
@@ -43,6 +46,7 @@ public class TestCorregido {
 		this.error = error;
 		this.correctas = correctas;
 		this.errores = errores;
+		this.superadoAnteriormente=superadoAnteriormete;
 	}
 	/**
 	 * Tema de la tecnología
@@ -139,12 +143,31 @@ public class TestCorregido {
 		if (s.length() == 0) return s;
 		return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
 	}
+	
+	/**
+	 * si es true el test fue superado anteriormente
+	 * @return
+	 */
+	public boolean getSuperadoAnteriormente() {
+		return superadoAnteriormente;
+	}
+	
+	/**
+	 * Si el test es superado anteriormete asignar true
+	 */
+	public void setSuperadoAnteriormente(boolean superadoAnteriormente) {
+		this.superadoAnteriormente = superadoAnteriormente;
+	}
+	
 	@Override
 	public String toString() {
 		return "TestCorregido [tema=" + tema + ", tecnologia=" + tecnologia
 				+ ", nombreTest=" + nombreTest + ", superado=" + superado
+				+ ", superadoAnteriormente=" + superadoAnteriormente
 				+ ", error=" + error + ", correctas=" + correctas
 				+ ", errores=" + errores + "]";
 	}
+	
+
 
 }
