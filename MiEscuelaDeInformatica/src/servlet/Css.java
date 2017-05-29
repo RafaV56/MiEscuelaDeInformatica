@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Css
  */
-@WebServlet("/CSS")
 public class Css extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +32,7 @@ public class Css extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("barra", "CSS");
+		request.getSession().setAttribute("barra", "Css");
 		getServletContext().getRequestDispatcher("/css.jsp").forward(request, response);
 	}
 

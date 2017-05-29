@@ -1,4 +1,3 @@
-<!--Sección principal-->
 <div class="row" style="margin:0.2em 0em;">
 
 <!--Tema uno java--> 
@@ -6,16 +5,9 @@
 <h3 class="text-center alert alert-info">Java</h3>
   <nav>
       <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section1">Identificadores</a></li>
-      <li><a href="#section2">Operadores</a></li>
-      <li><a href="#section3">Tipo primitivos</a></li>
-      <!--<li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-      <li><a href="#section41">Section 4-1</a></li>
-      <li><a href="#section42">Section 4-2</a></li>                     
-      </ul>
-      </li>-->
+      <li><a href="#identificadores" data-toggle="collapse" data-parent="#accordion">Identificadores</a></li>
+      <li><a href="#operadores" data-toggle="collapse" data-parent="#accordion">Operadores</a></li>
+      <li><a href="#collapse3" data-toggle="collapse" data-parent="#accordion">Tipo primitivos</a></li>
       </ul>
   </nav>
 </div><!--fin side bar-->
@@ -38,10 +30,10 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#basico">BASICO</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#identificadores">Identificadores</a>
             </h4>
           </div>
-          <div id="basico" class="panel-collapse collapse in">
+          <div id="identificadores" class="panel-collapse collapse in">
             <div class="panel-body">
                 <h3>Identificadores</h3>
                  <p class="text-justify">En Java, es necesario poner nombre a muchas cosas, como para las variables, los métodos
@@ -51,29 +43,35 @@
                  <hr>
                  <h3>Ejemplo</h3>
                  <p>
-                    <pre>
+                    <pre class="pre-scrollable">
 public class Indentificadores {
 
-public static void main(String[] args) {
-//Ejemplo validos
-String x;
-String x1;
-String a0b1c3;
-
-//Invalidos
-String <span style="color:red;">1</span>x;
-String mi Edad;
-String a*3;
-}
+	public static void main(String[] args) {
+	<span class="bg-info">//Ejemplo validos</span>
+	String x;
+	String x1;
+	String a0b1c3;
+	
+	<span class="bg-info">//Invalidos</span>
+	
+	<span class="bg-info">//El indentificador no puede empezar con un número</span>
+	String <span style="color:red;" class="bg-danger">1</span>x; 
+	
+	<span class="bg-info">//No puede tener un espacio</span>
+	String mi<span style="color:red;" class="bg-danger"> </span>edad; 
+	
+	<span class="bg-info">//El asterisco no se puede usar en un identificador</span>
+	String a<span style="color:red;" class="bg-danger">*</span>3; 
+	}
 
 }</pre>
                  </p>
-                 <hr>
+                 <hr>   
                  <p>
-                 
-                 <p>
-              	   <form action="Test?num=1" method="post">
-                   	<input name="test" type="submit" value="Test" class="btn btn-info" />
+                 	Pequeño test para repasar los conocimientos
+                 </p>              
+              	   <form action="Test?nombre=java-identificadores" method="post">
+                   	<input type="submit" value="Test" class="btn btn-info" />
                	   </form>
             </div>
           </div>
@@ -81,13 +79,15 @@ String a*3;
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Operadores</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#operadores">Operadores</a>
             </h4>
           </div>
-          <div id="collapse2" class="panel-collapse collapse ">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          <div id="operadores" class="panel-collapse collapse ">
+            <div class="panel-body">
+             <form action="Test?nombre=java-operadores" method="post">
+                   	<input type="submit" value="Test" class="btn btn-info" />
+               	   </form>            
+            </div>
           </div>
         </div>
         <div class="panel panel-default">

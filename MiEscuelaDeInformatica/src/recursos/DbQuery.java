@@ -14,12 +14,33 @@ public class DbQuery {
 	 * Error en la clave primaria de una base de datos de MY_SQL
 	 */
 	public static final int DUPLICATE_PK_MYSQL = 1062;
+	/**
+	 * Error en la clave ajena de una base de datos de MY_SQL
+	 */
+	public static final int FK_REFERENCE = 1452;
 	
 	/**
 	 * Variable para modificar un usuario por medio de su email. necesita todos los campos
 	 */
 	private static final String modificarUsuario = "update usuario set nombre=?, edad=?, nick=?, contrasena=? where email=?";
-
+	/**
+	 * Variable que recupera un test segun un nombre de test.
+	 */
+	private static final String recuperarTest = "SELECT nombre FROM test where nombre=?";
+	
+	/**
+	 * Variable que recupera las preguntas según un nombre de test, recupera la pregunta y sus respuestas de [a-e] y respuesta correcta
+	 */
+	private static final String recupearPreguntas = "SELECT codigo_ejemplo,pregunta,a,b,c,d,e,correcta FROM preguntas p where nombre_test=?";
+	/**
+	 * Inserta un hacer test a la base de datos, se necesita su email, nombre test, superado;
+	 */
+	private static final String insertarHacerTest = "insert into hacer_test(email,nombre_test,superado) values(?,?,?);";
+	/**
+	 * Recupera un hacer test se necesita el email y el nombre del test
+	 */
+	private static final String recuperarHacerTest = "SELECT email,nombre_test,superado FROM hacer_test where email=? and nombre_test=?";
+	private static final String modificarHacerTest = "update hacer_test set superado=? where email=? and nombre_test=?";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -45,7 +66,44 @@ public class DbQuery {
 		return modificarUsuario;
 	}
 	
+	/**
+	 * Recupera un test de la base de datos, necesita saber el nombre del test
+	 * @return todas las preguntas relacionadas con test
+	 */
+	public static String getTest() {
+		return recuperarTest;
+	}
 	
+	/**
+	 * Recupera todas las preguntas por el nombre de test
+	 * @return
+	 */
+	public static String getPreguntas(){
+		return recupearPreguntas;
+	}
 
+	/**
+	 * Inserta un hacer test 
+	 * @return
+	 */
+	public static String getInsertarHacerTest() {
+		return insertarHacerTest;
+	}
+
+	/**
+	 * Recupera un hacer test
+	 * @return
+	 */
+	public static String getRecuperarHacerTest() {
+		return recuperarHacerTest;
+	}
+
+	/**
+	 * Modifica un hacer test en la base de datos, cambiando superado a s o n. se necesita su email, y nombre del test
+	 * @return
+	 */
+	public static String getModificarHacerTest() {
+		return modificarHacerTest;
+	}
 	
 }

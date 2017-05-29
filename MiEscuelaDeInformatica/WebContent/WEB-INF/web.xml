@@ -18,7 +18,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Java</servlet-name>
-    <url-pattern>/JAVA</url-pattern>
+    <url-pattern>/Java</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Sql</servlet-name>
@@ -26,7 +26,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Sql</servlet-name>
-    <url-pattern>/SQL</url-pattern>
+    <url-pattern>/Sql</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Css</servlet-name>
@@ -34,7 +34,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Css</servlet-name>
-    <url-pattern>/CSS</url-pattern>
+    <url-pattern>/Css</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Test</servlet-name>
@@ -91,5 +91,13 @@
   <servlet-mapping>
     <servlet-name>AceptarCambios</servlet-name>
     <url-pattern>/AceptarCambios</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CorregirTest</servlet-name>
+    <servlet-class>servlet.CorregirTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CorregirTest</servlet-name>
+    <url-pattern>/CorregirTest</url-pattern>
   </servlet-mapping>
 </web-app>

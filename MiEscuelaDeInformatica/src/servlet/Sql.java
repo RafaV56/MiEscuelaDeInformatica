@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Sql
  */
-@WebServlet("/SQL")
 public class Sql extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +32,7 @@ public class Sql extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("barra", "SQL");
+		request.getSession().setAttribute("barra", "Sql");
 		getServletContext().getRequestDispatcher("/sql.jsp").forward(request, response);
 	}
 

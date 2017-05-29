@@ -27,7 +27,6 @@ public class AceptarCambios extends HttpServlet {
      */
     public AceptarCambios() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

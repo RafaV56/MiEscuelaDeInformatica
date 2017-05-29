@@ -22,7 +22,7 @@ public class TransaccionesManager {
 
 	private Connection con;
 
-	// para  octener la conexion del pool de conexiones, ver WEB.xml
+	// para  obtener la conexión del pool de conexiones, ver WEB.xml
 	public TransaccionesManager() throws ServiceException {
 		try {
 			Context ctx = new InitialContext();
@@ -123,8 +123,23 @@ public class TransaccionesManager {
 	 * @return
 	 */
 	public UsuarioDAO getUsuarioDAO() {
-		// TODO Auto-generated method stub
+		
 		return new UsuarioDAO(con);
+	}
+
+	public TestDAO getTestDAO() {
+	
+		return new TestDAO(con);
+	}
+
+	public PreguntaDAO getPreguntaDAO() {
+		
+		return new PreguntaDAO(con);
+	}
+
+	public HacerTestDAO getHacerTestDAO() {
+
+		return new HacerTestDAO(con);
 	}
 
 

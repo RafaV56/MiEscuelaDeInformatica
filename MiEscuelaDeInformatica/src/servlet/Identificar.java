@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,12 +48,48 @@ public class Identificar extends HttpServlet {
 		Usuario usuario=null;
 		String email=null;
 		String contrasena=null;
-		//String recuerdame=null;
+		String recuerdame=null;
 		ServiceUsuario serviceUsuario=null;
 		try {
 			email=request.getParameter("emailUsuario");
 			contrasena=request.getParameter("contrasena");
-			//System.out.println("email:"+email+" contrasena: "+contrasena);	
+			recuerdame=request.getParameter("recuerdame");
+			
+			Cookie todas[]=request.getCookies();
+						
+			//si recuerdame es on agrego las cookies al navegador
+			if (recuerdame!=null) {
+				if(recuerdame.equals("on")){	
+				//Veo si tenemos cookies en guardadas en el navegador del usuario que se crean en welcome, si no estan email y contraseña las creo			
+					if (request.getSession().getAttribute("email")==null && request.getSession().getAttribute("contrasena")==null) {
+
+						Cookie emailCookie = new Cookie ("email",email);
+						Cookie contrasenaCookie = new Cookie ("contrasena",contrasena);
+
+						//las cookies expiraran en un año
+						emailCookie.setMaxAge(60*60*24*364);
+						contrasenaCookie.setMaxAge(60*60*24*364);
+
+						//para que se pueda cargar en cualquier parte de la aplicación
+						emailCookie.setPath("/");
+						contrasenaCookie.setPath("/");
+					
+						response.addCookie (emailCookie);
+						response.addCookie (contrasenaCookie);
+					}	
+				}
+				
+			}else {
+				//si no quiere recordar su usuario borramos todos los que tenemos guardados en su navegador
+				for (Cookie cookie : todas) {
+					if (cookie.getName().equals("email")) {
+						cookie.setMaxAge(-1);
+					}
+					if (cookie.getName().equals("contrasena")) {
+						cookie.setMaxAge(-1);
+					}
+				}
+			}	
 			usuario=Usuario.crearUsuario(email);
 			
 			serviceUsuario=new ServiceUsuario();
@@ -81,7 +118,7 @@ public class Identificar extends HttpServlet {
 		}catch (DomainException e) {
 			request.setAttribute("error", e.getMessage());
 		}
-		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);//Error Lógico para usuario
+		getServletContext().getRequestDispatcher(resultado).forward(request, response);
 	}
 
 }
