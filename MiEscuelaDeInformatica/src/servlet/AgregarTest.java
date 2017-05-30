@@ -1,28 +1,31 @@
 package servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.ServiceProfesor;
+import service.ServiceUsuario;
+
 import domain.Profesor;
 import domain.Usuario;
-import service.ServiceProfesor;
 import exceptions.DomainException;
 import exceptions.ServiceException;
 
 /**
- * Servlet implementation class AgregarProfesor
+ * Servlet implementation class AgregarTest
  */
-public class AgregarProfesor extends HttpServlet {
+@WebServlet("/AgregarTest")
+public class AgregarTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AgregarProfesor() {
+    public AgregarTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,32 +41,37 @@ public class AgregarProfesor extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultado="/agregarProfesor.jsp";
-		Usuario usuario=(Usuario) request.getSession().getAttribute("usuario");
-		String emailProfe=request.getParameter("emailProfesor");
+		String resultado="/agregarTest.jsp";
+		
+		Usuario usuario=(Usuario)request.getSession().getAttribute("usuario");
+		
+		//llamamos al servicio Profesor para saber si el usuario es profesor
+		ServiceProfesor servicioProfesor=null;
+		Profesor profesor=null;
 		
 		if (usuario==null) {
+			request.getSession().invalidate();
 			resultado="/Welcome";
-		}else if (emailProfe!=null) {
+		}else{
+			try {
 			
-			ServiceProfesor agregarProfe=null;
-			try{
-			Usuario profesor=new Usuario();
-			profesor.setEmail(emailProfe.trim());
-			
-			Profesor profe=new Profesor(profesor, usuario);
-			
-				agregarProfe=new ServiceProfesor();
-				agregarProfe.insertarProfesor(profe);
-				//si todo va bien respondo
-				request.setAttribute("respuesta","El profesor se inserto correctamente");
+				servicioProfesor = new ServiceProfesor();
+				profesor=servicioProfesor.recuperarProfesor(usuario);
 				
-			}catch (ServiceException e) {
+				//Si el profesor es null, el usuario no es profesor y se le envia el mensaje de error
+				if (profesor==null) {
+					request.setAttribute("error","No eres profesor");
+
+				} //seguir aqui****                  
+				
+			} catch (ServiceException e) {
 				request.setAttribute("error", e.getMessage());
-			}catch (DomainException e) {
+			} catch (DomainException e) {
 				request.setAttribute("error", e.getMessage());
-			}
-		}	
+			}			
+			
+		}
+		
 		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);
 	}
 

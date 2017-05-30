@@ -7,10 +7,12 @@ import exceptions.DomainException;
 import util.Validator;
 
 public class Test {
-		/**
+	/**
 	 * El nombre del test debe tener 1-50 caracteres
 	 */
 	private String nombre;
+	private Usuario creadoPor;
+	
 	private List<Pregunta> preguntas;
 	
 	/**
@@ -19,7 +21,7 @@ public class Test {
 	public Test(){}
 	
 	/**
-	 * Retorna un Test a partir de su nombre
+	 * Retorna un Test a partir de su nombre validado
 	 * @param nombre
 	 * @return
 	 */
@@ -43,10 +45,10 @@ public class Test {
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
-		if (nombre==null) {
-			this.nombre=nombre;
-		}else if (Validator.length(nombre, 1, 50) ) {
+		
+		if (Validator.length(nombre, 1, 50) ) {
 			this.nombre = nombre;
 		}else{
 			throw new DomainException("El nombre del test no es correcto");
@@ -55,13 +57,22 @@ public class Test {
 	public List getPreguntas() {
 		return preguntas;
 	}
+
 	public void setPreguntas(List preguntas) {
 		this.preguntas = preguntas;
 	}
 	
-	@Override
-	public String toString() {
-		return "Test [nombre=" + nombre + ", preguntas=" + preguntas + "]";
+	
+	public Usuario getCreadoPor() {
+		return creadoPor;
 	}
 
+	public void setCreadoPor(Usuario creadoPor) {
+		if (creadoPor!=null) {
+			this.creadoPor = creadoPor;
+		} else {
+			throw new DomainException("El creador del test no exite");
+		}
+		
+	}
 }
