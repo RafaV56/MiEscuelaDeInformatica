@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.Profesor;
 import domain.Usuario;
-import service.ServiceAgregarProfesor;
+import service.ServiceProfesor;
 import exceptions.DomainException;
 import exceptions.ServiceException;
 
@@ -30,7 +31,7 @@ public class AgregarProfesor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	doPost(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -45,13 +46,15 @@ public class AgregarProfesor extends HttpServlet {
 			resultado="/Welcome";
 		}else if (emailProfe!=null) {
 			
-			ServiceAgregarProfesor agregarProfe=null;
+			ServiceProfesor agregarProfe=null;
 			try{
 			Usuario profesor=new Usuario();
 			profesor.setEmail(emailProfe.trim());
 			
-				agregarProfe=new ServiceAgregarProfesor();
-				agregarProfe.insertarProfesor(profesor, usuario);
+			Profesor profe=new Profesor(profesor, usuario);
+			
+				agregarProfe=new ServiceProfesor();
+				agregarProfe.insertarProfesor(profe);
 				//si todo va bien respondo
 				request.setAttribute("respuesta","El profesor se inserto correctamente");
 				

@@ -17,7 +17,7 @@ public class DbQuery {
 	/**
 	 * Error en la clave ajena de una base de datos de MY_SQL
 	 */
-	public static final int FK_REFERENCE = 1452;
+	public static final int FK_REFERENCE_MYSQL = 1452;
 	
 	/**
 	 * Variable para modificar un usuario por medio de su email. necesita todos los campos
@@ -43,6 +43,7 @@ public class DbQuery {
 	private static final String modificarHacerTest = "update hacer_test set superado=? where email=? and nombre_test=?";
 	private static final String recuperarTestDesarrollados = "SELECT nombre_test,superado FROM hacer_test where email=?";
 	private static final String insertaProfesor = "insert into profesores(profesor,alumno) values(?,?)";
+	private static final String recuperarProfesores = "SELECT profesor,alumno FROM profesores where alumno=?";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -122,6 +123,14 @@ public class DbQuery {
 	 */
 	public static String getInsertarProfesor() {
 		return insertaProfesor;
+	}
+
+	/**
+	 * Recupera todos los profesores de un alumno
+	 * @return
+	 */
+	public static String getRecuperarProfesores() {
+		return recuperarProfesores;
 	}
 	
 }
