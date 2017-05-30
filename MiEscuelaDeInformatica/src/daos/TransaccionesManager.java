@@ -142,6 +142,10 @@ public class TransaccionesManager {
 		return new HacerTestDAO(con);
 	}
 
+	public ProfesorDAO getProfesorDAO() {
+		return new ProfesorDAO(con);
+	}
+
 
 
 }
