@@ -34,7 +34,9 @@ private static final String DB_ERR = "Error de la base de datos";
 		} catch (SQLException e) {
 			if (e.getErrorCode() == DbQuery.DUPLICATE_PK_MYSQL) {
 				throw new DAOException("Ya tienes a este profesor asignado");
-			}else {
+			}else if (e.getErrorCode()==DbQuery.FK_REFERENCE) {
+				throw new DAOException("El profesor no existe");
+			}else{
 				throw new DAOException(DB_ERR, e);
 			}
 		} finally {

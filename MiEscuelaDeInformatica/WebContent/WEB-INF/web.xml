@@ -108,4 +108,12 @@
     <servlet-name>AgregarProfesor</servlet-name>
     <url-pattern>/AgregarProfesor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>VerTest</servlet-name>
+    <servlet-class>servlet.VerTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerTest</servlet-name>
+    <url-pattern>/VerTest</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,9 +1,17 @@
 package domain;
 
+import java.io.Serializable;
+
 import util.Validator;
 import exceptions.DomainException;
 
-public class HacerTest {
+public class HacerTest implements Serializable{
+	
+	/**
+	 * Versión de la clase
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	
 	private Usuario usuario;
 	private TestCorregido testCorregido;
