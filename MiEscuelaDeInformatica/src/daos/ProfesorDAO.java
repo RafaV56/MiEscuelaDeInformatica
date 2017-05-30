@@ -92,4 +92,37 @@ private static final String DB_ERR = "Error de la base de datos";
 		return lista;
 	}
 
+	/**
+	 * Recupera un profesor si el usuario lo es
+	 * @param usuario
+	 * @return
+	 */
+	public Profesor recuperarProfesor(Usuario usuario) {
+		PreparedStatement st = null;
+		ResultSet rs =null ;
+		
+		Profesor profe=null;
+		Usuario profesor=null;
+		
+			try {
+				st = con.prepareStatement(DbQuery.getRecuperarProfesor());
+				st.setString(1,usuario.getEmail());
+				rs=st.executeQuery();
+				if (rs.next()){
+					String profesorEmail=rs.getString(1);
+					profesor=new Usuario();
+					profesor.setEmail(profesorEmail);
+					profe=new Profesor(profesor, usuario);
+				}		
+
+			} catch (SQLException e) {
+				throw new DAOException(DB_ERR, e);
+			} finally {
+			Recursos.closeResultSet(rs);
+			Recursos.closePreparedStatement(st);
+			
+		}
+		return profe;
+	}
+
 }

@@ -47,6 +47,12 @@ public class ServiceProfesor {
 		
 	}
 	
+	/**
+	 * Recupera todos los profesores de un alumno
+	 * @param alumno
+	 * @return
+	 * @throws ServiceException
+	 */
 	public List<Profesor> recuperarTodosProfesores(Usuario alumno) throws ServiceException{
 		TransaccionesManager trans = null;
 		List<Profesor> list = new ArrayList<Profesor>();
@@ -72,6 +78,40 @@ public class ServiceProfesor {
 
 		}
 		return list;
+	}
+	
+
+	/**
+	 * Recupera un profesor si el usuario lo es
+	 * @param usuario
+	 * @return
+	 * @throws ServiceException
+	 */
+	public Profesor recuperarProfesor(Usuario usuario) throws ServiceException{
+		TransaccionesManager trans = null;
+		Profesor profesor =null;
+		try {
+
+			trans = new TransaccionesManager();
+			ProfesorDAO profesorDAO = trans.getProfesorDAO();
+			profesor = profesorDAO.recuperarProfesor(usuario);
+			trans.closeCommit();
+		} catch (DAOException e) {
+			try{
+				trans.closeRollback();
+			}catch (DAOException e1){
+				throw new ServiceException(e.getMessage(),e1);//Error interno
+			}
+
+			if(e.getCause()==null){
+				throw new ServiceException(e.getMessage());//Error Lógico
+			}else{
+
+				throw new ServiceException(e.getMessage(),e);//Error interno
+			}
+
+		}
+		return profesor;
 	}
 
 }
