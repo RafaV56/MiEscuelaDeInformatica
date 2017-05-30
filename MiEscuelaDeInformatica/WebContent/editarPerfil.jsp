@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="domain.*,java.util.*;"%>
+<%@ page import="domain.*;"%>
 <!--Rafael Velásquez Millán, Version:0.2, 6/2/2017-->
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +33,7 @@
          <%
     		String error=(String)request.getAttribute("error");
     		String respuesta=(String)request.getAttribute("respuesta");
+    		Usuario usuario=(Usuario)session.getAttribute("usuario");
     		
        /*busco la repuesta del servlet agregar usuario que si tiene una respuesta 
          hay un usuario creado correctamente pero si tiene error lo explica
@@ -54,48 +55,8 @@
        </h1>
        <%
        }
-       %>
-
-		<%
-        Usuario usuario=(Usuario)session.getAttribute("usuario");
-		ArrayList<HacerTest> testDesarrollados=(ArrayList<HacerTest>)session.getAttribute("testDesarrollados");
         if(usuario!=null){ 	
-        	//Si hay test desarrollados y son almenos 1l
-        	if(testDesarrollados!=null && testDesarrollados.size()>0){
-        %>
-
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-success">
-				<div class="table-responsive">
-				<table class="table table-striped table-bordered">
-			    <thead>
-			      <tr>
-			        <th>Nombre del Test</th>
-			        <th>¿Superado?</th>
-			      </tr>
-			    </thead>
-			    <% 
-			    	for(HacerTest test: testDesarrollados){
-			    %>
-			    <tbody>
-			    	<tr>
-			    		<td>
-			    		<%=test.getTestCorregido().getNombreTest()%>
-			    		</td>
-			    		<td>
-			    		<%=test.getSuperado().equals("s")?"Si":"No"%>
-			    		</td>
-			    	</tr>
-				</tbody>
-				<%}//fin del for %>
-				</table>
-				</div>
-			</div>
-		<%
-		
-			    	}//fin del testDesarrollados
-		%>
-		
+        %>		
 		</div><!-- fin del col-10 -->
 		<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">

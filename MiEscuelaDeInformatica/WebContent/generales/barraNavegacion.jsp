@@ -1,8 +1,8 @@
 <%
 	String barra=(String)session.getAttribute("barra");//para identificar cual es el link local
 	String nick=(String)session.getAttribute("nickUsuario");//para identificar el nick del usuario	
-	String email=(String)session.getAttribute("email");//para identificar el nick del usuario	
-	String contrasena=(String)session.getAttribute("contrasena");//para identificar el nick del usuario	
+	String email=(String)session.getAttribute("email");//para el email	
+	String contrasena=(String)session.getAttribute("contrasena");//para identificar la contraseña	
 %>
  <nav class="navbar navbar-inverse">
         <div class="navbar-header">
@@ -29,6 +29,9 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-education"></span> <%=nick%>
 				  <span class="caret"></span></a>
 				  <ul class="dropdown-menu alert-warning">
+				  	<li><a href="VerTest" class="text-center"><i class="fa fa-file-code-o" style="color:#216c2e;"></i> Ver todos mis test</a></li>
+				    <li><a href="AgregarProfesor" class="text-center"><i class="fa fa-user-plus" style="color:#216c2e;"></i> Añadir Profesor</a></li>
+				    <li class="divider"></li>
 				    <li><a href="CerrarSesion" class="text-center"><i class="fa fa-power-off" style="color:#ff4a4a;"></i> Cerrar sesión</a></li>
 				  </ul>
 		      </li>

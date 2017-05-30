@@ -42,6 +42,7 @@ public class DbQuery {
 	private static final String recuperarHacerTest = "SELECT email,nombre_test,superado FROM hacer_test where email=? and nombre_test=?";
 	private static final String modificarHacerTest = "update hacer_test set superado=? where email=? and nombre_test=?";
 	private static final String recuperarTestDesarrollados = "SELECT nombre_test,superado FROM hacer_test where email=?";
+	private static final String insertaProfesor = "insert into profesores(profesor,alumno) values(?,?)";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -113,6 +114,14 @@ public class DbQuery {
 	 */
 	public static String getRecuperarTestDesarrollados() {
 		return recuperarTestDesarrollados;
+	}
+
+	/**
+	 * Inserta un profesor, se necesita el email del profesor y el email del alumno
+	 * @return
+	 */
+	public static String getInsertarProfesor() {
+		return insertaProfesor;
 	}
 	
 }

@@ -100,4 +100,20 @@
     <servlet-name>CorregirTest</servlet-name>
     <url-pattern>/CorregirTest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AgregarProfesor</servlet-name>
+    <servlet-class>servlet.AgregarProfesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AgregarProfesor</servlet-name>
+    <url-pattern>/AgregarProfesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>VerTest</servlet-name>
+    <servlet-class>servlet.VerTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerTest</servlet-name>
+    <url-pattern>/VerTest</url-pattern>
+  </servlet-mapping>
 </web-app>
