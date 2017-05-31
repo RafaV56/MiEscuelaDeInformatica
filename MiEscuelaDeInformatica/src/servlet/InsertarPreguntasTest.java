@@ -72,11 +72,14 @@ public class InsertarPreguntasTest extends HttpServlet {
 					//ahora recuperamos el test de la base de datos
 					servicioTest=new ServicioTest();
 					test=Test.crearTest(nombreTest, usuario);
-					test=servicioTest.recuperarTest(test);
+					Test testBBDD=servicioTest.recuperarTest(test);
 					//si el test es nullo no existe
-					if (test==null) {
+					if (testBBDD==null) {
 						request.setAttribute("error","El test con el nombre: "+nombreTest+" no exite, Créalo primero en el panel superior");
 						resultado="/agregarTest.jsp";
+					}else{
+						//si todo va bien, agregamos el test a la sesion y vamos a insertarRepuesta.jsp
+						request.getSession().setAttribute("test", test);
 					}
 				}
 
