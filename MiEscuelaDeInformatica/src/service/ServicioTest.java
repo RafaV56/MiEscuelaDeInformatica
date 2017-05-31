@@ -14,12 +14,12 @@ import exceptions.ServiceException;
 public class ServicioTest {
 	
 	/**
-	 * Recupera un test completo de la base de datos solo se necesita su nombre
+	 * Recupera todas las preguntas de un test y se las añade
 	 * @param test usuario con el email
 	 * @return test completo
 	 * @throws ServiceException
 	 */
-	public Test recuperarTest(Test test) throws ServiceException{
+	public Test recuperarTodasPreguntasTest(Test test) throws ServiceException{
 		TransaccionesManager trans = null;
 		TestDAO testDAO=null;
 		PreguntaDAO preguntaDAO=null;
@@ -93,6 +93,41 @@ public class ServicioTest {
 			}
 
 		}
+		
+	}
+	
+	/**
+	 * Recupera un test de la base de datos, nombre y usuario con su email
+	 * @param test
+	 * @return
+	 * @throws ServiceException 
+	 */
+	public Test recuperarTest(Test test) throws ServiceException{
+		TransaccionesManager trans = null;
+
+		try {
+			trans = new TransaccionesManager();
+			TestDAO testDAO = trans.getTestDAO();
+			test = testDAO.recuperarTest(test);
+
+
+			trans.closeCommit();
+		} catch (DAOException e) {
+			try{
+				trans.closeRollback();
+			}catch (DAOException e1){
+				throw new ServiceException(e.getMessage(),e1);//Error interno
+			}
+
+			if(e.getCause()==null){
+				throw new ServiceException(e.getMessage());//Error Lógico
+			}else{
+
+				throw new ServiceException(e.getMessage(),e);//Error interno
+			}
+
+		}
+		return test;
 		
 	}
 }

@@ -132,4 +132,12 @@
     <servlet-name>InsertarTest</servlet-name>
     <url-pattern>/InsertarTest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>InsertarPreguntasTest</servlet-name>
+    <servlet-class>servlet.InsertarPreguntasTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertarPreguntasTest</servlet-name>
+    <url-pattern>/InsertarPreguntasTest</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -56,7 +56,7 @@ public class Tests extends HttpServlet {
 				//recupero el test con el nombre
 				test=new Test(nombreTest);
 							
-				test=servicioTest.recuperarTest(test);
+				test=servicioTest.recuperarTodasPreguntasTest(test);
 				
 				request.getSession().setAttribute("testCompleto", test);
 			
