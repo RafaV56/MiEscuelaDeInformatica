@@ -15,7 +15,13 @@
     	 
     	 $('#codigoEjemplo').Editor();
     	 
-     })
+    	 $('#enviar').click(function(e){
+    		$('#codigoEjemplo').text($('#codigoEjemplo').Editor('getText'));
+    		 e.preventDefault();
+    		$('#formulario').submit();
+    	 });
+    	 
+     });
      
      </script>
      
@@ -46,26 +52,14 @@
 				</span>
 				</div><!-- fin panel heading -->
 				<div class="panel-body">
-				<div class="row">
-    <div class="col-md-10 col-md-offset-1">
-    
-      <div class="row">
-      <form action="InsertarPregunta" method="post">
-        <div class="col-md-6">
-          <span style="font-size: 1.3em; color:#2c8042;">Código de ejemplo</span>
-        </div>
-      </div>
-      <textarea class="form-control" id="codigoEjemplo" name="codigoEjemplo" placeholder="Código de ejemplo" rows="5" ></textarea>
-      <br>
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <input type="submit" value="Guardar pregunta" class="btn btn-success" id="enviarCodigo" />
-        </div>
-      </div>
-        </form>
-    </div>
-  </div>
-
+				<form action="InsertarPregunta" method="get" id="formulario">
+				  <div class="form-group">
+				    <label for="codigoEjemplo">Codigo Ejemplo</label>
+				    <textarea rows="8" class="form-control" name="codigoEjemplo" id="codigoEjemplo"></textarea>
+				  </div>
+				   <button id="enviar" class="btn btn-success">Modificar</button>
+				</form>
+				
 				</div><!-- fin panel body -->
 				</div><!-- fin panel-default -->
 		 <p>
