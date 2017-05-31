@@ -52,10 +52,23 @@
 				</span>
 				</div><!-- fin panel heading -->
 				<div class="panel-body">
-				<form action="InsertarPregunta" method="get" id="formulario">
+				<form action="InsertarPregunta" method="post" id="formulario">
 				  <div class="form-group">
-				    <label for="codigoEjemplo">Codigo Ejemplo</label>
-				    <textarea rows="8" class="form-control" name="codigoEjemplo" id="codigoEjemplo"></textarea>
+				  <div class="panel-group">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a data-toggle="collapse" href="#collapse1">Codigo Ejemplo [No obligatorio]</a>
+					      </h4>
+					    </div>
+					    <div id="collapse1" class="panel-collapse collapse">
+					      <div class="panel-body">
+							 <textarea rows="8" class="form-control" name="codigoEjemplo" id="codigoEjemplo"></textarea>
+						</div>
+					      <div class="panel-footer">Inserta un código de ejemplo, no es obligatorio.</div>
+					    </div>
+					  </div>
+					</div> 
 				  </div>
 				   <button id="enviar" class="btn btn-success">Modificar</button>
 				</form>
