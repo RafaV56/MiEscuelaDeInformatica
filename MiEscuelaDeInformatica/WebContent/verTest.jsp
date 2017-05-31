@@ -48,6 +48,8 @@
 					 	Tus test desarrollados
 				</span>
 				</div>
+				<div class="panel-body">
+				
 				
 				<div class="table-responsive" style="padding:0.2em;">
 				<table class="table table-striped table-bordered">
@@ -82,6 +84,7 @@
 				
 				%>
 					</table>
+					</div>
 					</div><!-- fin panel body -->
 				</div><!-- fin panel-default -->
 				<%

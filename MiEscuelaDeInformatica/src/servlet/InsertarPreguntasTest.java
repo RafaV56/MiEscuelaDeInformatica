@@ -16,15 +16,16 @@ import exceptions.DomainException;
 import exceptions.ServiceException;
 
 /**
- * Servlet implementation class InsertarTest
+ * Servlet implementation class InsertarPreguntasTest
  */
-public class InsertarTest extends HttpServlet {
+@WebServlet("/InsertarPreguntasTest")
+public class InsertarPreguntasTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertarTest() {
+    public InsertarPreguntasTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +41,7 @@ public class InsertarTest extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultado="/agregarTest.jsp";
+		String resultado="/insertarPreguntasTest.jsp";
 		
 		Usuario usuario=(Usuario)request.getSession().getAttribute("usuario");
 		String nombreTest=request.getParameter("nombreTest");
@@ -60,21 +61,28 @@ public class InsertarTest extends HttpServlet {
 				servicioProfesor = new ServiceProfesor();
 				profesor=servicioProfesor.recuperarProfesor(usuario);
 				
-				//Si el profesor es null, el usuario no es profesor y se le envia el mensaje de error
+				//Si no es profesor se enviar al controlador de agregar test
 				if (profesor==null) {
-					request.setAttribute("error","No eres profesor");
+					resultado="/AgregarTest";
+				//Si el nombre del test es nulo o vacio se envia el error	
 				}else if (nombreTest==null || nombreTest.equals("")) {
 					request.setAttribute("error","El nombre del test está vacio, intentalo de nuevo");
+					resultado="/agregarTest.jsp";
 				}else{
-				//si todo va bien no hay errores se inserta el test
-				servicioTest=new ServicioTest();
-				
-				test=Test.crearTest(nombreTest, usuario);
-				
-				servicioTest.insertarTest(test);
-				
-				request.setAttribute("respuesta", "El test con el nombre: "+nombreTest+" se inserto correctamente, ahora añade las preguntas en el panel inferior");
+					//ahora recuperamos el test de la base de datos
+					servicioTest=new ServicioTest();
+					test=Test.crearTest(nombreTest, usuario);
+					Test testBBDD=servicioTest.recuperarTest(test);
+					//si el test es nullo no existe
+					if (testBBDD==null) {
+						request.setAttribute("error","El test con el nombre: "+nombreTest+" no exite, Créalo primero en el panel superior");
+						resultado="/agregarTest.jsp";
+					}else{
+						//si todo va bien, agregamos el test a la sesion y vamos a insertarRepuesta.jsp
+						request.getSession().setAttribute("test", test);
+					}
 				}
+
 			} catch (ServiceException e) {
 				request.setAttribute("error", e.getMessage());
 			} catch (DomainException e) {

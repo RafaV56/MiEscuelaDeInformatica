@@ -28,6 +28,11 @@ public class TestDAO {
 		this.con = con;
 	}
 	
+	/**
+	 * Recupera un test por su nombre
+	 * @param test
+	 * @return
+	 */
 	public Test recuperarTest(Test test){
 		PreparedStatement st = null;
 		ResultSet rs =null ;
@@ -69,7 +74,7 @@ public class TestDAO {
 			st.executeUpdate();
 		} catch (SQLException e) {
 			if (e.getErrorCode() == DbQuery.DUPLICATE_PK_MYSQL) {
-				throw new DAOException("El Test ya existe");
+				throw new DAOException("El Test ya existe, intenta otro nombre");
 			}else if (e.getErrorCode() == DbQuery.FK_REFERENCE_MYSQL) {
 				throw new DAOException("El usuario creador del test no existe");
 			}else {
