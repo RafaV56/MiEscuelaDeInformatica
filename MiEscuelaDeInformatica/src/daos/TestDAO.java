@@ -54,6 +54,31 @@ public class TestDAO {
 		
 	}
 	
-	//crear insertar test***
+	/**
+	 * Inserta un test en la base de datos
+	 * @param test
+	 */
+	public void insertarTest(Test test){
+		PreparedStatement st = null;
+		try {
+			//insert into test(nombre,creado_por) values(?,?)
+			st = con.prepareStatement(DbQuery.getInsertarTest());
+			st.setString(1, test.getNombre());
+			st.setString(2, test.getCreadoPor().getEmail());
+			// ejecutamos el insert.			
+			st.executeUpdate();
+		} catch (SQLException e) {
+			if (e.getErrorCode() == DbQuery.DUPLICATE_PK_MYSQL) {
+				throw new DAOException("El Test ya existe");
+			}else if (e.getErrorCode() == DbQuery.FK_REFERENCE_MYSQL) {
+				throw new DAOException("El usuario creador del test no existe");
+			}else {
+				throw new DAOException(DB_ERR, e);
+			}
+		} finally {
+			Recursos.closePreparedStatement(st);
+			
+		}	
+	}
 
 }

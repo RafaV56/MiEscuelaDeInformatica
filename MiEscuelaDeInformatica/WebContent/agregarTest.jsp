@@ -26,6 +26,7 @@
 		 <div class="col-md-10 col-md-offset-1">
          <%
     		String error=(String)request.getAttribute("error");
+    		String respuesta=(String)request.getAttribute("respuesta");
       		 if(error!=null){       
        %>
        <h1 class="alert alert-danger text-center">
@@ -33,6 +34,13 @@
        	<%=error%>
        </h1>
        <%
+       }else if(respuesta!=null){
+    	%>   
+    	 <h1 class="alert alert-success text-center">
+      		 <i class="fa fa-hand-peace-o fa-2"></i>
+       	 <%=respuesta%>
+      	 </h1>
+    	<%	   
        }
         %>
 			<div class="panel panel-default">

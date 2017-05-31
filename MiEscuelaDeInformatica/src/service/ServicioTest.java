@@ -5,6 +5,7 @@ import java.util.List;
 import daos.PreguntaDAO;
 import daos.TestDAO;
 import daos.TransaccionesManager;
+import daos.UsuarioDAO;
 import domain.Pregunta;
 import domain.Test;
 import exceptions.DAOException;
@@ -60,5 +61,38 @@ public class ServicioTest {
 
 		}
 		return test;
+	}
+	
+	/**
+	 * Inserta el nombre del test y su creador
+	 * @param test
+	 * @throws ServiceException 
+	 */
+	public void insertarTest(Test test) throws ServiceException{
+		TransaccionesManager trans = null;
+		try {
+
+			trans = new TransaccionesManager();
+			TestDAO testDAO = trans.getTestDAO();
+			testDAO.insertarTest(test);
+
+
+			trans.closeCommit();
+		} catch (DAOException e) {
+			try{
+				trans.closeRollback();
+			}catch (DAOException e1){
+				throw new ServiceException(e.getMessage(),e1);//Error interno
+			}
+
+			if(e.getCause()==null){
+				throw new ServiceException(e.getMessage());//Error Lógico
+			}else{
+
+				throw new ServiceException(e.getMessage(),e);//Error interno
+			}
+
+		}
+		
 	}
 }

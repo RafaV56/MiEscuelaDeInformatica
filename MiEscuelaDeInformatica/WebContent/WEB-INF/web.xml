@@ -124,4 +124,12 @@
     <servlet-name>AgregarTest</servlet-name>
     <url-pattern>/AgregarTest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>InsertarTest</servlet-name>
+    <servlet-class>servlet.InsertarTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertarTest</servlet-name>
+    <url-pattern>/InsertarTest</url-pattern>
+  </servlet-mapping>
 </web-app>

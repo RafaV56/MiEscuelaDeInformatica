@@ -45,6 +45,7 @@ public class DbQuery {
 	private static final String insertaProfesor = "insert into profesores(profesor,alumno) values(?,?)";
 	private static final String recuperarProfesores = "SELECT profesor,alumno FROM profesores where alumno=?";
 	private static final String recuperarProfesor ="select distinct profesor from profesores where profesor=?";
+	private static final String insertarTest = "insert into test(nombre,creado_por) values(?,?)";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -140,6 +141,10 @@ public class DbQuery {
 	 */
 	public static String getRecuperarProfesor() {
 		return recuperarProfesor;
+	}
+
+	public static String getInsertarTest() {
+		return insertarTest;
 	}
 	
 }

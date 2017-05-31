@@ -8,24 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.ServiceProfesor;
-import service.ServiceUsuario;
-
+import service.ServicioTest;
 import domain.Profesor;
+import domain.Test;
 import domain.Usuario;
 import exceptions.DomainException;
 import exceptions.ServiceException;
 
 /**
- * Servlet implementation class AgregarTest
+ * Servlet implementation class InsertarTest
  */
-@WebServlet("/AgregarTest")
-public class AgregarTest extends HttpServlet {
+public class InsertarTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AgregarTest() {
+    public InsertarTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,10 +43,14 @@ public class AgregarTest extends HttpServlet {
 		String resultado="/agregarTest.jsp";
 		
 		Usuario usuario=(Usuario)request.getSession().getAttribute("usuario");
-		
+		String nombreTest=request.getParameter("nombreTest");
 		//llamamos al servicio Profesor para saber si el usuario es profesor
 		ServiceProfesor servicioProfesor=null;
 		Profesor profesor=null;
+		
+		//Llamamos al servicio test para insertar el test
+		ServicioTest servicioTest=null;
+		Test test=null;
 		
 		if (usuario==null) {
 			request.getSession().invalidate();
@@ -61,9 +64,14 @@ public class AgregarTest extends HttpServlet {
 				if (profesor==null) {
 					request.setAttribute("error","No eres profesor");
 				}
+				//si todo va bien no hay errores se inserta el test
+				servicioTest=new ServicioTest();
 				
-				//si todo va bien no hay errores
+				test=Test.crearTest(nombreTest, usuario);
 				
+				servicioTest.insertarTest(test);
+				
+				request.setAttribute("respuesta", "El test se inserto correctamente, ahora añade las preguntas en el panel inferior");
 			} catch (ServiceException e) {
 				request.setAttribute("error", e.getMessage());
 			} catch (DomainException e) {

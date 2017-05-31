@@ -33,8 +33,8 @@
 				  <span class="caret"></span></a>
 				  <ul class="dropdown-menu alert-warning">
 				 	<li><a href="AgregarTest" class="text-center"><i class="fa fa-paperclip" style="color:#216c2e;"></i> Añadir Test</a></li>
+				 	<li><a href="VerTest" class="text-center"><i class="fa fa-file-code-o" style="color:#216c2e;"></i> Ver todos mis test</a></li>
 				 	<li><a href="VerProfesores" class="text-center"><i class="fa fa-user" style="color:#216c2e;"></i> Mis Profesores</a></li>
-				  	<li><a href="VerTest" class="text-center"><i class="fa fa-file-code-o" style="color:#216c2e;"></i> Ver todos mis test</a></li>
 				    <li><a href="AgregarProfesor" class="text-center"><i class="fa fa-user-plus" style="color:#216c2e;"></i> Añadir Profesor</a></li>
 				    <li class="divider"></li>
 				    <li><a href="CerrarSesion" class="text-center"><i class="fa fa-power-off" style="color:#ff4a4a;"></i> Cerrar sesión</a></li>
