@@ -8,7 +8,7 @@ import exceptions.DAOException;
 import exceptions.ServiceException;
 /**
  * Servicio para usuarios de la escuela de informatica
- * @author Pc
+ * @author Rafael Velásquez
  *
  */
 public class ServiceUsuario {

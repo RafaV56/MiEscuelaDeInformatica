@@ -1,17 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.ServiceProfesor;
-import service.ServicioTest;
-import domain.Profesor;
+import service.ServicePregunta;
+import domain.Pregunta;
 import domain.Test;
-import domain.Usuario;
 import exceptions.DomainException;
 import exceptions.ServiceException;
 
@@ -40,13 +38,33 @@ public class InsertarPregunta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultado="/agregarTest.jsp";
+		String resultado="/insertarPreguntasTest.jsp";
 		
-		String nombreTest=request.getParameter("codigoEjemplo");
-		System.out.println(nombreTest);
+		String codigo=request.getParameter("codigoEjemplo");
+		String pregunta=request.getParameter("pregunta");
+		String respuestaA=request.getParameter("respuestaA");
+		String respuestaB=request.getParameter("respuestaB");
+		String respuestaC=request.getParameter("respuestaC");
+		String respuestaD=request.getParameter("respuestaD");
+		String respuestaE=request.getParameter("respuestaE");
+		String respuestaValida=request.getParameter("respuestaValida");
 		
-		request.setAttribute("error", nombreTest);
+		Test test=(Test)request.getSession().getAttribute("test");
 		
+		Pregunta preguntaInsertar=null;
+		ServicePregunta servicePregunta=null;
+		
+		try {
+			servicePregunta=new ServicePregunta();
+			preguntaInsertar=Pregunta.crearPregunta(codigo, pregunta, respuestaA, respuestaB, respuestaC, respuestaD, respuestaE, respuestaValida);
+			servicePregunta.insertarPregunta(preguntaInsertar, test);
+			
+			request.setAttribute("respuesta", "La pregunta se añadio correctamente");
+		} catch (DomainException e) {
+			request.setAttribute("error", e.getMessage());
+		} catch (ServiceException e) {
+			request.setAttribute("error", e.getMessage());
+		}
 		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);
 	}
 
