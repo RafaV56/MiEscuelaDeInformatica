@@ -1,5 +1,10 @@
 package domain;
 
+/**
+ * 
+ * @author Pc
+ *
+ */
 public class TestCorregido {
 	
 	private String tema;

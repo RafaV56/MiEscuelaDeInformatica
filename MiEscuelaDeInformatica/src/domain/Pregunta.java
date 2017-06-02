@@ -210,5 +210,13 @@ public class Pregunta {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Pregunta [codigo_ejemplo=" + codigo_ejemplo + ", pregunta="
+				+ pregunta + ", a=" + a + ", b=" + b + ", c=" + c + ", d=" + d
+				+ ", e=" + e + ", valida=" + valida + "]";
+	}
+
+	
 	
 }
