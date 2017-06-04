@@ -42,7 +42,16 @@ CREATE TABLE `hacer_test` (
 
 /*!40000 ALTER TABLE `hacer_test` DISABLE KEYS */;
 INSERT INTO `hacer_test` (`email`,`nombre_test`,`superado`) VALUES 
- ('rafael@hotmail.com','java-identificadores','n');
+ ('carlos@yo.com','java-identificadores','n'),
+ ('carlos@yo.com','java-operadores','s'),
+ ('carlos@yo.com','sql-definicion datos','s'),
+ ('rafael@hotmail.com','java-identificadores','n'),
+ ('rafael@hotmail.com','java-operadores','s'),
+ ('rafael@hotmail.com','sql-definicion datos','n'),
+ ('rafael@hotmail.coml','java-identificadores','s'),
+ ('rafael@hotmail.coml','java-operadores','n'),
+ ('SandraWE@aboattime.com','java-identificadores','n'),
+ ('SandraWE@aboattime.com','sql-definicion datos','n');
 /*!40000 ALTER TABLE `hacer_test` ENABLE KEYS */;
 
 
@@ -52,7 +61,7 @@ INSERT INTO `hacer_test` (`email`,`nombre_test`,`superado`) VALUES
 
 DROP TABLE IF EXISTS `preguntas`;
 CREATE TABLE `preguntas` (
-  `nombre_test` varchar(50) DEFAULT NULL,
+  `nombre_test` varchar(50) NOT NULL,
   `codigo_ejemplo` varchar(2000) DEFAULT NULL,
   `pregunta` varchar(250) NOT NULL,
   `a` varchar(250) DEFAULT NULL,
@@ -83,8 +92,39 @@ INSERT INTO `preguntas` (`nombre_test`,`codigo_ejemplo`,`pregunta`,`a`,`b`,`c`,`
  ('sql-definicion datos',NULL,'soy la pregunta sql2','a','b',NULL,NULL,NULL,'b'),
  ('sql-definicion datos',NULL,'soy la pregunta sql','a','b',NULL,NULL,NULL,'b'),
  ('java-identificadores','soy el codigo de ejemplo','soy la pregunta3','a','b','c','d','e','b'),
- ('java-identificadores','soy el codigo de ejemplo','soy la pregunta3','a','b','c','d','e','b');
+ ('java-identificadores','soy el codigo de ejemplo','soy la pregunta3','a','b','c','d','e','b'),
+ ('java-operadores','codigo ejemplo','pregunta','a','b','c','d','e','c'),
+ ('5','<div><span class=\"Apple-tab-span\" style=\"white-space:pre\">		</span>request.setAttribute(<span style=\"background-color: rgb(0, 0, 255);\">\"respuesta\", \"La pregunta se añadio correctamente\"</span>);</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">		</span>} catch (DomainException e) {</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">			</span>request.setAttribute(\"error\", e.getMessage());</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">		</span>} catch (ServiceException e) {</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">		<span style=\"font-weight: bold;\">	</span></span><span style=\"font-weight: bold;\">request.setAttribute(\"error\", e.getMessage());</span></div>','pregunta de ejemplo','respueta a','Respuesta b',NULL,NULL,NULL,'a'),
+ ('java-operadores','codigo ejemplo','pregunta','a','b','c','d','e','c'),
+ ('5','<div><span style=\"color: rgb(255, 0, 0);\">&nbsp; &nbsp; public InsertarPregunta() {</span></div><div>&nbsp; &nbsp; &nbsp; &nbsp; super();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; // TODO Auto-generated constructor stub</div><div>&nbsp; &nbsp; }</div><div><br></div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span><span style=\"color: rgb(61, 133, 198);\">/**</span></div><div><span style=\"color: rgb(61, 133, 198);\"><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span> * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></div><div><span style=\"color: rgb(61, 133, 198);\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span> */</span></div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">		</span>doPost(request, response);</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>}</div>','¿Que tipo de archivos es?',NULL,NULL,NULL,'lllopjo','ppp','d');
 /*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
+
+
+--
+-- Definition of table `profesores`
+--
+
+DROP TABLE IF EXISTS `profesores`;
+CREATE TABLE `profesores` (
+  `profesor` varchar(50) NOT NULL DEFAULT '',
+  `alumno` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`profesor`,`alumno`),
+  KEY `fk_alumno` (`alumno`),
+  CONSTRAINT `fk_profesor` FOREIGN KEY (`profesor`) REFERENCES `usuario` (`email`),
+  CONSTRAINT `fk_alumno` FOREIGN KEY (`alumno`) REFERENCES `usuario` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profesores`
+--
+
+/*!40000 ALTER TABLE `profesores` DISABLE KEYS */;
+INSERT INTO `profesores` (`profesor`,`alumno`) VALUES 
+ ('rafael@hotmail.com','carlos@yo.com'),
+ ('carlos@yo.com','rafael@hotmail.com'),
+ ('SandraWE@aboattime.com','rafael@hotmail.com'),
+ ('rafael@hotmail.com','rafael@hotmail.coml');
+/*!40000 ALTER TABLE `profesores` ENABLE KEYS */;
 
 
 --
@@ -94,7 +134,10 @@ INSERT INTO `preguntas` (`nombre_test`,`codigo_ejemplo`,`pregunta`,`a`,`b`,`c`,`
 DROP TABLE IF EXISTS `test`;
 CREATE TABLE `test` (
   `nombre` varchar(50) NOT NULL DEFAULT '',
-  PRIMARY KEY (`nombre`)
+  `creado_por` varchar(50) NOT NULL,
+  PRIMARY KEY (`nombre`),
+  KEY `FK_test` (`creado_por`),
+  CONSTRAINT `FK_test` FOREIGN KEY (`creado_por`) REFERENCES `usuario` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -102,12 +145,15 @@ CREATE TABLE `test` (
 --
 
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
-INSERT INTO `test` (`nombre`) VALUES 
- ('java-identificadores'),
- ('java-operadores'),
- ('java:basico'),
- ('java:operadores'),
- ('sql-definicion datos');
+INSERT INTO `test` (`nombre`,`creado_por`) VALUES 
+ ('java-identificadores','Aplicación'),
+ ('java-operadores','Aplicación'),
+ ('java:basico','Aplicación'),
+ ('java:operadores','Aplicación'),
+ ('sql-definicion datos','Aplicación'),
+ ('5','carlos@yo.com'),
+ ('6','carlos@yo.com'),
+ ('test','carlos@yo.com');
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 
 
@@ -122,6 +168,7 @@ CREATE TABLE `usuario` (
   `edad` int(3) unsigned NOT NULL,
   `nick` varchar(50) NOT NULL,
   `contrasena` varchar(10) NOT NULL,
+  `profesor` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Usuarios de la aplicación';
 
@@ -130,20 +177,21 @@ CREATE TABLE `usuario` (
 --
 
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`email`,`nombre`,`edad`,`nick`,`contrasena`) VALUES 
- ('carlos@yo.com','Carlos',21,'carlosguay2','555'),
- ('jabvi@hhh.conm','javi',18,'morenito','22'),
- ('javi@maroto.com','javi',28,'moreno','admin'),
- ('pepe@ya-com.com','pepe',55,'pepeSoyyo','44'),
- ('rafael@hotmail.com','Rafael',32,'Prueba............................................','admin'),
- ('rafael@hotmail.coml','rafa',22,'admin','admin'),
- ('rafaeldfdfd@hotmail.com','rafae',22,'admin','admin'),
- ('rafaelvelasquez@gmail.com','Pedro',25,'PedritoCrack','123'),
- ('rafael_v55@hotmail.com','rasrd',22,'admin','admin'),
- ('rafael_v56@hotmail.com','rafa',22,'admin','admin'),
- ('rafaesssssl@hotmail.com','rafa',22,'admin','admin'),
- ('SandraWE@aboattime.com','Sandra ',18,'SandraGuapa','5555'),
- ('zrafael@hotmail.com','admin',22,'admin','admin');
+INSERT INTO `usuario` (`email`,`nombre`,`edad`,`nick`,`contrasena`,`profesor`) VALUES 
+ ('Aplicación','miEscuela',7,'escuela','escuela',NULL),
+ ('carlos@yo.com','Carlos',22,'carlosguay2','555',NULL),
+ ('jabvi@hhh.conm','javi',18,'morenito','22',NULL),
+ ('javi@maroto.com','javi',28,'moreno','admin',NULL),
+ ('pepe@ya-com.com','pepe',55,'pepeSoyyo','44',NULL),
+ ('rafael@hotmail.com','Rafael',32,'Prueba............................................','admin',NULL),
+ ('rafael@hotmail.coml','rafa',22,'admin','admin',NULL),
+ ('rafaeldfdfd@hotmail.com','rafae',22,'admin','admin',NULL),
+ ('rafaelvelasquez@gmail.com','Pedro',25,'PedritoCrack','123',NULL),
+ ('rafael_v55@hotmail.com','rasrd',22,'admin','admin',NULL),
+ ('rafael_v56@hotmail.com','rafa',22,'admin','admin',NULL),
+ ('rafaesssssl@hotmail.com','rafa',22,'admin','admin',NULL),
+ ('SandraWE@aboattime.com','Sandra ',18,'SandraGuapa','5555',NULL),
+ ('zrafael@hotmail.com','admin',22,'admin','admin',NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 
