@@ -4,11 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import recursos.DbQuery;
 import recursos.Recursos;
 
+import domain.HacerTest;
+import domain.Profesor;
 import domain.Test;
+import domain.TestCorregido;
 import exceptions.DAOException;
 
 public class TestDAO {
@@ -84,6 +89,32 @@ public class TestDAO {
 			Recursos.closePreparedStatement(st);
 			
 		}	
+	}
+
+	/**
+	 * Recupera todos los test creados por un profesor, 
+	 * @param profesor
+	 * @return todos los test creados por el profesor
+	 */
+	public List<Test> recuperarTodosTestProfesor(Profesor profesor) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		List<Test> list = new ArrayList<Test>();
+		try {
+			st = con.prepareStatement(DbQuery.getRecuperarTodosTestProfesor());
+			st.setString(1, profesor.getProfesor().getEmail());
+			rs = st.executeQuery();
+			while (rs.next()) {
+			
+				list.add(new Test(rs.getString(1)));
+			}
+		} catch (SQLException e) {
+			throw new DAOException(DB_ERR, e);
+		} finally {
+			Recursos.closeResultSet(rs);
+			Recursos.closePreparedStatement(st);
+		}
+		return list;
 	}
 
 }

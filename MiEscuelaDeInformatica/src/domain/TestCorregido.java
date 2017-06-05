@@ -8,7 +8,7 @@ package domain;
 public class TestCorregido {
 	
 	private String tema;
-	private String tecnologia;
+	public String tecnologia;
 	private String nombreTest;
 	private String superado;
 	private boolean superadoAnteriormente;

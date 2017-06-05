@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.ServiceHacerTest;
 import service.ServiceProfesor;
 import service.ServiceUsuario;
-import domain.HacerTest;
+import service.ServicioTest;
 import domain.Profesor;
+import domain.Test;
 import domain.Usuario;
 import exceptions.DomainException;
 import exceptions.ServiceException;
@@ -51,16 +51,22 @@ public class VerProfesores extends HttpServlet {
 		List<Profesor> profesores=null;
 		ServiceProfesor servicioProfesor=null;
 		ServiceUsuario servicioUsuario=null;
+		
+		//servicio para ver los test del profesor y pintarlos en su descripción
+		ServicioTest servicioTest=null;
+		List<Test> listaTest=null;
+		
 		//si el usuario no es válido no se puede ir a editar
 		if (usuario==null) {
 			request.getSession().invalidate();
 			resultado="/Welcome";
 		}else{
 			try {
-				// preguntar si tiene test respondidos
+				//Recupero todos los profesores del usuario
 				servicioProfesor = new ServiceProfesor();
 				profesores = servicioProfesor.recuperarTodosProfesores(usuario);
 				
+				//Servicio para añadir datos del profesor 
 				servicioUsuario=new ServiceUsuario();
 				Usuario usu=null;
 				
@@ -68,9 +74,13 @@ public class VerProfesores extends HttpServlet {
 					usu=servicioUsuario.recuperarUsuario(profesor.getProfesor());
 					profesor.getProfesor().setNick(usu.getNick());
 					profesor.getProfesor().setNombre(usu.getNombre());
+					
+					//Recupero sus test si tiene
+					servicioTest=new ServicioTest();
+					listaTest=servicioTest.recuperarTodosTestProfesor(profesor);
+					profesor.setTestProfesor(listaTest);				
 				}
-				
-				
+							
 				//agrego los profesores a la sesion
 				request.getSession().setAttribute("profesores", profesores);
 
