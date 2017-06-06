@@ -8,7 +8,26 @@
     <!-- Common -->
     <%@include file="generales/common.html" %>  
     <!-- ------------------------------------ -->   
-       
+     <script type="text/javascript">
+     $(document).ready(function(e) {
+ 		
+    	 $('#emailProfesor').on("blur",ajax);
+  	   
+     });
+     
+   //Funcion ajax para ver si un email está en la base de datos
+ 	function ajax(){
+ 		$.post("usuarioLibre.jsp",
+ 			    {
+ 			        name: $('#emailProfesor').val(),
+ 			    },
+ 			    function(data){			    	
+ 			    	$('#ajaxEmail').empty();
+ 			        $('#ajaxEmail').append(data);
+ 			    });
+ 	}
+     
+     </script>  
 	</head>
 	<body>   
        <!-- Barra de navegación -->
@@ -48,6 +67,8 @@
 				<div class="panel-body">
 				<p>
 				<form method="post" action="AgregarProfesor">
+				<div id="ajaxEmail">
+       			</div>
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Email</label>
 					    <input type="email" class="form-control" id="emailProfesor" value="" name="emailProfesor" maxlength="50">
