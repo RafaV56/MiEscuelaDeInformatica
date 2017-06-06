@@ -24,7 +24,7 @@
       
        <div class="row">
        <!-- Div id principio sera usado en javaScrip para visualizar los errores que el usuario tiene en el form -->
-       	<div id="principio" style="background:#000; color:red; font-size:1.5em; margin:0.5em; padding:0.1em; border-radius:5px;">
+       	<div id="principio">
         </div>
        </div>
        
