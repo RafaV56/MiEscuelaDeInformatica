@@ -73,6 +73,39 @@
 			    		<%=profesor.getProfesor().getNick()%>
 			    		</td>
 			    	</tr>
+			    	
+			    <%
+			    	//Si las lista de test no es nula y tiene al menus un test se pinta una fila en la tabla
+			    	if(profesor.getTestProfesor()!=null && profesor.getTestProfesor().size()>0){
+			    		
+			    		
+			    %>
+			    
+			    	 <thead>
+				      <tr>
+				        <th colspan="3" class="text-center bg-success">
+				        <span class="text-info">Todos los test del profesor</span>
+				         <span class="text-danger"><%=profesor.getProfesor().getNick() %></span>
+				        </th>
+				      </tr>
+				    </thead>
+			    
+			    
+			    <%		
+			    		for(Test test: profesor.getTestProfesor()){
+			    %>
+			    	
+			    	<tr>
+			    		<td colspan="3" class="text-center bg-warning">
+			    			<%=test.getNombre() %>		
+			    	
+			    			<form action="Test?nombre=<%=test.getNombre()%>" method="post">
+                   				<input type="submit" value="ir al test" class="btn btn-info">
+               	   			</form>
+               	   		</td>
+			    	</tr>
+			    
+			    <%}} %>
 				</tbody>
 				
 				<%

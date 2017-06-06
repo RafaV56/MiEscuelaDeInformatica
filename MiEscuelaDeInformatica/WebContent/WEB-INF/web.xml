@@ -148,4 +148,12 @@
     <servlet-name>InsertarPregunta</servlet-name>
     <url-pattern>/InsertarPregunta</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>EnviarCorreo</servlet-name>
+    <servlet-class>servlet.EnviarCorreo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnviarCorreo</servlet-name>
+    <url-pattern>/EnviarCorreo</url-pattern>
+  </servlet-mapping>
 </web-app>

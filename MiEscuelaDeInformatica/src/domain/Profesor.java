@@ -1,23 +1,28 @@
 package domain;
 
+import java.util.List;
+
 import exceptions.DomainException;
 
 public class Profesor {
 	
 	private Usuario profesor;
 	private Usuario alumno;
+	List<Test> testProfesor; 
 	
 	
 	/**
 	 * Crea un profesor validado
 	 * @param profesor
 	 * @param alumno
+	 * @param list  test creados por el profesor
 	 * @return
 	 */
-	public static Profesor crearProfesor(Usuario profesor,Usuario alumno){
+	public static Profesor crearProfesor(Usuario profesor,Usuario alumno,List<Test> testProfe){
 		Profesor profe=new Profesor();
 		profe.setProfesor(profesor);
 		profe.setAlumno(alumno);		
+		profe.setTestProfesor(testProfe);
 		
 		return profe;
 	}
@@ -39,6 +44,15 @@ public class Profesor {
 
 	public Usuario getProfesor() {
 		return profesor;
+	}
+	
+
+	public List<Test> getTestProfesor() {
+		return testProfesor;
+	}
+
+	public void setTestProfesor(List<Test> testProfesor) {
+		this.testProfesor = testProfesor;
 	}
 
 	public void setProfesor(Usuario profesor) {
