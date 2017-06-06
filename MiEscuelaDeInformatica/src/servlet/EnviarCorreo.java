@@ -1,18 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.ServiceEmail;
-import service.ServiceProfesor;
-import service.ServiceUsuario;
-import service.ServicioTest;
-import domain.Profesor;
-import domain.Usuario;
+import service.Controlador;
+import domain.Correo;
 import exceptions.DomainException;
 import exceptions.ServiceException;
 
@@ -43,14 +39,27 @@ public class EnviarCorreo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email=request.getParameter("email");
 		//EmailSenderService emailSender=null;
-		ServiceEmail sevicioEmail=null;
+		//ServiceEmail sevicioEmail=null;
+		
+		Controlador emailControlador=null;
+		Correo correo=null;
 		try {	
+			correo=new Correo();
+			correo.setAsunto("Bienvenidos a la escuela de informatica");
+			correo.setDestino("rafaelvelasquezmilla@gmail.com");
+			correo.setMensaje("Bienvenidos a la escuela de informatica");
+			correo.setUsuario("rafael_v56@hotmail.com");
+			correo.setPassword("nadie4829730");
+			
+			emailControlador=new Controlador();
+			System.out.println(emailControlador.enviarCorreo(correo));
+			
 			//emailSender=new EmailSenderService();
 			//emailSender.sendEmail();
 			
-			sevicioEmail=new ServiceEmail();
+			//sevicioEmail=new ServiceEmail();
 			
-			sevicioEmail.enviarEmail(email);
+			//sevicioEmail.enviarEmail(email);
 			
 		} catch (ServiceException e) {
 			request.setAttribute("error", e.getMessage());

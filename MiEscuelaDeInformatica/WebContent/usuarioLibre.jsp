@@ -14,8 +14,8 @@
 	try{
 		serviceUsuario=new ServiceUsuario();
 		usu=serviceUsuario.recuperarUsuario(Usuario.crearUsuario(email));
-		if(usu!=null){
-			throw new ServiceException("El email ya está en uso");
+		if(usu==null){
+			throw new ServiceException("El usuario no existe");
 		}	
 	}catch(ServiceException e){
 		resultado=e.getMessage();
@@ -23,7 +23,7 @@
 		resultado="El email no es correcto";		
 	}
 	
-	if(resultado.equals("El email ya está en uso")){
+	if(resultado.equals("El usuario no existe")){
 %>
 	<h2 class="alert alert-danger text-center"><i class="fa fa-info-circle fa-2"></i> <%=resultado%></h2>
 <% }else if(resultado.equals("El email no es correcto")){ %>

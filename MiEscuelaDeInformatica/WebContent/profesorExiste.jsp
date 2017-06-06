@@ -1,3 +1,5 @@
+<%@page import="domain.Profesor"%>
+<%@page import="service.ServiceProfesor"%>
 <%@page import="domain.Usuario"%>
 <%@page import="exceptions.DomainException"%>
 <%@page import="exceptions.ServiceException"%>
@@ -7,26 +9,26 @@
 <%
 	//recupero el parametro enviado desde el js. que envia parametro name
 	String email=request.getParameter("name");
-	ServiceUsuario serviceUsuario=null;
-	Usuario usu=null;
+	ServiceProfesor serviceProfesor=null;
+	Profesor profe=null;
 	
-	String resultado="Usuario disponible";
+	String resultado="El Profesor con email: "+email+" exite";
 	try{
-		serviceUsuario=new ServiceUsuario();
-		usu=serviceUsuario.recuperarUsuario(Usuario.crearUsuario(email));
-		if(usu!=null){
-			throw new ServiceException("El email ya está en uso");
+		serviceProfesor=new ServiceProfesor();
+		profe=serviceProfesor.recuperarProfesor(Usuario.crearUsuario(email));
+		if(profe==null){
+			throw new ServiceException("El profesor no existe");
 		}	
 	}catch(ServiceException e){
 		resultado=e.getMessage();
 	}catch(DomainException e){
-		resultado="El email no es correcto";		
+		resultado="El email del profesor no es correcto";		
 	}
 	
-	if(resultado.equals("El email ya está en uso")){
+	if(resultado.equals("El profesor no existe")){
 %>
 	<h2 class="alert alert-danger text-center"><i class="fa fa-info-circle fa-2"></i> <%=resultado%></h2>
-<% }else if(resultado.equals("El email no es correcto")){ %>
+<% }else if(resultado.equals("El email del profesor no es correcto")){ %>
 	<h2 class="alert alert-warning text-center"><i class="fa fa-times fa-2"></i> <%=resultado%></h2>
 <%}else{%>
 	<h2 class="alert alert-success text-center"><i class="fa fa-check fa-2"></i> <%=resultado%></h2>

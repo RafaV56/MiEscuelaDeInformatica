@@ -32,8 +32,7 @@
        <!-- Div id principio sera usado en javaScrip para visualizar los errores que el usuario tiene en el form -->
        	<div id="principio">
         </div>
-       	<div id="ajaxEmail">
-        </div>
+      
        </div>
        
        <%

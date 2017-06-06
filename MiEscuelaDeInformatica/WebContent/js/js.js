@@ -4,6 +4,8 @@
 	   $('#nombre').on("change",nombre);
 	   //Email del usuario
 	   $('#email').on("change",email);
+	   
+	   //llamda de ajax para saber si el usuario existe o está mal escrito el email
 	   $('#email').on("blur",ajax);
 	   
 	   //Edad del usuario
