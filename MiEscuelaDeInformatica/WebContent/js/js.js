@@ -4,6 +4,8 @@
 	   $('#nombre').on("change",nombre);
 	   //Email del usuario
 	   $('#email').on("change",email);
+	   $('#email').on("blur",ajax);
+	   
 	   //Edad del usuario
 	   $('#edad').on("change",edad);
 	   //Nick del usuario
@@ -28,34 +30,32 @@
 			$('#principio').empty();
 			//llamo a validar nombre si devuelve falso agrego el error al div principio y así con todos
 			if(!nombre()){
-				$('#principio').append('<h3>-El campo nombre es obligatorio, máximo 50 caracteres.</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El campo nombre es obligatorio, máximo 50 caracteres.</h3>');
 					bandera=false;
 			}
 			//valido el email.
 			if(!email()){
-				$('#principio').append(
-				'<h3>-El email es obligatorio, y tiene que ser correcto, no puede tener más de 50 		caracteres</h3>'
-				);
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El email es obligatorio, y tiene que ser correcto, no puede tener más de 50 caracteres.</h3>');
 					bandera=false;
 			}
 			//Valido la edad
 			if(!edad()){
-				$('#principio').append('<h3>-El campo edad es obligatorio, deber ser entre 7 y 120 años</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El campo edad es obligatorio, deber ser entre 7 y 120 años</h3>');
 					bandera=false;
 			}
 			//Valido el nick
 			if(!nick()){
-				$('#principio').append('<h3>-El nick es obligatorio, deber ser entre 1 y 50 caracteres</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El nick es obligatorio, deber ser entre 1 y 50 caracteres</h3>');
 					bandera=false;
 			}
 			//Válido la contraseña
 			if(!contrasena()){
-				$('#principio').append('<h3>-La contraseña es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i>La contraseña es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
 					bandera=false;
 			}
 			//Válido la contraseña repetida
 			if(!rContrasena()){
-				$('#principio').append('<h3>-Repite la contraseña es obligatoria, deber ser igual a la contraseña</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> Repite la contraseña es obligatoria, deber ser igual a la contraseña</h3>');
 					bandera=false;
 			}
 			if(bandera){		
@@ -67,6 +67,18 @@
 			return bandera;
 		});
 	});
+	
+	//Funcion ajax para ver si un email está en la base de datos
+	function ajax(){
+		$.post("correoLibre.jsp",
+			    {
+			        name: $('#email').val(),
+			    },
+			    function(data){			    	
+			    	$('#ajaxEmail').empty();
+			        $('#ajaxEmail').append(data);
+			    });
+	}
 	
 	//Función para comparar que la contraseña este correcta
 	function rContrasena(){
