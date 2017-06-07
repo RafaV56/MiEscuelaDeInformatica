@@ -46,10 +46,10 @@ public class EnviarCorreo extends HttpServlet {
 		try {	
 			correo=new Correo();
 			correo.setAsunto("Bienvenidos a la escuela de informatica");
-			correo.setDestino("rafaelvelasquezmilla@gmail.com");
+			correo.setDestino("correo@gmail.com");
 			correo.setMensaje("Bienvenidos a la escuela de informatica");
-			correo.setUsuario("rafael_v56@hotmail.com");
-			correo.setPassword("nadie4829730");
+			correo.setUsuario("correo@gmail.com");
+			correo.setPassword("???");
 			
 			emailControlador=new Controlador();
 			System.out.println(emailControlador.enviarCorreo(correo));

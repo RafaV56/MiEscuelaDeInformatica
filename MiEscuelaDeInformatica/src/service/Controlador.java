@@ -22,11 +22,11 @@ public class Controlador {
 	public boolean enviarCorreo(Correo c) throws ServiceException{
 		try {
 			Properties p = new Properties ();
-			p.put("mail.smtp.host", "mail.elinformaticopersonal.com");
+			p.put("mail.smtp.host", "aspmx.l.google.com");
 			p.put("mail.smtp.starttls.enable", "true");
 			p.put("mail.smtp.port", "25");
 			p.put("mail.smtp.user", c.getUsuario());
-			p.put("mail.smtp.auth", "true"); // true o false si necesita el check de autentificación
+			p.put("mail.smtp.auth", "false"); // true o false si necesita el check de autentificación
 			
 			Session s = Session.getDefaultInstance(p, null);
 			s.setDebug(true);
