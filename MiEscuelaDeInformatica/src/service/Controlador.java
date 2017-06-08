@@ -45,8 +45,7 @@ public class Controlador {
 			Transport t = s.getTransport("smtp");
 			t.connect(c.getUsuario(), c.getPassword());
 			t.sendMessage(mensaje, mensaje.getAllRecipients());
-			t.close();
-			
+			t.close();		
 		
 			
 		} catch (Exception e) {
