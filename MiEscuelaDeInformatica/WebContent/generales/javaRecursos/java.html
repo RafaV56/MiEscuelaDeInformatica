@@ -6,7 +6,7 @@
   <nav>
       <ul class="nav nav-pills nav-stacked">
       <li><a href="#identificadores" data-toggle="collapse" data-parent="#accordion">Identificadores</a></li>
-      <li><a href="#operadores" data-toggle="collapse" data-parent="#accordion">Operadores</a></li>
+      <li><a href="#variables" data-toggle="collapse" data-parent="#accordion">Variables</a></li>
       <li><a href="#collapse3" data-toggle="collapse" data-parent="#accordion">Tipo primitivos</a></li>
       </ul>
   </nav>
@@ -27,12 +27,14 @@
       </div><!--fin panel heading-->
       <div class="panel-body">
       <div class="panel-group" id="accordion">
+        
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#identificadores">Identificadores</a>
             </h4>
           </div>
+          
           <div id="identificadores" class="panel-collapse collapse in">
             <div class="panel-body">
                 <h3>Identificadores</h3>
@@ -79,14 +81,90 @@ public class Indentificadores {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#operadores">Operadores</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#variables">Variables</a>
             </h4>
           </div>
-          <div id="operadores" class="panel-collapse collapse ">
+          <div id="variables" class="panel-collapse collapse ">
             <div class="panel-body">
-             <form action="Test?nombre=java-operadores" method="post">
+                            <h3>Variables</h3>
+                 <p class="text-justify">
+                 	           En Java, llamamos variable a un espacio para almacenar un valor que puede cambiar a lo largo
+
+								del programa. Cada variable tiene asociado un nombre y un tipo.
+								
+								Cuando queremos utilizar el valor contenido en una variable, simplemente utilizamos su
+								
+								nombre.<br><br>
+								
+								<strong>Declaración e inicialización de variables</strong><br><br>
+
+								Una variable es un espacio de memoria al cual identificamos con un identificador.<br>
+								
+								En java, es necesario declarar las variables antes de utilizarlas.<br>
+								
+								Para declarar una variable, escribimos el tipo, seguido de un identificador.<br>
+								
+								int edad;<br>
+								
+								Se pueden declarar varias variables del mismo tipo, separándolas por comas.<br>
+								
+								double altura, peso;<br>
+								
+								La operación básica para dar valor a una variable es la asignación, denotada por el operador =
+								
+								altura=12.0;<br>
+								
+								Cuando declaramos una variable debemos suponer que su valor inicial es indefinido, con lo
+								
+								cual, no puede participar en ninguna otra operación.<br>
+								
+								int x, y;<br>
+								
+								y=x+1; //INCORRECTO: ¿Cuánto vale x?<br>
+								
+								Se puede dar valor inicial a una variable con una asignación<br>
+								
+								int x, y;<br>
+								
+								x=3;<br>
+								
+								y=x+1;<br>
+								
+								Y también se puede hacer en el momento de la declaración
+                 </p>
+                 <hr>
+                 <h3>Ejemplo</h3>
+                 <p>
+                    <pre class="pre-scrollable">
+public class Indentificadores {
+
+	public static void main(String[] args) {
+	<span class="bg-info">//Ejemplo validos</span>
+	String x;
+	String x1;
+	String a0b1c3;
+	
+	<span class="bg-info">//Invalidos</span>
+	
+	<span class="bg-info">//El indentificador no puede empezar con un número</span>
+	String <span style="color:red;" class="bg-danger">1</span>x; 
+	
+	<span class="bg-info">//No puede tener un espacio</span>
+	String mi<span style="color:red;" class="bg-danger"> </span>edad; 
+	
+	<span class="bg-info">//El asterisco no se puede usar en un identificador</span>
+	String a<span style="color:red;" class="bg-danger">*</span>3; 
+	}
+
+}</pre>
+                 </p>
+                 <hr>   
+                 <p>
+                 	Pequeño test para repasar los conocimientos
+                 </p> 
+             	<form action="Test?nombre=java-variables" method="post">
                    	<input type="submit" value="Test" class="btn btn-info" />
-               	   </form>            
+               	  </form>            
             </div>
           </div>
         </div>
