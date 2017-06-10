@@ -30,7 +30,7 @@
 									 "Estudia tus tecnologías preferidas",
 									 "J2EE",
 									  "Java, HTML, CSS, SQL" ,
-									  "Resuelve test y refuerza tu conocimiento",
+									  "Resuelve test y refuerza tus conocimiento",
 									  "hazte profesor y crear tu propios test"]'  style="color:#3e2b2b;">
 						<span class="wrap"  style="color:#3e2b2b;"></span>
 					</a>
@@ -78,7 +78,6 @@
 			</div> 
 	 </div>
         <script type="text/javascript">
-      //made by vipul mirajkar thevipulm.appspot.com
         var TxtType = function(el, toRotate, period) {
                 this.toRotate = toRotate;
                 this.el = el;

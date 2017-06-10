@@ -6,9 +6,9 @@
 <h3 class="text-center alert alert-info">SQL</h3>
   <nav>
       <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section1">Sintaxis</a></li>
-      <li><a href="#section2">Operadores</a></li>
-      <li><a href="#section3">Tipo primitivos</a></li>
+      <li><a href="#ddl" data-toggle="collapse" data-parent="#accordion">DDL Creación tablas</a></li>
+      <li><a href="#select" data-toggle="collapse" data-parent="#accordion">Consultas</a></li>
+      <li><a href="#dml" data-toggle="collapse" data-parent="#accordion">DML Manupulación de datos</a></li>
       </ul>
   </nav>
 </div><!--fin side bar-->
@@ -53,34 +53,49 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#basico">Sintaxis</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#ddl">
+             	 Lenguaje DDL. Creación y gestión detablas
+              </a>
             </h4>
           </div>
-          <div id="basico" class="panel-collapse collapse in">
+          <div id="ddl" class="panel-collapse collapse in">
             <div class="panel-body">
-                <h3>Identificadores</h3>
+                <h3>Lenguaje DDL. Creación y gestión detablas</h3>
                  <p class="text-justify">
-                 	El conjunto de Regalas CSS consta principalmente e un selector ejemplo el h2,
-                 	luego entre llaves {} hacemos las declaraciones, que constan de 2 elementos,
-                 	la propiedad y el valor, ejemplo color:red; 
+                 	Permite definir la estructura y organización de
+					los datos almacenados y de las relaciones entre ellos.
+					</p>
+				<h3>TABLA: unidad básica de almacenamiento compuesta de filas y columnas.</h3>
+				<p>
+					<strong>Sintaxis:</strong><br>
+					CREATE TABLE [NB_PROPIETARIO.] NB_TABLA<br>
+					(NB_COLUMNA1 TIPO_DE_DATO [DEFAULT EXPRESIÓN] [NOT NULL]<br>
+					[,NB_COLUMNA2 TIPO_DE_DATO [DEFAULT EXPRESIÓN] [NOT NULL]]<br>
+					...);<br>
+					<strong>tipo de dato:</strong> indica la naturaleza del dato. Ej. number (n,m), varchar2(n) ,date,<br>
+					etc.<br>
+					<strong>default</strong> indica el valor que tomará por defecto la columna si éste no es<br>
+					especificado.<br>
+					<strong>not null</strong> indica que la columna no puede tomar valores nulos.
+				</p>
                  <hr>
                  <h3>Ejemplo</h3>
                  <p>
                     <pre>
-/*
-   <span class="bg-info">Ejemplo de selector para una etiqueta h2 de HTML</span>
-*/
+--<span class="bg-info">Crea la tabla usuarios, (Oracle)</span>
                     
-h2{
-   color:blue; <span class="bg-info">/* La propiedad es color, y el valor es azul*/</span>
-   padding:0.5em;
-}</pre>
+CREATE TABLE USUARIOS
+(ID_USUARIO NUMBER NOT NULL,
+NOMBRE VARCHAR2(30),
+FECHA DATE DEFAULT SYSDATE);
+</pre>
                  </p>
                  <hr>
                  <p>
-                 
+                 	Pequeño test para repasar los conocimientos 
                  <p>
-              	   <form action="Test?nombre=sql-definicion datos" method="post">
+                 
+              	   <form action="Test?nombre=sql-ddl" method="post">
                    	<input name="test" type="submit" value="Test" class="btn btn-info" />
                	   </form>
             </div>
@@ -89,26 +104,102 @@ h2{
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Operadores</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#select">
+             	 Consultas
+              </a>
             </h4>
           </div>
-          <div id="collapse2" class="panel-collapse collapse ">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-          </div>
+          <div id="select" class="panel-collapse collapse">
+            <div class="panel-body">
+                <h3>Consultas</h3>
+                 <p class="text-justify">
+                 	La sentencia SELECT permite recuperar la información almacenada en las tablas
+					de la base de datos. Con esta sentencia podemos seleccionar (elegir registros
+					de la tabla o tablas que deseemos), proyectar (seccionar las columnas que se
+					deseen) y unir (extraer información de distintas tablas) .
+					</p>
+				<p>
+					<strong>Sintaxis:</strong><br>
+					SELECT [DISTINCT] { *|COLUMN [[AS] ALIAS][, COLUMN [[AS] ALIAS]]...} FROM NB_TABLA;<br>
+					DISTINCT significa que las filas duplicadas solo se devolverán una vez.<br>
+
+					Un asterisco (*) produce como resultado la visualización de todas las columnas
+
+					de la tabla.<br>
+					<strong>COLUMN:</strong> representa el nombre de una columna.<br>
+
+					<strong>ALIAS</strong> sustituye en la cabecera de la sentencia SELECT el nombre de la columna.
+				</p>
+                 <hr>
+                 <h3>Ejemplo</h3>
+                 <p>
+                    <pre>
+--<span class="bg-info">Seleciona todas las columnas de la tabla empleados, (Oracle)</span>
+                    
+SELECT * FROM EMPLEADOS;
+SELECT ID_EMPLEADO, NOMBRE, FECHA FROM EMPLEADOS;
+SELECT ID_EMPLEADO AS IDENTIFICADOR, NOMBRE, FECHA FROM EMPLEADOS;
+</pre>
+                 </p>
+                 <hr>
+                 <p>
+                 	Pequeño test para repasar los conocimientos 
+                 <p>
+                 
+              	   <form action="Test?nombre=sql-consultas" method="post">
+                   	<input name="test" type="submit" value="Test" class="btn btn-info" />
+               	   </form>
+        </div>
+        </div>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Tipos primitivos</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#dml">Lenguaje  de manipulación de datos. DML</a>
             </h4>
           </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-          </div>
+     <div id="dml" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<!-- Título del tema -->
+                <h3>Lenguaje  de manipulación de datos. DML</h3>
+                 <p class="text-justify">
+                 	Es una de las partes fundamentales del lenguaje SQL.
+					El DML (Data Manipulation Language) lo forman las
+					instrucciones capaces de modificar los datos de las
+					tablas. Al conjunto de
+					instrucciones DML que se ejecutan consecutivamente,
+					se las llama transacciones y se pueden anular todas
+					ellas o aceptar, ya que una instrucción DML no es
+					realmente efectuada hasta que no se acepta (commit).
+					</p>
+					<h3>Inserción de registros en una tabla: INSERT.</h3>
+				<p>
+				Permite insertar una fila en una tabla, es decir añadir un registro
+				de información en una tabla<br>
+				<strong>Sintaxis:</strong><br>
+					INSERT INTO NB_TABLA [(COLUMNA[,COLUMNA] ... )]<br>
+					VALUES (VALOR [,VALOR] ...);<br>
+					Se puede omitir el nombre de las columnas siempre y cuando se respete el
+					orden que tienen en la tabla:
+				</p>
+                 <hr>
+                 <h3>Ejemplo</h3>
+                 <p>
+                    <pre>
+--<span class="bg-info">Inserta una fila en la tabla departamentos, (Oracle)</span>
+INSERT INTO DEPARTAMENTOS VALUES (50,'DESARROLLO',2500);
+</pre>
+                 </p>
+                 <hr>
+                 <p>
+                 	Pequeño test para repasar los conocimientos 
+                 <p>
+                 
+              	   <form action="Test?nombre=sql-dml" method="post">
+                   	<input name="test" type="submit" value="Test" class="btn btn-info" />
+               	   </form>
+        </div>
+        </div>
         </div>
       </div> 
       </div>

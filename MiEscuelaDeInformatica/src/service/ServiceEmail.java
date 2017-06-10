@@ -1,6 +1,5 @@
 package service;
 
-import java.net.PasswordAuthentication;
 import java.util.Properties;
 
 import javax.mail.*;
