@@ -17,6 +17,7 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li><a href="<%=barra.equals("Java")?"#":"Java"%>">Java</a></li>
+              <li><a href="<%=barra.equals("html")?"#":"Html"%>">HTML5</a></li>
               <li><a href="<%=barra.equals("Css")?"#":"Css"%>">CSS</a></li>
               <li><a href="<%=barra.equals("Sql")?"#":"Sql"%>">SQL</a></li>
             </ul>

@@ -72,7 +72,7 @@
 	
 	//Funcion ajax para ver si un email está en la base de datos
 	function ajax(){
-		$.post("correoLibre.jsp",
+		$.post("ajax/correoLibre.jsp",
 			    {
 			        name: $('#email').val(),
 			    },

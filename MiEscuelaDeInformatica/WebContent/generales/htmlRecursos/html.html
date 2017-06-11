@@ -1,0 +1,147 @@
+<!--Sección principal-->
+<div class="row" style="margin:0.2em 0em;">
+
+<!--Tema uno CSS--> 
+<div class="barraLateral col-sm-2 hidden-xs borde">
+<h3 class="text-center alert alert-info">HTML5</h3>
+  <nav>
+      <ul class="nav nav-pills nav-stacked">
+      <li><a href="#caracteres" data-toggle="collapse" data-parent="#accordion">Caracrteres especiales</a></li>
+      <li><a href="#listas" data-toggle="collapse" data-parent="#accordion">Listas</a></li>
+      </ul>
+  </nav>
+</div><!--fin side bar-->
+
+<div class="col-sm-10">
+   <div class="panel panel-info">
+      <div class="panel-heading">
+ 
+          <h2 class="text-center"><span style="font-family:Georgia; font-size:1.3em;">HTML</span></h2>
+          <p class="text-justify">
+          Esta nueva versión del Lenguaje HTML aporta nuevos elementos, enfocados a mejorar y facilitar distintas 
+          tareas del diseño de páginas web como la presentación, la inclusión de audio y video, los formularios, 
+          permitir la geolocalización del sitio web, construir una superficie de dibujo llamada “canvas”, entre otras.
+          </p>
+          <p class="text-justify">
+		  Pero no se trata sólo de incluir nuevos elementos para conseguir dichas mejoras, si no que tiene como <strong>objetivo</strong>, 
+		  convertirse en una <strong>plataforma de desarrollo</strong>, que integre todas las tecnologías web: diferentes lenguajes 
+		  (HTML, CSS, JavaScript, PhP,..), diferentes formatos de audio y video, animaciones, etc., solucionando problemas 
+		  de compatibilidad con algunos navegadores. Para ello, incorpora una <strong><abbr title="(Application Program Interface)">API</abbr></strong>, es decir, 
+		  una biblioteca de funciones, lo bastante amplia, para que los navegadores se comporten de igual forma.<br>
+		  Al ser aún un lenguaje en construcción, algunos de sus atributos no son soportados por todos los navegadores.
+           </p>
+      </div><!--fin panel heading-->
+      <div class="panel-body">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#caracteres">
+             	Caracteres especiales
+              </a>
+            </h4>
+          </div>
+          <div id="caracteres" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <h3>Caracteres especiales</h3>
+                 <p class="text-justify">
+                 Existe una lista de elementos a evitar en la codificación del texto. Estos elementos son, por ejemplo:<br>    
+                 <ul>
+				  <li>
+				  	 <strong>El signo <kbd><</kbd>:</strong>
+				  	 que indica la apertura de una etiqueta. Se codificará mediante <kbd>& l t;</kbd> (less than)
+				   </li>
+				   <li>
+				  	 <strong>El signo <kbd>></kbd>:</strong>
+				  	que marca el cierre de una etiqueta. Se codificará mediante <kbd>& g t;</kbd> (greater than)
+				   </li>
+				   <li>
+				  	 <strong>El signo <kbd>"</kbd>:</strong>
+				  	usado en los atributos de la etiqueta. Se codificará mediante <kbd>& q u o t;</kbd>
+				   </li>
+				   <li>
+				  	<strong>El signo <kbd>&</kbd>:</strong>
+				  	que marca el inicio de una referencia de carácter. Se codificará mediante <kbd>& a m p;</kbd>
+				   </li>
+				   <li>
+				  	<strong>El signo <kbd>"</kbd>:</strong>
+				  	usado en los atributos de la etiqueta. Se codificará mediante <kbd>& q u o t;</kbd>
+				   </li>
+				</ul>
+				</p>
+				<p class="text-justify">
+				En principio, si el carácter existe en el juego de caracteres (charset) declarado en el documento Html5, 
+				no es preciso escribir los caracteres especiales mediantes entidades Html. Así, en las codificaciones iso-8859-1
+				e iso-8859-15, la é existe y no es necesario recurrir a la entidad <kbd>& e a c u t e;</kbd>. Esto mejora la legibilidad del código.
+				Por el contrario, con la codificación iso-8859-1, el signo € no existe, siendo necesario usar obligatoriamente la 
+				entidad <kbd>& e u r o;</kbd>
+				</p>
+                 <hr>
+                 <p>
+                 	Pequeño test para repasar los conocimientos 
+                 <p>
+                 
+              	   <form action="Test?nombre=html-caracteres" method="post">
+                   	<input name="test" type="submit" value="Test" class="btn btn-info" />
+               	   </form>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+             <a data-toggle="collapse" data-parent="#accordion" href="#listas">
+             	 Listas
+              </a>
+            </h4>
+          </div>
+          <div id="listas" class="panel-collapse collapse">
+            <div class="panel-body">
+                <h3>Listas de elementos</h3>
+                 <p class="text-justify">
+                 	Las listas permiten estructurar diversos tipos de contenido. En función de la información que contienen se clasifican en:
+                 </p>
+                 <ol>
+                 	<li class="text-success">
+                 		Listas numeradas u ordenadas.
+                 	</li>
+                 	<li  class="text-success">
+                 		Listas sin numerar o desordenadas.
+                 	</li>
+                 	<li class="text-success">
+                 		Listas anidadas.
+                 	</li>
+                 	<li class="text-success">
+                 		Listas de definición.
+                 	</li>
+                 </ol>
+                 <hr>
+                 <h3>Ejemplo</h3>
+                 <p>
+                    <pre>
+<span class="bg-info">Listas en Html5: </span>
+< o l > 
+	< l i >Listas ordenadas< / l i > 
+	< l i >Listas no ordenadas< / l i > 
+	< l i >Listas anidadas< / l i > 
+	< l i >Listas de definición< / l i > 
+< / o l >
+</pre>
+                 </p>
+                 <hr>
+                 <p>
+                 	Pequeño test para repasar los conocimientos 
+                 <p>
+                 
+              	   <form action="Test?nombre=html-listas" method="post">
+                   	<input name="test" type="submit" value="Test" class="btn btn-info" />
+               	   </form>
+        </div>
+        </div>
+        </div>
+    </div><!--fin del panel-->
+</div><!--fin col principal tema-->
+
+
+
+</div><!--Fin del row--> 

@@ -21,6 +21,14 @@
     <url-pattern>/Java</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Html</servlet-name>
+    <servlet-class>servlet.Html</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Html</servlet-name>
+    <url-pattern>/Html</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Sql</servlet-name>
     <servlet-class>servlet.Sql</servlet-class>
   </servlet>
