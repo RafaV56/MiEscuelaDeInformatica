@@ -1,8 +1,8 @@
 <%
 	String barra=(String)session.getAttribute("barra");//para identificar cual es el link local
 	String nick=(String)session.getAttribute("nickUsuario");//para identificar el nick del usuario	
-	String email=(String)session.getAttribute("email");//para identificar el nick del usuario	
-	String contrasena=(String)session.getAttribute("contrasena");//para identificar el nick del usuario	
+	String email=(String)session.getAttribute("email");//para el email	
+	String contrasena=(String)session.getAttribute("contrasena");//para identificar la contraseña	
 %>
  <nav class="navbar navbar-inverse">
         <div class="navbar-header">
@@ -17,6 +17,7 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li><a href="<%=barra.equals("Java")?"#":"Java"%>">Java</a></li>
+              <li><a href="<%=barra.equals("html")?"#":"Html"%>">HTML5</a></li>
               <li><a href="<%=barra.equals("Css")?"#":"Css"%>">CSS</a></li>
               <li><a href="<%=barra.equals("Sql")?"#":"Sql"%>">SQL</a></li>
             </ul>
@@ -25,15 +26,20 @@
             	if(nick!=null){
             %>
             <ul class="nav navbar-nav navbar-right" style="margin-right:0.3em;" >
+              <li>
+		      	<a href="EditarPerfil"><i class="fa fa-share" aria-hidden="true"></i> Perfil</a>
+		      </li>
 		      <li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-education"></span> <%=nick%>
 				  <span class="caret"></span></a>
 				  <ul class="dropdown-menu alert-warning">
+				 	<li><a href="AgregarTest" class="text-center"><i class="fa fa-paperclip" style="color:#216c2e;"></i> Añadir Test</a></li>
+				 	<li><a href="VerTest" class="text-center"><i class="fa fa-file-code-o" style="color:#216c2e;"></i> Ver todos mis test</a></li>
+				 	<li><a href="VerProfesores" class="text-center"><i class="fa fa-user" style="color:#216c2e;"></i> Mis Profesores</a></li>
+				    <li><a href="AgregarProfesor" class="text-center"><i class="fa fa-user-plus" style="color:#216c2e;"></i> Añadir Profesor</a></li>
+				    <li class="divider"></li>
 				    <li><a href="CerrarSesion" class="text-center"><i class="fa fa-power-off" style="color:#ff4a4a;"></i> Cerrar sesión</a></li>
 				  </ul>
-		      </li>
-		      <li>
-		      	<a href="EditarPerfil"><span class="glyphicon glyphicon-log-in"></span> Perfil</a>
 		      </li>
 		    </ul>
             <%

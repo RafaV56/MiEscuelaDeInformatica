@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,63 @@ public class PreguntaDAO {
 			
 		}		
 		return preguntas;		
+	}
+
+	public void insertarPregunta(Pregunta pregunta, Test test) {
+		PreparedStatement st = null;
+		try {
+			//insert into preguntas(nombre_test,codigo_ejemplo,pregunta,a,b,c,d,e,correcta) values(?,?,?,?,?,?,?,?,?)"
+			st = con.prepareStatement(DbQuery.getInsertarPregunta());
+			
+			st.setString(1, test.getNombre());
+			if(pregunta.getCodigo_ejemplo()!=null){
+				st.setString(2, pregunta.getCodigo_ejemplo());
+			}else{
+				st.setNull(2, Types.VARCHAR);
+			}
+			st.setString(3, pregunta.getPregunta());
+			if(pregunta.getA()!=null){
+				st.setString(4, pregunta.getA());
+			}else{
+				st.setNull(4, Types.VARCHAR);
+			}
+			if(pregunta.getB()!=null){
+				st.setString(5, pregunta.getB());
+			}else{
+				st.setNull(5, Types.VARCHAR);
+			}
+			if(pregunta.getC()!=null){
+				st.setString(6, pregunta.getC());
+			}else{
+				st.setNull(6, Types.VARCHAR);
+			}
+			if(pregunta.getD()!=null){
+				st.setString(7, pregunta.getD());
+			}else{
+				st.setNull(7, Types.VARCHAR);
+			}
+			if(pregunta.getE()!=null){
+				st.setString(8, pregunta.getE());
+			}else{
+				st.setNull(8, Types.VARCHAR);
+			}
+			st.setString(9, pregunta.getCorrecta());
+				
+			// ejecutamos el insert.			
+			st.executeUpdate();
+		} catch (SQLException e) {
+			if (e.getErrorCode() == DbQuery.DUPLICATE_PK_MYSQL) {
+				throw new DAOException("La pregunta está repetida");
+			}else if (e.getErrorCode() == DbQuery.FK_REFERENCE_MYSQL) {
+				throw new DAOException("El nombre del test no existe");
+			}else{
+				throw new DAOException(DB_ERR, e);
+			}
+		} finally {
+			Recursos.closePreparedStatement(st);
+			
+		}	
+		
 	}
 
 }

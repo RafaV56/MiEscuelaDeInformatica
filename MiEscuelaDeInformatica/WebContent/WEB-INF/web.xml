@@ -21,6 +21,14 @@
     <url-pattern>/Java</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Html</servlet-name>
+    <servlet-class>servlet.Html</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Html</servlet-name>
+    <url-pattern>/Html</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Sql</servlet-name>
     <servlet-class>servlet.Sql</servlet-class>
   </servlet>
@@ -99,5 +107,61 @@
   <servlet-mapping>
     <servlet-name>CorregirTest</servlet-name>
     <url-pattern>/CorregirTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AgregarProfesor</servlet-name>
+    <servlet-class>servlet.AgregarProfesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AgregarProfesor</servlet-name>
+    <url-pattern>/AgregarProfesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>VerTest</servlet-name>
+    <servlet-class>servlet.VerTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerTest</servlet-name>
+    <url-pattern>/VerTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AgregarTest</servlet-name>
+    <servlet-class>servlet.AgregarTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AgregarTest</servlet-name>
+    <url-pattern>/AgregarTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InsertarTest</servlet-name>
+    <servlet-class>servlet.InsertarTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertarTest</servlet-name>
+    <url-pattern>/InsertarTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InsertarPreguntasTest</servlet-name>
+    <servlet-class>servlet.InsertarPreguntasTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertarPreguntasTest</servlet-name>
+    <url-pattern>/InsertarPreguntasTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InsertarPregunta</servlet-name>
+    <servlet-class>servlet.InsertarPregunta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertarPregunta</servlet-name>
+    <url-pattern>/InsertarPregunta</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EnviarCorreo</servlet-name>
+    <servlet-class>servlet.EnviarCorreo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnviarCorreo</servlet-name>
+    <url-pattern>/EnviarCorreo</url-pattern>
   </servlet-mapping>
 </web-app>

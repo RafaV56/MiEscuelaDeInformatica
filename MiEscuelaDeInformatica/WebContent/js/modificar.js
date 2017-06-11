@@ -35,35 +35,35 @@ $(document).ready(function(e) {
  			$('#principio').empty();
  			//llamo a validar nombre si devuelve falso agrego el error al div principio y así con todos
  			if(!nombre()){
- 				$('#principio').append('<h3>-El campo nombre es obligatorio, máximo 50 caracteres.</h3>');
+ 				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El campo nombre es obligatorio, máximo 50 caracteres.</h3>');
  					bandera=false;
  			}
  			//Valido la edad
 			if(!edad()){
-				$('#principio').append('<h3>-El campo edad es obligatorio, deber ser entre 7 y 120 años</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El campo edad es obligatorio, deber ser entre 7 y 120 años</h3>');
 					bandera=false;
 			}
 			//Valido el nick
 			if(!nick()){
-				$('#principio').append('<h3>-El nick es obligatorio, deber ser entre 1 y 50 caracteres</h3>');
+				$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> El nick es obligatorio, deber ser entre 1 y 50 caracteres</h3>');
 					bandera=false;
 			}
 			//Si quiere cambiar la contraseña valido las contraseñas
 			if (valor=='s') {
 				//Válido la contraseña antigua
 				if(!contrasenaVieja()){
-					$('#principio').append('<h3>-La contraseña antigua es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
+					$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> La contraseña antigua es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
 						bandera=false;
 				}
 				
 				//Válido la contraseña nueva
 				if(!contrasena()){
-					$('#principio').append('<h3>-La contraseña nueva es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
+					$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> La contraseña nueva es obligatoria, deber ser entre 1 y 10 caracteres</h3>');
 						bandera=false;
 				}
 				//Válido la contraseña repetida
 				if(!rContrasena()){
-					$('#principio').append('<h3>-Repite la contraseña es obligatoria, deber ser igual a la contraseña</h3>');
+					$('#principio').append('<h3 class="alert alert-danger text-center"><i class="fa fa-times fa-2"></i> Repite la contraseña es obligatoria, deber ser igual a la contraseña</h3>');
 						bandera=false;
 				}
 			}

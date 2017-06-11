@@ -24,7 +24,7 @@
       
        <div class="row">
        <!-- Div id principio sera usado en javaScrip para visualizar los errores que el usuario tiene en el form -->
-       	<div id="principio" style="background:#000; color:red; font-size:1.5em; margin:0.5em; padding:0.1em; border-radius:5px;">
+       	<div id="principio">
         </div>
        </div>
        
@@ -33,6 +33,7 @@
          <%
     		String error=(String)request.getAttribute("error");
     		String respuesta=(String)request.getAttribute("respuesta");
+    		Usuario usuario=(Usuario)session.getAttribute("usuario");
     		
        /*busco la repuesta del servlet agregar usuario que si tiene una respuesta 
          hay un usuario creado correctamente pero si tiene error lo explica
@@ -54,13 +55,9 @@
        </h1>
        <%
        }
-       %>
-
-		<%
-        Usuario usuario=(Usuario)session.getAttribute("usuario");
-        if(usuario!=null){
-        %>
-
+        if(usuario!=null){ 	
+        %>		
+		</div><!-- fin del col-10 -->
 		<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 				<div class="panel-heading">
@@ -69,7 +66,7 @@
 					</span>
 			</div><!-- fin panel-default -->
 				<div class="panel-body">
-			<form class="form-horizontal" method="get" action="AceptarCambios">
+			<form class="form-horizontal" method="post" action="AceptarCambios">
 
 			<!-- Email Input-->
 			<div class="form-group">
@@ -210,7 +207,7 @@
 			</p>
 			</div><!-- fin panel body -->
 			</div><!-- fin panel-primary -->
-				<%} %>
+				<%}//fin del si usuario es diferente de null %>
 		<p>
 	  		 <a href="Welcome">
 	  		 	<input class="btn btn-info" type="button" value="Volver al inicio" />

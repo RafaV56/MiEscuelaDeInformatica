@@ -59,13 +59,21 @@
        <%
     	   }
     	   //pintamos los botones para volver a intentar o para volver al tema
+    	   
+    	   //si la tecnologia del test es Welcome es de un profesor, asi que el botón no tiene tema y se envia alos test del usuario
+    	   String tema="Volver al tema";
+    	   
+    	   if(test.getTecnologia().equals("Welcome")){
+    		   test.tecnologia="VerTest";
+    		   tema="Volver a los test";
+    	   }
     	%>
     		<div class="btn-group btn-group-justified">
 			 <a href="Test?intentar=s" class="btn btn-warning">
 		 		<span style="font-size: 1.3em">Intentar nuevamente</span>
 			</a>
 			 <a href="<%=test.getTecnologia()%>" class="btn btn-success">
-				<span style="font-size: 1.3em">Volver al tema</span>
+				<span style="font-size: 1.3em"><%=tema%></span>
 			 </a>
 			</div>
 	  		

@@ -17,7 +17,7 @@ public class DbQuery {
 	/**
 	 * Error en la clave ajena de una base de datos de MY_SQL
 	 */
-	public static final int FK_REFERENCE = 1452;
+	public static final int FK_REFERENCE_MYSQL = 1452;
 	
 	/**
 	 * Variable para modificar un usuario por medio de su email. necesita todos los campos
@@ -41,6 +41,13 @@ public class DbQuery {
 	 */
 	private static final String recuperarHacerTest = "SELECT email,nombre_test,superado FROM hacer_test where email=? and nombre_test=?";
 	private static final String modificarHacerTest = "update hacer_test set superado=? where email=? and nombre_test=?";
+	private static final String recuperarTestDesarrollados = "SELECT nombre_test,superado FROM hacer_test where email=?";
+	private static final String insertaProfesor = "insert into profesores(profesor,alumno) values(?,?)";
+	private static final String recuperarProfesores = "SELECT profesor,alumno FROM profesores where alumno=?";
+	private static final String recuperarProfesor ="select distinct profesor from profesores where profesor=?";
+	private static final String insertarTest = "insert into test(nombre,creado_por) values(?,?)";
+	private static final String insertarPregunta = "insert into preguntas(nombre_test,codigo_ejemplo,pregunta,a,b,c,d,e,correcta) values(?,?,?,?,?,?,?,?,?)";
+	private static final String recuperarTodosTestProfesor = "SELECT nombre FROM test where creado_por=?";
 	/**
 	 * Retorna la select de un usuario completo por su pk [email]
 	 * @return select
@@ -104,6 +111,55 @@ public class DbQuery {
 	 */
 	public static String getModificarHacerTest() {
 		return modificarHacerTest;
+	}
+
+	/**
+	 * Recupera todos los test de un usuario, se necesita solo su email, recupera el nombre del test y si es superado
+	 * @return
+	 */
+	public static String getRecuperarTestDesarrollados() {
+		return recuperarTestDesarrollados;
+	}
+
+	/**
+	 * Inserta un profesor, se necesita el email del profesor y el email del alumno
+	 * @return
+	 */
+	public static String getInsertarProfesor() {
+		return insertaProfesor;
+	}
+
+	/**
+	 * Recupera todos los profesores de un alumno
+	 * @return
+	 */
+	public static String getRecuperarProfesores() {
+		return recuperarProfesores;
+	}
+
+	/**
+	 * Recupera un profesor si el usuario lo es
+	 * @return
+	 */
+	public static String getRecuperarProfesor() {
+		return recuperarProfesor;
+	}
+
+	public static String getInsertarTest() {
+		return insertarTest;
+	}
+
+	public static String getInsertarPregunta(){
+		return insertarPregunta;
+	}
+
+	/**
+	 * Recupera el nombre de todos los test creados por un profesor
+	 * @return
+	 */
+	public static String getRecuperarTodosTestProfesor() {
+		
+		return recuperarTodosTestProfesor;
 	}
 	
 }

@@ -1,30 +1,28 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.Test;
-
+import domain.Profesor;
+import domain.Usuario;
+import service.ServiceProfesor;
 import exceptions.DomainException;
 import exceptions.ServiceException;
 
-import service.ServicioTest;
-
 /**
- * Servlet implementation class Test
+ * Servlet implementation class AgregarProfesor
  */
-@WebServlet("/Test")
-public class Tests extends HttpServlet {
+public class AgregarProfesor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Tests() {
+    public AgregarProfesor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,35 +38,33 @@ public class Tests extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String respuesta="/test.jsp";
-		//recupero un el parametro para repetir un test
-		String intentar=request.getParameter("intentar");
-		//si no hay intento el test es null y se tiene que crear.
-		if (intentar==null) {
-			//recuperamos el nombre del test
-			String nombreTest=request.getParameter("nombre");
+		String resultado="/agregarProfesor.jsp";
+		Usuario usuario=(Usuario) request.getSession().getAttribute("usuario");
+		String emailProfe=request.getParameter("emailProfesor");
+		
+		if (usuario==null) {
+			resultado="/Welcome";
+		}else if (emailProfe!=null) {
 			
-			//llamo al servicio para recuperar el test de la base de datos
-			ServicioTest servicioTest=null;
-			Test test=null;
+			ServiceProfesor agregarProfe=null;
 			try{
-				servicioTest=new ServicioTest();
-				//recupero el test con el nombre
-				test=new Test(nombreTest);
-							
-				test=servicioTest.recuperarTodasPreguntasTest(test);
-				
-				request.getSession().setAttribute("testCompleto", test);
+			Usuario profesor=new Usuario();
+			profesor.setEmail(emailProfe.trim());
 			
+			Profesor profe=new Profesor(profesor, usuario);
+			
+				agregarProfe=new ServiceProfesor();
+				agregarProfe.insertarProfesor(profe);
+				//si todo va bien respondo
+				request.setAttribute("respuesta","El profesor se inserto correctamente");
+				
 			}catch (ServiceException e) {
 				request.setAttribute("error", e.getMessage());
 			}catch (DomainException e) {
 				request.setAttribute("error", e.getMessage());
 			}
-		}//fin del si
-		
-		
-		getServletContext().getRequestDispatcher(respuesta).forward(request, response);
+		}	
+		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);
 	}
 
 }

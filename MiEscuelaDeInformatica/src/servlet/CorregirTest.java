@@ -50,8 +50,18 @@ public class CorregirTest extends HttpServlet {
 		if (test!=null) {
 			//Agrego el tema y la tecnología
 			String nombre=test.getNombre();
-	    	String tema=nombre.substring(nombre.indexOf("-")+1);
-	    	String tecnologia=nombre.substring(0, nombre.indexOf("-"));   	
+			
+			String tema=null;
+			String tecnologia=null;
+			
+			if (nombre.indexOf("-")==-1) {
+				tema=nombre;
+				tecnologia="Welcome";
+			}else{
+				tema=nombre.substring(nombre.indexOf("-")+1);
+				tecnologia=nombre.substring(0, nombre.indexOf("-"));
+	    	}
+			
 	    	testCorregido.setTema(tema);
 	    	testCorregido.setTecnologia(tecnologia);
 			//todas las preguntas del test

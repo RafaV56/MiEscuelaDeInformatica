@@ -6,8 +6,8 @@
   <nav>
       <ul class="nav nav-pills nav-stacked">
       <li><a href="#identificadores" data-toggle="collapse" data-parent="#accordion">Identificadores</a></li>
-      <li><a href="#operadores" data-toggle="collapse" data-parent="#accordion">Operadores</a></li>
-      <li><a href="#collapse3" data-toggle="collapse" data-parent="#accordion">Tipo primitivos</a></li>
+      <li><a href="#variables" data-toggle="collapse" data-parent="#accordion">Variables</a></li>
+      <li><a href="#tiposDeDatos" data-toggle="collapse" data-parent="#accordion">Tipos de datos</a></li>
       </ul>
   </nav>
 </div><!--fin side bar-->
@@ -27,12 +27,14 @@
       </div><!--fin panel heading-->
       <div class="panel-body">
       <div class="panel-group" id="accordion">
+        
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#identificadores">Identificadores</a>
             </h4>
           </div>
+          
           <div id="identificadores" class="panel-collapse collapse in">
             <div class="panel-body">
                 <h3>Identificadores</h3>
@@ -79,27 +81,191 @@ public class Indentificadores {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#operadores">Operadores</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#variables">Variables</a>
             </h4>
           </div>
-          <div id="operadores" class="panel-collapse collapse ">
+          <div id="variables" class="panel-collapse collapse ">
             <div class="panel-body">
-             <form action="Test?nombre=java-operadores" method="post">
+                            <h3>Variables</h3>
+                 <p class="text-justify">
+                 	           En Java, llamamos variable a un espacio para almacenar un valor que puede cambiar a lo largo
+
+								del programa. Cada variable tiene asociado un nombre y un tipo.
+								
+								Cuando queremos utilizar el valor contenido en una variable, simplemente utilizamos su
+								
+								nombre.<br><br>
+								
+								<strong>Declaración e inicialización de variables</strong><br><br>
+
+								Una variable es un espacio de memoria al cual identificamos con un identificador.<br>
+								
+								En java, es necesario declarar las variables antes de utilizarlas.<br>
+								
+								Para declarar una variable, escribimos el tipo, seguido de un identificador.<br>
+								
+								int edad;<br>
+								
+								Se pueden declarar varias variables del mismo tipo, separándolas por comas.<br>
+								
+								double altura, peso;<br>
+								
+								La operación básica para dar valor a una variable es la asignación, denotada por el operador =
+								
+								altura=12.0;<br>
+                 </p>
+                 <hr>
+                 <h3>Ejemplo</h3>
+                 <p>
+                    <pre class="pre-scrollable">
+public class Variables {
+
+	public static void main(String[] args) {
+	
+	<span class="bg-info">
+	//Cuando declaramos una variable debemos suponer que su valor inicial es indefinido,
+	//con lo cual, no puede participar en ninguna otra operación.</span>
+								
+	int x, y;<br>
+								
+	y=<span style="color:red;" class="bg-danger">x</span>+1; //INCORRECTO:
+	
+	<span class="bg-info">
+	//Se puede dar valor inicial a una variable con una asignación. 
+	//Y también se puede hacer en el momento de la declaración</span>
+								
+	int x, y;
+								
+	x=3;
+				
+	y=x+1;
+
+}</pre>
+                 </p>
+                 <hr>   
+                 <p>
+                 	Pequeño test para repasar los conocimientos
+                 </p> 
+             	<form action="Test?nombre=java-variables" method="post">
                    	<input type="submit" value="Test" class="btn btn-info" />
-               	   </form>            
+               	  </form>            
             </div>
           </div>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Tipos primitivos</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#tiposDeDatos">Tipos de datos</a>
             </h4>
           </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          <div id="tiposDeDatos" class="panel-collapse collapse">
+            <div class="panel-body">
+             <p class="text-justify">
+             <h3>Tipos de datos</h3>
+                Java es un lenguaje estáticamente tipado. Eso significa se debe declarar explícitamente el
+                 nombre y el tipo de las variables antes de utilizarlas.
+                 
+                 <h3>Primitivos, de valor</h3>
+El lenguaje de programación Java da soporte a 8 tipos denominados primitivos, o de valor.
+Los tipos primitivos están predefinidos en el lenguaje y se nombran mediante una palabra
+reservada.
+Estos 8 tipos son:
+                 </p>
+                 <p>
+                 <dl class="dl-horizontal">
+				    <dt>byte</dt>
+				    <dd class="text-justify">
+				    	Entero con signo, entre -128 y 127. Almacenado en complemento a 2 con 1 byte
+(8 bits)
+				    </dd>
+				    <dt>short</dt>
+				    <dd class="text-justify">Entero con signo, entre -32,768 y 32,767 (inclusive). Almacenado en
+complemento a 2 con 2 bytes (16 bits)</dd>
+				    <dt>int</dt>
+				    <dd class="text-justify">Entero con signo, con valores entre -2,147,483,648 y 2,147,483,647 (inclusive).
+Para valores entero, éste es el tipo normalmente escogido, a menos que exista una
+buena razón para utilizar alguno de los otros. byte y short son más ahorrativos en la
+memoria o pueden ser utilizados por motivos de compatibilidad. long proporciona un
+rango más amplio.</dd>
+				    <dt>long</dt>
+				    <dd class="text-justify">
+				    Entero con signo, entre -9,223,372,036,854,775,808 y
+9,223,372,036,854,775,807 (inclusive). En complemento a 2, utilizando 8 bytes (64 bits)
+				    </dd>
+				    <dt>float</dt>
+				    <dd class="text-justify">Éste tipo almacena un número con decimales en el formato de coma flotante,
+según el estándar IEEE754. Utiliza 32 bits para el almacenamiento. En general, no se
+utiliza a menos que necesitemos un ahorro de memoria o por motivos de compatibilidad.</dd>
+				    <dt>double</dt>
+				    <dd class="text-justify">Éste tipo almacena un número con decimales de doble precisión en el formato
+de coma flotante, según el estándar IEEE754. Utiliza 64 bits para el almacenamiento.
+En general, es el tipo utilizado cuando se necesitan valores que pueden tener
+decimales, pero ten en cuenta que siempre tiene pérdidas de precisión. Aunque
+nosotros lo utilicemos ampliamente mientras aprendemos a programar, en el mundo
+real nunca se utiliza para valores que deban ser absolutamente precisos, como
+valores monetarios, por ejemplo. El rango de números que puede almacenar va
+aproximadamente desde ± ~10-323.3 hasta ~10308.3.
+Tema 2</dd>
+				    <dt>boolean</dt>
+				    <dd class="text-justify">
+				    una variable booleana sólo puede contener dos valores: true y false. Es una
+variable de tipo lógico. Utilízala para representar condiciones que se puedan responder
+con verdadero y faso (o sí y no, si lo prefieres). Para representar un valor booleano
+basta con un bit, pero debido a la construcción de las memorias (en bytes), la cantidad
+exacta de memoria real utilizada no está definida. El nombre de éste tipo de datos está
+tomado del apellido de George Boole, que desarrolló la teoría de la lógica básica con
+dos valores (true y false).
+				    </dd>
+				    <dt>char</dt>
+				    <dd class="text-justify">
+				    El tipo de datos Char representa a un único carácter con la codificación Unicode.
+Ocupa 16 bits, y puede tomar valores entre '\u0000' (es decir, 0) y '\uffff' ( 65,535
+inclusive).				    
+				    </dd>
+				  </dl>     
+                 </p>
+                 <hr>
+                 <h3>Ejemplo</h3>
+                 <p>
+                    <pre class="pre-scrollable">
+public class TiposDeDatos {
+
+	public static void main(String[] args) {
+	<span class="bg-info">//Ejemplo validos</span>
+	
+	byte unByte=127;
+	byte otroByte=-128;
+			
+	short unShort=-32768;
+	short otroShort=32767;
+			
+	int unInt=-2147483648;
+	int otroInt=2147483647; 
+			
+	long unLong=-9223372036854775808L; <span class="bg-info">//lleva la L al final</span>
+	long otroLong=9223372036854775807L; <span class="bg-info">//lleva la L al final</span>
+			
+	float unFloat=55.55F; <span class="bg-info">//lleva la F al final</span>
+			
+	double real=10.01234567890;
+			
+	boolean boleano=true;
+	boolean boleano2=false;
+			
+	char unChar='\u0000'; <span class="bg-info">//Representa al 0 y se encierra entre comillas simples</span>
+	}
+
+}</pre>
+                 </p>
+                 <hr>   
+                 <p>
+                 	Pequeño test para repasar los conocimientos
+                 </p>              
+              	   <form action="Test?nombre=java-tipos_de_datos" method="post">
+                   	<input type="submit" value="Test" class="btn btn-info" />
+               	   </form>
+            
+         </div>
           </div>
         </div>
       </div> 

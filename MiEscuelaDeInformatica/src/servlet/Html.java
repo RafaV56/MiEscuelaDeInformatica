@@ -1,28 +1,24 @@
 package servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.Usuario;
-
-
 /**
- * Servlet implementation class EditarPerfil
+ * Servlet implementation class Html
  */
-@WebServlet("/EditarPerfil")
-public class EditarPerfil extends HttpServlet {
+public class Html extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarPerfil() {
+    public Html() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -36,16 +32,8 @@ public class EditarPerfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultado="/editarPerfil.jsp";
-		
-		Usuario usuario=(Usuario)request.getSession().getAttribute("usuario");
-		
-		//si el usuario no es válido no se puede ir a editar
-		if (usuario==null) {
-			request.getSession().invalidate();
-			resultado="/Welcome";
-		}
-		getServletContext().getRequestDispatcher(response.encodeURL(resultado)).forward(request, response);
+		request.getSession().setAttribute("barra", "Html");
+		getServletContext().getRequestDispatcher("/html.jsp").forward(request, response);
 	}
 
 }
