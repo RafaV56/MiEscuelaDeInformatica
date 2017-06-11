@@ -15,6 +15,11 @@ import domain.Pregunta;
 import domain.Test;
 import exceptions.DAOException;
 
+/**
+ * Actualiza una pregunta de un test sobre la BBDD
+ * @author Pc
+ *
+ */
 public class PreguntaDAO {
 	
 	private static final String DB_ERR = "Error de la base de datos";

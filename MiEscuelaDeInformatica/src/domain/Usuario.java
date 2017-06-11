@@ -164,11 +164,4 @@ public class Usuario {
 			throw new DomainException("La longitud del nombre no es correcta");
 		}
 	}
-	
-	@Override
-	public String toString() {
-		return "Usuario [email=" + email + ", nombre=" + nombre + ", edad="
-				+ edad + ", contrasena=" + contrasena + "]";
-	}
 }
-// hacer el servlet agregarUsuario y probar que llegen los datos correctamente

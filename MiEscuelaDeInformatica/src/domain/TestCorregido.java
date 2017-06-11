@@ -1,7 +1,7 @@
 package domain;
 
 /**
- * 
+ * Representa la información para corregir un test
  * @author Pc
  *
  */
@@ -163,16 +163,5 @@ public class TestCorregido {
 	public void setSuperadoAnteriormente(boolean superadoAnteriormente) {
 		this.superadoAnteriormente = superadoAnteriormente;
 	}
-	
-	@Override
-	public String toString() {
-		return "TestCorregido [tema=" + tema + ", tecnologia=" + tecnologia
-				+ ", nombreTest=" + nombreTest + ", superado=" + superado
-				+ ", superadoAnteriormente=" + superadoAnteriormente
-				+ ", error=" + error + ", correctas=" + correctas
-				+ ", errores=" + errores + "]";
-	}
-	
-
 
 }

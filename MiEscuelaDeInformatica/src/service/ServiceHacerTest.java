@@ -11,6 +11,11 @@ import domain.Usuario;
 import exceptions.DAOException;
 import exceptions.ServiceException;
 
+/**
+ * Realiza todos los servicios sobre quien hace un test en la aplicación
+ * @author Pc
+ *
+ */
 public class ServiceHacerTest {
 
 	public ServiceHacerTest() {}

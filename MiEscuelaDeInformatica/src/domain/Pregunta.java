@@ -5,6 +5,11 @@ package domain;
 import exceptions.DomainException;
 import util.Validator;
 
+/**
+ * Reprasenta a una pregunta de un test
+ * @author Pc
+ *
+ */
 public class Pregunta {
 
 	private String codigo_ejemplo;
@@ -168,6 +173,11 @@ public class Pregunta {
 			throw new DomainException("El código de ejemplo no es correcto, máximo 2000 caracteres");
 		}
 	}
+	
+	/**
+	 * Si todo va bien la pregunta es correcta
+	 * @param correcta
+	 */
 	public void setValida(String correcta) {
 		if (correcta.equals("a")) {
 			this.valida = correcta;
@@ -209,14 +219,4 @@ public class Pregunta {
 		}
 		
 	}
-
-	@Override
-	public String toString() {
-		return "Pregunta [codigo_ejemplo=" + codigo_ejemplo + ", pregunta="
-				+ pregunta + ", a=" + a + ", b=" + b + ", c=" + c + ", d=" + d
-				+ ", e=" + e + ", valida=" + valida + "]";
-	}
-
-	
-	
 }

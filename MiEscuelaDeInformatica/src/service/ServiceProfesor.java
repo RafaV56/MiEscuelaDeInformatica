@@ -10,8 +10,18 @@ import domain.Usuario;
 import exceptions.DAOException;
 import exceptions.ServiceException;
 
+/**
+ * Raliza los servicios sobre un profesor 
+ * @author Pc
+ *
+ */
 public class ServiceProfesor {
 	
+	/**
+	 * Inserta un profesor
+	 * @param profesor
+	 * @throws ServiceException
+	 */
 	public void insertarProfesor(Profesor profesor) throws ServiceException{
 		
 		//verificamos que el alumno y el profesor no son el mismo
