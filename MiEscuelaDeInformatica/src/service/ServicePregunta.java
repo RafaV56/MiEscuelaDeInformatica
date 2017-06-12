@@ -2,12 +2,16 @@ package service;
 
 import daos.PreguntaDAO;
 import daos.TransaccionesManager;
-import daos.UsuarioDAO;
 import domain.Pregunta;
 import domain.Test;
 import exceptions.DAOException;
 import exceptions.ServiceException;
 
+/**
+ * Realiza todos los servicios sobre una preguntas en la aplicación
+ * @author Pc
+ *
+ */
 public class ServicePregunta {
 	
 	public void insertarPregunta(Pregunta pregunta,Test test) throws ServiceException{

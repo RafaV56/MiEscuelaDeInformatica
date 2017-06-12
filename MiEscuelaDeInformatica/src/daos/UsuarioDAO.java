@@ -10,11 +10,13 @@ import recursos.Recursos;
 import domain.Usuario;
 import exceptions.DAOException;
 
+/**
+ * Actualiza la información de un usuario sobre la BBDD
+ * @author Pc
+ *
+ */
 public class UsuarioDAO {
 	private static final String DB_ERR = "Error de la base de datos";
-
-//	private static final int ORACLE_DELETE_FK = 2292;
-//	private static final int ORACLE_FALLO_FK = 2291;
 	
 	/**
 	 * conexión a la base de datos

@@ -1,5 +1,10 @@
 package recursos;
 
+/**
+ * Representa todas las sentencias necesarias en la aplicación para usarlas en la capa DAO
+ * @author Pc
+ *
+ */
 public class DbQuery {
 
 	/**
@@ -145,10 +150,18 @@ public class DbQuery {
 		return recuperarProfesor;
 	}
 
+	/**
+	 * Inseta un test
+	 * @return
+	 */
 	public static String getInsertarTest() {
 		return insertarTest;
 	}
 
+	/**
+	 * Inserta una preguntas
+	 * @return
+	 */
 	public static String getInsertarPregunta(){
 		return insertarPregunta;
 	}

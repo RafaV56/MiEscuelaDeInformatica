@@ -6,6 +6,11 @@ import exceptions.DomainException;
 
 import util.Validator;
 
+/**
+ * Represnta un test completo de la aplicación.
+ * @author Pc
+ *
+ */
 public class Test {
 	/**
 	 * El nombre del test debe tener 1-50 caracteres

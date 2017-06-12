@@ -13,6 +13,11 @@ import domain.Profesor;
 import domain.Usuario;
 import exceptions.DAOException;
 
+/**
+ * Actualiza la información de un Profesor sobre la BBDD
+ * @author Pc
+ *
+ */
 public class ProfesorDAO {
 	
 private static final String DB_ERR = "Error de la base de datos";
@@ -56,7 +61,7 @@ private static final String DB_ERR = "Error de la base de datos";
 	}
 	
 	/**
-	 * Recupera u
+	 * Recupera todos los profesores de un alumno
 	 * @param alumno
 	 * @return
 	 * @throws DAOException

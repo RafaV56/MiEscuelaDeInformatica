@@ -40,7 +40,10 @@
    		 }else{
    		%>
       <div class="row" style="margin:0.2em 0em;">
-      
+      <h2 class="alert alert-success text-center col-sm-10  col-sm-offset-1">
+			       	<i class="fa fa-exclamation-circle fa-2"></i>
+			       	El test será superado con al menos 80% de las preguntas correctas.
+		</h2>
       <div class="col-md-12">
       <%
       //creo panel para las preguntas del test
@@ -53,6 +56,7 @@
       int contador=1;
        
       %>
+      
       <div class="panel panel-default">
 				<div class="panel-heading text-center">
 					<span class=" text-info text-capitalize titulo" style="font-size: 1.8em">

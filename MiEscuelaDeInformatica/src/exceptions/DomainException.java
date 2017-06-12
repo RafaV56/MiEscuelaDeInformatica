@@ -1,7 +1,7 @@
 package exceptions;
 
 /**
- * Clase excepcion para la capa dominio
+ * Clase excepción para la capa dominio
  * 
  * @author Rafael Velásquez
  * 

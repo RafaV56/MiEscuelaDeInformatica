@@ -11,6 +11,11 @@ import domain.Test;
 import exceptions.DAOException;
 import exceptions.ServiceException;
 
+/**
+ * Realiza todos los servicios sobre los test en la aplicación
+ * @author Pc
+ *
+ */
 public class ServicioTest {
 	
 	/**

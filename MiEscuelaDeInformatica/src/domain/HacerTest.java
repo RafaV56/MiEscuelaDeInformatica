@@ -5,6 +5,11 @@ import java.io.Serializable;
 import util.Validator;
 import exceptions.DomainException;
 
+/**
+ * Representa la información de un test al momento de ser corregido
+ * @author Pc
+ *
+ */
 public class HacerTest implements Serializable{
 	
 	/**

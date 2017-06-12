@@ -16,6 +16,9 @@ import domain.Test;
 import domain.TestCorregido;
 import exceptions.DAOException;
 
+/**
+ * Actualiza la inforación de un test sobre la BBDD
+ */
 public class TestDAO {
 	
 	private static final String DB_ERR = "Error de la base de datos";

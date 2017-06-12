@@ -4,6 +4,11 @@ import java.util.List;
 
 import exceptions.DomainException;
 
+/**
+ * Representa la información de un  profesor
+ * @author Pc
+ *
+ */
 public class Profesor {
 	
 	private Usuario profesor;

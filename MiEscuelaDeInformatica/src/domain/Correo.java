@@ -1,5 +1,10 @@
 package domain;
 
+/**
+ * Representa la información de un correo
+ * @author Pc
+ *
+ */
 public class Correo {
 	
 	private String usuario="tucorreo@tucorreo.com";
